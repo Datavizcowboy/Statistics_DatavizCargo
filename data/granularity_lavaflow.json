@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "name": "Exposure",
+      "group": 0,
+      "link": "https://yeti.mitigasolutions.com/Volcano_Map"
+    },
+    {
+      "name": "Ashload Prob",
+      "group": 1,
+      "link": "https://yeti.mitigasolutions.com/Volcano_History"
+    },
+    {
+      "name": "Ashload Exceed",
+      "group": 1,
+      "link": "https://yeti.mitigasolutions.com/Volcano_Orbital/"
+    },
+    {
+      "name": "Lavaflow Mauna",
+      "group": 1,
+      "link": "https://yeti.mitigasolutions.com/Volcano_Orbital_People/"
+    },
+    {
+      "name": "Lavaflow Hualalai",
+      "group": 1,
+      "link": "https://yeti.mitigasolutions.com/Volcano_Orbital_People/"
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1,
+      "value": 1
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "value": 1
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "value": 1
+    },
+    {
+      "source": 0,
+      "target": 4,
+      "value": 1
+    }
+  ]
+}

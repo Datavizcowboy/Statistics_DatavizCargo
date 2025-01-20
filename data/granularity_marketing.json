@@ -1,0 +1,13 @@
+{"nodes":
+  [
+    {"name": "Voronoi", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Voronoi"},
+    {"name": "Methodology", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Mountains/"},
+    {"name": "Bubbles", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Fundraising"},
+    {"name": "Rings", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Voronoi"},
+    {"name": "Sankey", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Mountains/"}],
+  "links":[
+    {"source":2,"target":3,"value":1},
+    {"source":3,"target":4,"value":1},
+    {"source":4,"target":2,"value":1}
+     ]
+}

@@ -1,0 +1,10 @@
+{"nodes":
+  [
+    {"name": "Assets", "group": 1, "link": "https://yeti.mitigasolutions.com/Wildfires_FWI/"},
+    {"name": "Value", "group": 0, "link": "https://yeti.mitigasolutions.com/MFS_Folium/"}
+],
+  "links":[
+    {"source":0,"target":1,"value":1}
+  
+  ]
+}

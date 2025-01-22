@@ -15,33 +15,42 @@
     <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
     <script src="https://unpkg.com/@asymmetrik/leaflet-d3@4/dist/leaflet-d3.js" charset="utf-8"></script>
     <script src="../JS/raw.githubusercontent.com_calvinmetcalf_leaflet-ajax_master_dist_leaflet.ajax.min.js"></script>
-
-    <!-- <script type="text/javascript" src="./topojson.js"></script> -->
-    <link href="//db.onlinewebfonts.com/c/466bde28f618f6ea76902f48da3d4c7a?family=NeueHaasUnicaPro-Regular"
-        rel="stylesheet" type="text/css" />
-    <link type="text/css" rel="stylesheet" href="../CSS/map2b.css">
-    <script type="text/javascript" src="../JS/topojson.js"></script>
-    <script src="../DATA/chile_fire_var.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/map2b.css">
+    <script type="text/javascript" src="../js/topojson.js"></script>
+    <script src="../Data/amazonia_eva_2005.js"></script>
 
     <!-- <script type="text/javascript" src="leaflet.hexbin-layer.js"></script> -->
 </head>
 
-<body> 
+<body>
 
     <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1200px; height: 740px; margin-left: 0px">
     </div>
 
     <script type="text/javascript">
 
-        var center = [-72.4687432, -37.204916]
-        var map = L.map('map').setView([-37.404916, -73.5687433], 9);
+        // var center = [-72.4687432, -37.204916]
+        var map = L.map('map').setView([-10, -60], 4);
 
-        var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
-        var basemap = L.tileLayer(esriRelief, {
-            attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
-            maxZoom: 13, opacity: 1
+        // var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
+        // var basemap = L.tileLayer(esriRelief, {
+        //     attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
+        //     maxZoom: 13, opacity: 1
+        // });
+        // basemap.addTo(map);
+
+        // var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        //     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        // });
+        // Esri_WorldImagery.addTo(map);
+
+
+        var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
         });
-        basemap.addTo(map);
+        CartoDB_DarkMatter.addTo(map)
 
         var options = {
             radius: 10,
@@ -55,14 +64,21 @@
         g2 = svg.append("g")
 
         var myStyle = {
-            "stroke": "none",
-            "color": "gold",
-            "weight": 5,
-            "opacity": 1
+            // "stroke": "none",
+            // "color": "gold",
+            // "weight": 5,
+            fillColor: "#ffffff",
+            fillOpacity: .5
         };
 
         L.geoJSON(themap, {
-            style: myStyle
+            // style: myStyle
+            style: function () {
+                // console.log(feature)
+                return {
+                    fillOpacity: 0.3,
+                };
+            }
         }).addTo(map)
 
     </script>

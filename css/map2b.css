@@ -14,11 +14,6 @@ body{
 
 }
 
-.hexbin-hexagon {
-  stroke: #fff;
-  stroke-width: 1px;
-}
-
 p.title {
     font-family: NeueHaasUnicaPro-Regular, Arial, sans-serif;
     font-size: 46px;
@@ -113,16 +108,6 @@ div.lefthill-div {
   z-index: 1;
   }
 
-.hexagon {
-fill: white;
-stroke: none;
-stroke-width: .5px;
-}
-
-.hexagons path {
-  stroke: red;
-}
-
 a:link {
 color: white;
 text-decoration: none;
@@ -143,95 +128,13 @@ color: white;
 text-decoration: none;
 }
 
-
-
-.x.axis path {
-  display: white;
-}
-
-.x.axis line {
-  fill: none;
-  stroke: none;
-  stroke-width: 0px;
-}
-
-.y.axis line {
-  fill: none;
-  stroke: white;
-  stroke-width: 1.5px;
-}
-
-.area {
-  fill: #999;
-    stroke: none;
-/*  fill: #999;*/
-    opacity:.3;
-}
-
-.stroke {
-  fill: none;
-  stroke: white;
-  stroke-width: 3px;
-}
-
-.fill {
-  fill: #fff;
-}
-
-.graticule {
-  fill: none;
-  stroke: white;
-/*  stroke: none;*/
-/*  stroke: white;*/
-  stroke-width: 1.5px;
-  stroke-opacity: .5;
-}
-
-.land {
-  fill: #666;
-    stroke: none;
-  opacity:.5;
-}
-
-.land2 {
-  fill: white;
-    stroke: none;
-  opacity:1;
-}
-
-.boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-width: .5px;
-}
-
 path {
-  stroke: none;
-  stroke-width: 1px;
-  fill:black;
+  stroke: white;
+  stroke-width: 0px;
+  fill:white;
   opacity:1;
 }
 
-
-.axis path,
-.axis line {
-fill: none;
-stroke: #999;
-    opacity: .5;
-stroke-width: 1px;
-shape-rendering: crispEdges;
-}
-.axis text { 
-fill: #999;
-font-family: Verdana, sans-serif; 
-font-size: 9px; 
-color: white;
-    background: white; 
-}
-
-.hidden { 
-  display: none; 
-}
 
 div.tinymap {
     position: absolute; 

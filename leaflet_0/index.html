@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script> -->
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+    <script src="https://unpkg.com/@asymmetrik/leaflet-d3@4/dist/leaflet-d3.js" charset="utf-8"></script>
+    <script src="../JS/raw.githubusercontent.com_calvinmetcalf_leaflet-ajax_master_dist_leaflet.ajax.min.js"></script>
+
+    <!-- <script type="text/javascript" src="./topojson.js"></script> -->
+    <link href="//db.onlinewebfonts.com/c/466bde28f618f6ea76902f48da3d4c7a?family=NeueHaasUnicaPro-Regular"
+        rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="../CSS/map2b.css">
+    <script type="text/javascript" src="../JS/topojson.js"></script>
+    <script src="../DATA/chile_fire_var.js"></script>
+
+    <!-- <script type="text/javascript" src="leaflet.hexbin-layer.js"></script> -->
+</head>
+
+<body> 
+
+    <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1200px; height: 740px; margin-left: 0px">
+    </div>
+
+    <script type="text/javascript">
+
+        var center = [-72.4687432, -37.204916]
+        var map = L.map('map').setView([-37.404916, -73.5687433], 9);
+
+        var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
+        var basemap = L.tileLayer(esriRelief, {
+            attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
+            maxZoom: 13, opacity: 1
+        });
+        basemap.addTo(map);
+
+        var options = {
+            radius: 10,
+            opacity: 1,
+            duration: 500,
+            stroke: "none"
+        };
+
+        var svg = d3.select("#map").select("svg"),
+            g = svg.append("g")
+        g2 = svg.append("g")
+
+        var myStyle = {
+            "stroke": "none",
+            "color": "gold",
+            "weight": 5,
+            "opacity": 1
+        };
+
+        L.geoJSON(themap, {
+            style: myStyle
+        }).addTo(map)
+
+    </script>
+
+</body>
+
+</html>

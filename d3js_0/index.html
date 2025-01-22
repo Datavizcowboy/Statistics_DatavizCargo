@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script src="//d3js.org/d3-geo-projection.v1.min.js"></script>
+	<script src="//d3js.org/topojson.v1.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../CSS/map2.css">
+</head>
+
+<body>
+
+	<div class="left-div">
+	</div>
+
+	<!-- <div id="header">
+		<p class="title">Wildfires</p>
+		<p class="author">by <a href="https://graphicprototype.net" target="_blank">DatavizCowboy</a></p>
+	</div> -->
+
+	<script type="text/javascript">
+
+		var svg = d3.select("div.left-div")
+			.append("svg")
+			.attr("width", 960)
+			.attr("height", 450)
+
+		var g4 = svg.append("g");
+		var g = svg.append("g");
+		var frame = svg.append("g");
+
+		var projection = d3.geoMercator()
+			.center([-72.5687432, -37.204916])
+			.scale(22000)
+			.translate([550, 140])
+
+		var path = d3.geoPath()
+			.projection(projection);
+
+		var graticule = d3.geoGraticule();
+
+		g4.append("path")
+			.datum(graticule)
+			.attr("class", "graticule")
+			.attr("d", path);
+
+		// d3.json("../DATA/world-50m.json", function (error, topology) {
+
+		// 	g4.selectAll("path")
+		// 		.data(topojson.feature(topology, topology.objects.countries)
+		// 			.features)
+		// 		.enter()
+		// 		.append("path")
+		// 		.attr("d", path)
+		// 		.style("stroke", '#ddd')
+		// 		.style("stroke-width", .5)
+		// 		.style("fill", function (d) {
+		// 			if (d.id == 152) return "none";
+		// 			else return "none";
+		// 		})
+		// });
+
+		d3.json("../DATA/chile_fire_cluster_perimeter.json", function (error, mapData) {
+
+			var features = mapData.features;
+			console.log(mapData.features)
+
+			frame
+				.selectAll('path')
+				.data(mapData.features)
+				.enter()
+				.append('path')
+				.attr('d', path)
+				.style('stroke-width', 2)
+				// .style('stroke', d3.rgb(255, position * 10, 255- position * 10))
+				.style('stroke', "white")
+				.style("stroke-dasharray", ("1"))
+				.style('fill', "none")
+				.attr("opacity", 1)
+				.attr("id", "chilee")
+
+		});
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 95)
+			.text("Area")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 20)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 215)
+			.text("Wildfire")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 230)
+			.text("2000 km2")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 850)
+			.attr("y", 215)
+			.text("Yosemite National Park")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 850)
+			.attr("y", 230)
+			.text("3000 km2")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 300)
+			.text("Perimeter")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 20)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 345)
+			.text("Wildfire 450km")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("text")
+			.attr("x", 700)
+			.attr("y", 385)
+			.text("Munich - Leipzig 420km")
+			.attr("font-family", "Gill Sans, sans-serif")
+			.attr("font-size", 11)
+			.attr("opacity", 1)
+			.style("fill", "#ddd")
+
+		g4.append("rect")
+			.attr("x", 850)
+			.attr("y", 100)
+			.attr("width", 100)
+			.attr("height", 100)
+			.attr("fill", "none")
+			.attr("stroke", "white")
+
+		g4.append("rect")
+			.attr("x", 700)
+			.attr("y", 120)
+			.attr("width", 80)
+			.attr("height", 80)
+			.attr("fill", "none")
+			.attr("stroke", "white")
+			.style("stroke-dasharray", ("2"))
+
+		g4.append("line")
+			.attr("x1", 700)
+			.attr("y1", 330)
+			.attr("x2", 940)
+			.attr("y2", 330)
+			.attr("fill", "none")
+			.attr("stroke", "white")
+			.style("stroke-dasharray", ("2"))
+
+		g4.append("line")
+			.attr("x1", 700)
+			.attr("y1", 370)
+			.attr("x2", 920)
+			.attr("y2", 370)
+			.attr("fill", "none")
+			.attr("stroke", "white")
+
+
+	</script>
+</body>
+
+</html>

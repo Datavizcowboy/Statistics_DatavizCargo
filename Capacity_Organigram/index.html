@@ -47,7 +47,7 @@
 
         var width = 1200;
         var height = 600;
-        var widthrad = 900;
+        var widthrad = 1200;
         var heightrad = 800;
 
         var svg = d3.select("div.leftradial-div")
@@ -86,24 +86,6 @@
         currentTransformY = 0;
         currentTransformK = 1;
 
-        var slider = d3Slider.sliderHorizontal()
-            .domain(d3.extent(data))
-            .width(110)
-            .tickFormat(d3.format('.2'))
-            .ticks(1)
-            //            .fontSize(8)
-            .default(0)
-            .on('onchange', val => {
-                thevalue = d3.format('.2')(val)
-
-                d3.select("#thewhole").transition().duration(4000)
-                    .attr("transform", function () {
-                        return "translate(" + (currentTransformX) + "," + (currentTransformY) + ")rotate(" + thevalue + ")scale(" + currentTransformK + ")";
-                    })
-            });
-
-        g.call(slider);
-
         //----------------------------------------------- Params
 
         var thefont = "Gill Sans"
@@ -111,60 +93,6 @@
         var thefontcolor = "#000"
         var dapitch = 20
         var thevalue = 0
-
-        //-------------------------------------- TITLE 
-
-        g4vertical
-            .append("text")
-            .attr("x", function (d) { return -600 + 80 })
-            .attr("y", function (d) { return -600 + 80; })
-            .attr("letter-spacing", "-2px")
-            .text(function (d) { return " "; })
-            .attr("font-family", thefont)
-            .attr("font-size", 24)
-            .attr("opacity", 1)
-            .style("fill", thefontcolor)
-            .on("click", function () {
-                //                console.log(alldata[116][0])
-
-                for (i = 116; i < 117; i++) {
-
-                    //                    console.log(alldata)
-                    g4vertical
-                        .append("circle")
-                        .attr("cx", currentTransformX + alldata[i][0])
-                        .attr("cy", currentTransformY + alldata[i][1])
-                        .attr("r", 10)
-                        .style("fill", "red")
-                        .attr("id", "thego" + i)
-                }
-
-                g4vertical
-                    .append("circle")
-                    .attr("cx", currentTransformX)
-                    .attr("cy", currentTransformY)
-                    .attr("r", 14)
-                    .style("fill", "red")
-                    .attr("id", "thego" + i)
-
-                //                r.transtition().duration(500).
-                //                zoom.translate()
-                d3.select("#thewhole").transition().duration(4000)
-                    .attr("transform", function () {
-                        return "translate(" + (-alldata[116][0]) + "," + (-alldata[116][1]) + ")rotate(" + thevalue + ")scale(" + 1. + ")";
-                    })
-            })
-
-        g4vertical
-            .append("text")
-            .attr("x", function (d) { return -widthrad / 2 + 950 })
-            .attr("y", function (d) { return -heightrad / 2 + 130; })
-            .attr("letter-spacing", "-0.5px")
-            .text(function (d) { return "Zoom, drag and rotate"; })
-            .attr("font-family", thefont)
-            .attr("font-size", 11)
-            .attr("opacity", 1)
-            .style("fill", "#666")
 
         //------------------------------------------------ LEGEND
 
@@ -175,18 +103,20 @@
             "France",
             "Germany",
             "South Africa",
+            "Spain",
             "United Kingdom"]
 
         //            list_colors = [ "turquoise", "darkcyan", "orange", "darkorange", "red", "black"]
-        list_colors = ["cyan", 
-        "#53B9C9", "#0086B2", "#E67962","#FDCB5B",  "#D44A6F", "pink"]
+        list_colors = 
+        ["cyan", 
+        "#53B9C9", "#0086B2", "#E67962","#FDCB5B",  "#D44A6F", "lightgreen", "pink"]
 
 
         for (var i = 0; i < list_categories.length; i++) {
 
             g4vertical
                 .append("circle")
-                .attr("cx", -widthrad / 2 + 120 )
+                .attr("cx", -widthrad / 2 + 110 )
                 .attr("cy", -heightrad / 2 + 200 + i * dapitch)
                 .attr("r", 6)
                 .style("opacity", 1)
@@ -194,7 +124,7 @@
 
             g4vertical
                 .append("text")
-                .attr("x", -widthrad / 2 + 132 )
+                .attr("x", -widthrad / 2 + 125 )
                 .attr("y", -heightrad / 2 + 203 + i * dapitch)
                 .text(function (d) { return list_categories[i]; })
                 .attr("font-family", thefont)
@@ -209,7 +139,7 @@
             .parentId(function (d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
         var tree = d3.tree()
-            .size([Math.PI, 200])
+            .size([Math.PI, 180])
             .separation(function (a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
         var thelines = svg.append("g")
@@ -236,7 +166,7 @@
                 //       if (name == 'Earth System Model.Ocean.Biogeochemistry'){
                 if (name == 'Empathy.Playboard') { return "#eee"; }
                 //                    else return d3.rgb(150,255 - rand * 50,255 - rand * 50);
-                else return '#999';
+                else return '#333';
 
             });
 
@@ -273,7 +203,10 @@
                     else if (dep == "France") return list_colors[3];
                     else if (dep == "Germany") return list_colors[4];
                     else if (dep == "South Africa") return list_colors[5];
-                    else return "none";
+                    else if (dep == "Spain") return list_colors[6];
+                    else if (dep == "United Kingdom") return list_colors[7];
+
+                    else return "#999";
                 });
 
             //                d3.rgb(155-dep*155,255-dep*255,255-dep*255)

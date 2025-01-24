@@ -1,0 +1,210 @@
+id,value
+Earth System Model,
+Earth System Model.Atmospheric,
+Earth System Model.Atmospheric.time invariant,
+Earth System Model.Atmospheric.time invariant.Grid Cell area,837
+Earth System Model.Atmospheric.time invariant.Surface Altitude,837
+Earth System Model.Atmospheric.Near-Surface Air Temperature,3938
+Earth System Model.Atmospheric.Surface Temperature,3812
+Earth System Model.Atmospheric.Sea Level Pressure,6714
+Earth System Model.Atmospheric.Surface Air Pressure,743
+Earth System Model.Atmospheric.Eastward Near-Surface Wind,743
+Earth System Model.Atmospheric.Northward Near-Surface Wind,743
+Earth System Model.Atmospheric.Near-Surface Wind Speed,743
+Earth System Model.Atmospheric.Near-Surface Relative Humidity,743
+Earth System Model.Atmospheric.Near-Surface Specific Humidity,743
+Earth System Model.Atmospheric.Precipitation,743
+Earth System Model.Atmospheric.Snowfall Flux,743
+Earth System Model.Atmospheric.Convective Precipitation,743
+Earth System Model.Atmospheric.Evaporation,743
+Earth System Model.Atmospheric.Surface Snow and Ice Sublimation Flux,743
+Earth System Model.Atmospheric.Surface Downward Eastward Wind Stress,743
+Earth System Model.Atmospheric.Surface Downward Northward  Wind Stress,743
+Earth System Model.Atmospheric.Surface Upward Latent Heat Flux,743
+Earth System Model.Atmospheric.Surface Upward Sensible Heat Flux,743
+Earth System Model.Atmospheric.Surface Downwelling Longwave Radiation,743
+Earth System Model.Atmospheric.Surface Upwelling Longwave Radiation,743
+Earth System Model.Atmospheric.Surface Downwelling Shortwave Radiation,743
+Earth System Model.Atmospheric.Surface Upwelling Shortwave Radiation,743
+Earth System Model.Atmospheric.Surface Downward Eastward Wind Stress,743
+Earth System Model.Atmospheric.TOA Incident Shortwave Radiation,743
+Earth System Model.Atmospheric.TOA Outgoing Shortwave Radiation,743
+Earth System Model.Atmospheric.Water Vapor Path,743
+Earth System Model.Atmospheric.Total Cloud Fraction,743
+Earth System Model.Atmospheric.Condensed Water Path,743
+Earth System Model.Atmospheric.Ice Water Path,743
+Earth System Model.Atmospheric.Air Pressure at Convective Cloud Base,743
+Earth System Model.Atmospheric.Fraction of Time Convection Occurs,743
+Earth System Model.Atmospheric.Carbon Mass Flux into Atmosphere ,743
+Earth System Model.Atmospheric.Mole Fraction of CO2,743
+Earth System Model.Atmospheric.Total Atmospheric Mass of CO2,743
+Earth System Model.Atmospheric.Mole Fraction of CH4,743
+Earth System Model.Atmospheric.Mole Fraction of N2O,743
+Earth System Model.Atmospheric.Mole Fraction of N2O,743
+Earth System Model.Atmospheric.Mole Fraction of N2O,743
+Earth System Model.Atmospheric.Mole Fraction of N2O,743
+Earth System Model.Atmospheric.Global Mean Mole Fraction of CFC11,743
+Earth System Model.Atmospheric. …,743
+Earth System Model.Ice,
+Earth System Model.Ice.Snow Area Fraction,74
+Earth System Model.Ice.Surface Snow Amount,37
+Earth System Model.Ice.Snow Depth,487
+Earth System Model.Ice.Liquid Water Content of Snow Layer,374
+Earth System Model.Ice.Snow Soot Content,837
+Earth System Model.Ice.Snow Age,9384
+Earth System Model.Ice.Snow Internal Temperature,23
+Earth System Model.Ice.Surface Snow Melt,3874
+Earth System Model.Ice.Surface Snow and Ice Sublimation Flux,34
+Earth System Model.Ice.Permafrost Layer Thickness,842
+Earth System Model.Ice.Liquid Water Content of Permafrost Layer,934
+Earth System Model.Ice.Sea Ice Area Fraction,990
+Earth System Model.Ice.Sea Ice Thickness,990
+Earth System Model.Ice.Sea Ice Plus Surface Snow Amount,990
+Earth System Model.Ice.Water Evaporation Flux from Sea Ice,990
+Earth System Model.Ice.Snow Depth,990
+Earth System Model.Ice.Surface Snow Area Fraction,990
+Earth System Model.Ice.Sea Ice Salinity,990
+Earth System Model.Ice.Surface Temperature of Sea Ice,990
+Earth System Model.Ice.Temperature at Interface Between Sea Ice and Snow,990
+Earth System Model.Ice.Surface Rainfall Rate into the Sea Ice Portion,990
+Earth System Model.Ice.Sea Ice Albedo,990
+Earth System Model.Ice. …,990
+Earth System Model.Land,239
+Earth System Model.Land.time invariant,
+Earth System Model.Land.time invariant.Land Area Fraction,837
+Earth System Model.Land.time invariant.Grid Cell covered with Glacier,837
+Earth System Model.Land.time invariant.Capacity of Soil to store Water,837
+Earth System Model.Land.time invariant.Maximum Root Depth,837
+Earth System Model.Land.Moisture in Soil Column,5842
+Earth System Model.Land.Total Soil Moisture Content,5842
+Earth System Model.Land.Soil Frozen Water Content,5842
+Earth System Model.Land.Surface Runoff,5842
+Earth System Model.Land.Total Runoff,5842
+Earth System Model.Land.Precipitation onto Canopy,5842
+Earth System Model.Land.Evaporation from Canopy,5842
+Earth System Model.Land.Water Evaporation from Soil,5842
+Earth System Model.Land.Transpiration,1041
+Earth System Model.Land.Water Content of Soil Layer,5176
+Earth System Model.Land.Temperature of Soil,449
+Earth System Model.Land.Tree Cover Fraction,449
+Earth System Model.Land.Natural Grass Fraction,5534
+Earth System Model.Land.Shrub Fraction,9201
+Earth System Model.Land.Crop Fraction,19975
+Earth System Model.Land.Anthropogenic Pasture Fraction,1116
+Earth System Model.Land.Bare Soil Fraction,6006
+Earth System Model.Land.Burnt Area Fraction,66
+Earth System Model.Land. …,66
+Earth System Model.Land.Carbon Cycle
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Vegetation,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Litter Pool,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Soil Pool,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Products of Land Use Change,66
+Earth System Model.Land.Carbon Cycle.Leaf Area Index,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass Flux out of Atmosphere,66
+Earth System Model.Land.Carbon Cycle.Total Carbon Mass Flux from Vegetation to Litter,66
+Earth System Model.Land.Carbon Cycle.Total Carbon Mass Flux from Litter to Soil,66
+Earth System Model.Land.Carbon Cycle.Total Carbon Mass Flux from Vegetation Directly to Soil,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Leaves,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Wood,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Roots,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Other Living Compartments,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Coarse Woody Debris,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Above-Ground Litter,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Below-Ground Litter,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Fast Soil Pool,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Medium Soil Pool,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Slow Soil Pool,66
+Earth System Model.Land.Carbon Cycle.Plant Functional Type Grid Fraction,66
+Earth System Model.Land.Carbon Cycle.Total Primary Deciduous Tree Fraction,66
+Earth System Model.Land.Carbon Cycle.Total Primary Evergreen Tree Cover Fraction,66
+Earth System Model.Land.Carbon Cycle.Total Secondary Deciduous Tree Cover,66
+Earth System Model.Land.Carbon Cycle.Total Secondary Evergreen Tree Cover,66
+Earth System Model.Land.Carbon Cycle.Total C3 PFT Cover Fraction,66
+Earth System Model.Land.Carbon Cycle.Total C4 PFT Cover Fraction,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass Flux due to NPP Allocation to Leaf,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass Flux due to NPP Allocation to Wood,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Wood,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Wood,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Wood,66
+Earth System Model.Land.Carbon Cycle.Carbon Mass in Wood,66
+Earth System Model.Ocean,
+Earth System Model.Ocean.time invariant,
+Earth System Model.Ocean.time invariant.Sea Floor Depth,837
+Earth System Model.Ocean.time invariant.Grid Cell Volume,837
+Earth System Model.Ocean.time invariant.Grid Cell Area,837
+Earth System Model.Ocean.time invariant.Sea Area Fraction,837
+Earth System Model.Ocean.time invariant.Region Selection Index,837
+Earth System Model.Ocean.time invariant.Upward Geothermal Heat Flux at Sea Floor,837
+Earth System Model.Ocean.time invariant.Grid Cell Thickness,837
+Earth System Model.Ocean.Physical,
+Earth System Model.Ocean.Physical.Seawater x velocity,1983
+Earth System Model.Ocean.Physical.Seawater y velocity,2047
+Earth System Model.Ocean.Physical.Upward Ocean Mass Transport,1375
+Earth System Model.Ocean.Physical.Ocean Mass x transport,8746
+Earth System Model.Ocean.Physical.Ocean Mass y transport,8746
+Earth System Model.Ocean.Physical.MOC streamfunction,2202
+Earth System Model.Ocean.Physical.Northward Heat Transport,1382
+Earth System Model.Ocean.Physical.Southward Heat Transport,1629
+Earth System Model.Ocean.Physical.Northward Salt Transport,1675
+Earth System Model.Ocean.Physical.Southward Salt Transport,1675
+Earth System Model.Ocean.Physical.Seawater Mass,2042
+Earth System Model.Ocean.Physical.Seawater Mass per Unit Area,2042
+Earth System Model.Ocean.Physical.Seawater Pressure at SeaFloor,2042
+Earth System Model.Ocean.Physical.Seawater Pressure at Seawater Surface,2042
+Earth System Model.Ocean.Physical.Sea Surface Height above Geoid,2042
+Earth System Model.Ocean.Physical.Global Average Sea Level Change,2042
+Earth System Model.Ocean.Physical.Global Average Thermostatic Sea Level Change,2042
+Earth System Model.Ocean.Physical.Ocean Model Cell Thickness,2042
+Earth System Model.Ocean.Physical.Seawater Potential Temperature,2042
+Earth System Model.Ocean.Physical.Sea Surface Temperature,2042
+Earth System Model.Ocean.Physical.Seawater Salinity,2042
+Earth System Model.Ocean.Physical.Sea Surface Salinity,2042
+Earth System Model.Ocean.Physical.Sea Water Potential Density,2042
+Earth System Model.Ocean.Physical.Sea Water Age Since Surface Contact,2042
+Earth System Model.Ocean.Physical.Ocean Barotropic Mass Streamfunction,2042
+Earth System Model.Ocean.Physical.Ocean Mixed Layer Thickness,2042
+Earth System Model.Ocean.Physical.Mean Daily Max MLD,2042
+Earth System Model.Ocean.Physical.Monthly Max MLD,2042
+Earth System Model.Ocean.Biogeochemistry,
+Earth System Model.Ocean.Biogeochemistry.Aragonite Dissolution,774
+Earth System Model.Ocean.Biogeochemistry.Calcite Dissolution,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Aragonite Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Calcite Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Particulate Silica Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Particulate Iron Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Particulate Organic Phosphorus Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Particulate Organic Nitrogen Flux,774
+Earth System Model.Ocean.Biogeochemistry.Sinking Particulate Organic Carbon Flux,774
+Earth System Model.Ocean.Biogeochemistry.Aragonite Production,774
+Earth System Model.Ocean.Biogeochemistry.Calcite Production,774
+Earth System Model.Ocean.Biogeochemistry.Biogenic Silica Production,774
+Earth System Model.Ocean.Biogeochemistry.Biogenic Iron Production,774
+Earth System Model.Ocean.Biogeochemistry.Diatom Primary Carbon Production,774
+Earth System Model.Ocean.Biogeochemistry.Primary Carbon Production by Phytoplankton,774
+Earth System Model.Ocean.Biogeochemistry.Dimethyl Sulphide Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Phytoplankton Silica Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Phytoplankton Iron Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Phytoplankton Phosphorus Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Phytoplankton Nitrogen Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Particulate Biogenic Silica Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Particulate Biogenic Iron Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Particulate Organic Phosphorus Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Particulate Organic Nitrogen Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Diatom Chlorophyll Mass Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Total Chlorophyll Mass Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Silicate Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Iron Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Phosphate Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Ammonium Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Oxygen Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Dissolved Nitrate Concentration,774
+Earth System Model.Ocean.Biogeochemistry.pH,774
+Earth System Model.Ocean.Biogeochemistry.Total Alkalinity,774
+Earth System Model.Ocean.Biogeochemistry.Aragonite Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Calcite Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Detrital Organic Carbon Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Bacterial Carbon Concentration,774
+Earth System Model.Ocean.Biogeochemistry.Zooplankton Carbon Concentration,784
+Earth System Model.Ocean.Biogeochemistry.Dissolved Inorganic Carbon,374
+Earth System Model.Ocean.Biogeochemistry.Dissolved Organic Carbon Concentration,374
+Earth System Model.Ocean.Biogeochemistry.Phytoplankton Carbon Concentration,374

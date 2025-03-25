@@ -1,0 +1,12 @@
+{"nodes":
+  [
+    {"name": "Elevation", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Voronoi"},
+    {"name": "Amazon Rainforest", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Mountains/"},
+    {"name": "Indigenous Land", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Fundraising"},
+    {"name": "Capacity Shield", "group": 1,"link": "https://yeti.mitigasolutions.com/BMAC_Voronoi"}],
+  "links":[
+    {"source":2,"target":3,"value":1},
+    {"source":3,"target":4,"value":1},
+    {"source":4,"target":2,"value":1}
+     ]
+}

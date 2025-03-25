@@ -18,7 +18,7 @@
 	<div class="container">
 
 		<div class="option0">
-			<div class="left8-div">
+			<div class="left1-div">
 				<p class="coverbig">Amazon Rainforest</br></br></p>
 				<p class="credits">
 					Maps and geographical information related to the Amazon rainforest, 
@@ -43,7 +43,7 @@
 		</div>
 
 		<div class="option0">
-			<div class="left1-div">
+			<div class="left2-div">
 				<p class="coverbig">Satellite Technology</br></br></p>
 				<p class="credits">
 					Magnitudes describing Capacity capabilities, both human and technological, 
@@ -77,8 +77,8 @@
 			.attr("height", height);
 
 		var force1 = d3.layout.force()
-			.gravity(0.04)
-			.distance(120)
+			.gravity(0.06)
+			.distance(100)
 			.charge(-50)
 			.size([width, height]);
 
@@ -88,7 +88,7 @@
 			.charge(-50)
 			.size([width, height]);
 
-		var font_color = "#666"
+		var font_color = "#222"
 
 		//------------------------------------ RAINFOREST
 
@@ -116,7 +116,7 @@
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
-					if (d.group == 0) return 5;
+					if (d.group == 0) return 12;
 					else return 10;
 				})
 				.attr("fill", function (d) {
@@ -125,20 +125,20 @@
 				})
 
 			node1.append("text")
-				.attr("dx", 10)
+				.attr("dx", 14)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
 				.style("font-size", function (d) {
 					if (d.group != 2) return 11;
 					else return 8;
 				})
-				.style("fill", font_color)
+				.style("fill", "#bbb")
 				.style("font-family", "DM Sans")
 				.style("font-weight", "bold")
 				.style("text-anchor", "start")
 
 			force1.on("tick", function (d) {
-				link2.attr("x1", function (d) { return d.source.x; })
+				link1.attr("x1", function (d) { return d.source.x; })
 					.attr("y1", function (d) { return d.source.y; })
 					.attr("x2", function (d) { return d.target.x; })
 					.attr("y2", function (d) { return d.target.y; });
@@ -185,7 +185,7 @@
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
-					if (d.group == 0) return 5;
+					if (d.group == 0) return 12;
 					else return 3;
 				})
 				.attr("fill", function (d) {
@@ -193,21 +193,21 @@
 					else return "cyan";
 				})
 
-			node3.append("text")
-				.attr("dx", 10)
+				node2.append("text")
+				.attr("dx", 14)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
 				.style("font-size", function (d) {
 					if (d.group != 2) return 11;
 					else return 8;
 				})
-				.style("fill", font_color)
+				.style("fill", "#bbb")
 				.style("font-family", "DM Sans")
 				.style("font-weight", "bold")
 				.style("text-anchor", "start")
 
 			force2.on("tick", function (d) {
-				link3.attr("x1", function (d) { return d.source.x; })
+				link2.attr("x1", function (d) { return d.source.x; })
 					.attr("y1", function (d) { return d.source.y; })
 					.attr("x2", function (d) { return d.target.x; })
 					.attr("y2", function (d) { return d.target.y; });

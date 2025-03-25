@@ -66,34 +66,23 @@
 		var width = 300;
 		var height = 250;
 
-		var svg_catbond = d3.select("div.left1-div")
+		var svg_rainforest = d3.select("div.left1-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var svg_ashplumes = d3.select("div.left2-div")
+		var svg_technology = d3.select("div.left2-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var svg_marketing = d3.select("div.left8-div")
-			.append("svg")
-			.attr("width", width)
-			.attr("height", height);
+		var force1 = d3.layout.force()
+			.gravity(0.04)
+			.distance(120)
+			.charge(-50)
+			.size([width, height]);
 
 		var force2 = d3.layout.force()
-			.gravity(0.04)
-			.distance(120)
-			.charge(-50)
-			.size([width, height]);
-
-		var force3 = d3.layout.force()
-			.gravity(0.04)
-			.distance(120)
-			.charge(-50)
-			.size([width, height]);
-
-		var force9 = d3.layout.force()
 			.gravity(0.04)
 			.distance(120)
 			.charge(-50)
@@ -103,27 +92,27 @@
 
 		//------------------------------------ CATBOND
 
-		d3.json("./data/granularity_catbond.json", function (error, json) {
+		d3.json("./data/granularity_rainforest.json", function (error, json) {
 			if (error) throw error;
 
-			force2
+			force1
 				.nodes(json.nodes)
 				.links(json.links)
 				.start();
 
-			var link2 = svg_catbond.selectAll(".link")
+			var link1 = svg_rainforest.selectAll(".link")
 				.data(json.links)
 				.enter()
 				.append("line")
 				.attr("class", "link");
 
-			var node2 = svg_catbond.selectAll(".node")
+			var node1 = svg_rainforest.selectAll(".node")
 				.data(json.nodes)
 				.enter().append("g")
 				.attr("class", "node")
-				.call(force2.drag)
+				.call(force1.drag)
 
-			node2.append("circle")
+			node1.append("circle")
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
@@ -135,7 +124,7 @@
 					else return "cyan";
 				})
 
-			node2.append("text")
+			node1.append("text")
 				.attr("dx", 10)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
@@ -148,13 +137,13 @@
 				.style("font-weight", "bold")
 				.style("text-anchor", "start")
 
-			force2.on("tick", function (d) {
+			force1.on("tick", function (d) {
 				link2.attr("x1", function (d) { return d.source.x; })
 					.attr("y1", function (d) { return d.source.y; })
 					.attr("x2", function (d) { return d.target.x; })
 					.attr("y2", function (d) { return d.target.y; });
 
-				node2.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
+				node1.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
 					.on("mouseover", function () {
 						d3.select(this).style("cursor", "pointer")
 					})
@@ -165,34 +154,34 @@
 					})
 			});
 
-			setInterval(function () { force2.alpha(0.01); });
+			setInterval(function () { force1.alpha(0.01); });
 
 
 		});
 
 		//---------------------------- ASH PLUMES
 
-		d3.json("./data/granularity_ashplumes.json", function (error, json) {
+		d3.json("./data/granularity_technology.json", function (error, json) {
 			if (error) throw error;
 
-			force3
+			force2
 				.nodes(json.nodes)
 				.links(json.links)
 				.start();
 
-			var link3 = svg_ashplumes.selectAll(".link")
+			var link2 = svg_technology.selectAll(".link")
 				.data(json.links)
 				.enter()
 				.append("line")
 				.attr("class", "link");
 
-			var node3 = svg_ashplumes.selectAll(".node")
+			var node2 = svg_technology.selectAll(".node")
 				.data(json.nodes)
 				.enter().append("g")
 				.attr("class", "node")
-				.call(force3.drag)
+				.call(force2.drag)
 
-			node3.append("circle")
+			node2.append("circle")
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
@@ -217,13 +206,13 @@
 				.style("font-weight", "bold")
 				.style("text-anchor", "start")
 
-			force3.on("tick", function (d) {
+			force2.on("tick", function (d) {
 				link3.attr("x1", function (d) { return d.source.x; })
 					.attr("y1", function (d) { return d.source.y; })
 					.attr("x2", function (d) { return d.target.x; })
 					.attr("y2", function (d) { return d.target.y; });
 
-				node3.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
+				node2.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
 					.on("mouseover", function () {
 						d3.select(this).style("cursor", "pointer")
 					})
@@ -233,119 +222,8 @@
 						// update_iframe_ash(d.index)
 					})
 			});
-			setInterval(function () { force3.alpha(0.01); });
-
-
+			setInterval(function () { force2.alpha(0.01); });
 		});
-
-		//--------------------------------------- MARKETING
-
-		d3.json("./data/granularity_marketing.json", function (error, json) {
-			if (error) throw error;
-
-			force9
-				.nodes(json.nodes)
-				.links(json.links)
-				.start();
-
-			var link9 = svg_marketing.selectAll(".link")
-				.data(json.links)
-				.enter()
-				.append("line")
-				.attr("class", "link");
-
-			var node9 = svg_marketing.selectAll(".node")
-				.data(json.nodes)
-				.enter().append("g")
-				.attr("class", "node")
-				.call(force9.drag)
-
-			node9.append("circle")
-				.attr("cx", 0)
-				.attr("cy", 0)
-				.attr("r", function (d) {
-					if (d.group == 0) return 5;
-					else return 20;
-				})
-				.attr("fill", function (d) {
-					if (d.group == 0) return font_color;
-					else return "#111";
-				})
-				.attr("opacity", 1)
-
-			node9.append("text")
-				.attr("dx", -10)
-				.attr("y", 5)
-				.text(function (d) { return d.name })
-				.style("font-size", function (d) {
-					if (d.group != 2) return 9;
-					else return 7;
-				})
-				.style("fill", font_color)
-				.style("font-family", "DM Sans")
-				.style("font-weight", "bold")
-				.style("text-anchor", "start")
-
-			force9.on("tick", function (d) {
-				link9.attr("x1", function (d) { return d.source.x; })
-					.attr("y1", function (d) { return d.source.y; })
-					.attr("x2", function (d) { return d.target.x; })
-					.attr("y2", function (d) { return d.target.y; });
-
-				node9.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
-					.on("mouseover", function () {
-						d3.select(this).style("cursor", "pointer")
-					})
-					.on("click", function (d) {
-						d3.select("#the_title2").text(d.name)
-						d3.select("#the_link2").text(d.link)
-						// update_iframe_marketing(d.index)
-					})
-			});
-
-		});
-
-		//--------------------------------------- UIUX
-
-		function update_iframe_wildfires(ii) {
-			window.open("./Wildfires_fwi", '_blank').focus();
-
-			// if (ii == 0) return document.getElementById('themap').src = "../Wildfires_FWI";
-			// else if (ii == 1) return document.getElementById('themap').src = "../MFS_Folium";
-			// else return document.getElementById('themap').src = "../MFS_Kepler_Demo";
-		}
-
-		function update_iframe_volcanoes(ii) {
-			if (ii == 0) return document.getElementById('themap').src = "../Catbond_Map";
-			else if (ii == 1) return document.getElementById('themap').src = "../Volcano_Map";
-			else if (ii == 2) return document.getElementById('themap').src = "../Volcano_History";
-			else if (ii == 3) return document.getElementById('themap').src = "../Volcano_Orbital";
-			else if (ii == 4) return document.getElementById('themap').src = "../Volcano_Orbital_People";
-			else return document.getElementById('themap').src = "../AshPlumes";
-		}
-
-		function update_iframe_extreme(ii) {
-			if (ii == 0) return document.getElementById('themap').src = "../Windstorm";
-			else return document.getElementById('themap').src = "../Hailstorm";
-		}
-
-		function update_iframe_ash(ii) {
-			if (ii == 0) return document.getElementById('theviz').src = "../AshPlumes";
-			else if (ii == 1) return document.getElementById('theviz').src = "../Volcano_Kelud";
-			else return document.getElementById('theviz').src = "../Volcano_Eyjafja";
-		}
-
-		function update_iframe_marketing(ii) {
-			if (ii == 0) return document.getElementById('theviz').src = "../BMAC_Voronoi";
-			else if (ii == 1) return document.getElementById('theviz').src = "../BMAC_Mountains";
-			else return document.getElementById('theviz').src = "../BMAC_Fundraising";
-		}
-
-		function update() {
-
-		}
 
 	</script>
-
-
 </html>

@@ -23,6 +23,13 @@
     <script src="../Data/hectare_526M.js"></script>
     <script src="../Data/hectare_700M.js"></script>
     <script src="../Data/hectare_944M.js"></script>
+    <script src="../Data/hectare_25k.js"></script>
+    <script src="../Data/hectare_42k.js"></script>
+    <script src="../Data/hectare_789k.js"></script>
+    <script src="../Data/hectare_329k.js"></script>
+    <script src="../Data/hectare_1p8M.js"></script>
+    <script src="../Data/hectare_2p6M.js"></script>
+    <script src="../Data/hectare_2p6M_Paris.js"></script>
 
 
 
@@ -39,12 +46,12 @@
         // var center = [-72.4687432, -37.204916]
         var map = L.map('map').setView([-7, -60], 5);
 
-        // var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
-        // var basemap = L.tileLayer(esriRelief, {
-        //     attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
-        //     maxZoom: 13, opacity: 1
-        // });
-        // basemap.addTo(map);
+        var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
+        var basemap = L.tileLayer(esriRelief, {
+            attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
+            maxZoom: 13, opacity: 1
+        });
+        basemap.addTo(map);
 
         // var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         //     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -92,17 +99,17 @@
 
         var fond = "violet"
 
-        L.geoJSON(hect700M, {
-            // style: myStyle
-            style: function () {
-                // console.log(feature)
-                return {
-                    fillOpacity: .5,
-                    fillColor: fond,
-                    color: "none"
-                };
-            }
-        }).addTo(map)
+        // L.geoJSON(hect25k, {
+        //     // style: myStyle
+        //     style: function () {
+        //         // console.log(feature)
+        //         return {
+        //             fillOpacity: .5,
+        //             fillColor: fond,
+        //             color: "none"
+        //         };
+        //     }
+        // }).addTo(map)
 
         // L.geoJSON(hect526M, {
         //     // style: myStyle
@@ -116,24 +123,62 @@
         //     }
         // }).addTo(map)
 
-        L.geoJSON(hect12M, {
+        L.geoJSON(hect42k, {
             // style: myStyle
             style: function () {
                 // console.log(feature)
                 return {
-                    fillOpacity: .5,
+                    fillOpacity: .3,
                     fillColor: fond,
                     color: "none"
                 };
             }
         }).addTo(map)
 
-        L.geoJSON(hect, {
-            // style: myStyle
+        L.geoJSON(hect329k, {
             style: function () {
-                // console.log(feature)
                 return {
-                    fillOpacity: 1,
+                    fillOpacity: .3,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+        L.geoJSON(hect789k, {
+            style: function () {
+                return {
+                    fillOpacity: .3,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+        L.geoJSON(hect1p8M, {
+            style: function () {
+                return {
+                    fillOpacity: .3,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+        L.geoJSON(hect2p6M, {
+            style: function () {
+                return {
+                    fillOpacity: .3,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+        L.geoJSON(hect2p6M_Paris, {
+            style: function () {
+                return {
+                    fillOpacity: .3,
                     fillColor: fond,
                     color: "none"
                 };

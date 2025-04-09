@@ -1,6 +1,6 @@
 .leaflet-tile-pane {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
 
   /* -webkit-filter: brightness(0.5);
   filter: brightness(0.5); */
@@ -9,8 +9,8 @@
 body{
   margin-top: 0px;
   margin-left: 0px;
-  background-color: #16212B;
-  /* background-color: white; */
+  /* background-color: #16212B; */
+  background-color: white;
 
 }
 
@@ -129,9 +129,9 @@ text-decoration: none;
 }
 
 path {
-  stroke: white;
-  stroke-width: 0px;
-  fill:white;
+  /* stroke: white; */
+  stroke-width: 1px;
+  /* fill:white; */
   opacity:1;
 }
 

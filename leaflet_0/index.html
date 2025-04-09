@@ -18,19 +18,26 @@
     <link type="text/css" rel="stylesheet" href="../css/map2b.css">
     <script type="text/javascript" src="../js/topojson.js"></script>
     <script src="../Data/amazonia_eva_2005.js"></script>
+    <script src="../Data/hectare.js"></script>
+    <script src="../Data/hectare_12M.js"></script>
+    <script src="../Data/hectare_526M.js"></script>
+    <script src="../Data/hectare_700M.js"></script>
+    <script src="../Data/hectare_944M.js"></script>
+
+
 
     <!-- <script type="text/javascript" src="leaflet.hexbin-layer.js"></script> -->
 </head>
 
 <body>
 
-    <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1200px; height: 740px; margin-left: 0px">
+    <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1400px; height: 840px; margin-left: 0px; background-color: white;">
     </div>
 
     <script type="text/javascript">
 
         // var center = [-72.4687432, -37.204916]
-        var map = L.map('map').setView([-10, -60], 4);
+        var map = L.map('map').setView([-7, -60], 5);
 
         // var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
         // var basemap = L.tileLayer(esriRelief, {
@@ -45,12 +52,12 @@
         // Esri_WorldImagery.addTo(map);
 
 
-        var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        });
-        CartoDB_DarkMatter.addTo(map)
+        // var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        //     subdomains: 'abcd',
+        //     maxZoom: 20
+        // });
+        // CartoDB_DarkMatter.addTo(map)
 
         var options = {
             radius: 10,
@@ -71,15 +78,69 @@
             fillOpacity: .5
         };
 
-        L.geoJSON(themap, {
+        // L.geoJSON(themap, {
+        //     // style: myStyle
+        //     style: function () {
+        //         // console.log(feature)
+        //         return {
+        //             fillOpacity: 0.4,
+        //             fillColor: "#999",
+        //             color: "none"
+        //         };
+        //     }
+        // }).addTo(map)
+
+        var fond = "violet"
+
+        L.geoJSON(hect700M, {
             // style: myStyle
             style: function () {
                 // console.log(feature)
                 return {
-                    fillOpacity: 0.3,
+                    fillOpacity: .5,
+                    fillColor: fond,
+                    color: "none"
                 };
             }
         }).addTo(map)
+
+        // L.geoJSON(hect526M, {
+        //     // style: myStyle
+        //     style: function () {
+        //         // console.log(feature)
+        //         return {
+        //             fillOpacity: 1,
+        //             fillColor: "none",
+        //             color: "#fff"
+        //         };
+        //     }
+        // }).addTo(map)
+
+        L.geoJSON(hect12M, {
+            // style: myStyle
+            style: function () {
+                // console.log(feature)
+                return {
+                    fillOpacity: .5,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+        L.geoJSON(hect, {
+            // style: myStyle
+            style: function () {
+                // console.log(feature)
+                return {
+                    fillOpacity: 1,
+                    fillColor: fond,
+                    color: "none"
+                };
+            }
+        }).addTo(map)
+
+
 
     </script>
 

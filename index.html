@@ -11,7 +11,7 @@
 <body>
 
 	<div class='header' id="header">
-		<p class="title">Capacity</br>Dataviz Cargo</p>
+		<p class="title">Statistics</br>Dataviz Cargo</p>
 		</br></br></br>
 	</div>
 
@@ -19,7 +19,7 @@
 
 		<div class="option0">
 			<div class="left1-div">
-				<p class="coverbig">Amazon Rainforest</br></br></p>
+				<p class="coverbig">ISLP Datasets</br></br></p>
 				<p class="credits">
 					Maps and geographical information related to the Amazon rainforest, 
 					the indigenous official delimited areas and the areas covered 
@@ -44,7 +44,7 @@
 
 		<div class="option0">
 			<div class="left2-div">
-				<p class="coverbig">Satellite Technology</br></br></p>
+				<p class="coverbig">Linear Regression</br></br></p>
 				<p class="credits">
 					Magnitudes describing Capacity capabilities, both human and technological, 
 					including explainability of processes, resources and satellite technology. 
@@ -116,8 +116,8 @@
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
-					if (d.group == 0) return 12;
-					else return 10;
+					if (d.group == 0) return 2;
+					else return 2;
 				})
 				.attr("fill", function (d) {
 					if (d.group == 0) return font_color;
@@ -155,7 +155,6 @@
 			});
 
 			setInterval(function () { force1.alpha(0.01); });
-
 
 		});
 

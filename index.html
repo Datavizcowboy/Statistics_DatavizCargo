@@ -11,33 +11,42 @@
 <body>
 
 	<div class='header' id="header">
-		<p class="title">Statistics</br>Dataviz Cargo</p>
-		</br></br></br>
+		<p class="title">Splendid</br><span>Statistics</span></p>
+				<p class="author">by <span>Dataviz Cowboy</span></p>
+
+	</div>
+
+	<div class='back-div'>
+		<p class="content">
+			A project on complex datasets </br> and its analysis through
+			<span>linear regression</span>, <span>clustering</span>, multiple linear regression,
+		classification and neural networks, from data analysis to
+	data visualization.  </span>
+		</p>
 	</div>
 
 	<div class="container">
 
 		<div class="option0">
 			<div class="left1-div">
-				<p class="coverbig">ISLP Datasets</br></br></p>
+				<p class="coverbig">Datasets</br></br></p>
 				<p class="credits">
-					Maps and geographical information related to the Amazon rainforest, 
-					the indigenous official delimited areas and the areas covered 
-					by The Shield or any other Capacity initiative. 
+This project is based on the "Introduction to Statistical Learning with Python", 
+from many authors. An overview of these datasets is displayed here. 
 				</p>
 			</div>
 			<div class="images">
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/00_DEM.png" width="150" height="230"></img>
+					<!-- <img src="./images/00_DEM.png" width="150" height="230"></img> -->
 				</a>
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/01_Amazon.png" width="150" height="230"></img>
+					<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
 				</a>
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/01_Amazon.png" width="150" height="230"></img>
+					<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
 				</a>
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/01_Amazon.png" width="150" height="230"></img>
+					<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
 				</a>
 			</div>
 		</div>
@@ -52,10 +61,10 @@
 			</div>
 			<div class="images">
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/10_Hectares.png" width="150" height="230"></img>
+					<!-- <img src="./images/10_Hectares.png" width="150" height="230"></img> -->
 				</a>
 				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<img src="./images/11_Team.png" width="150" height="230"></img>
+					<!-- <img src="./images/11_Team.png" width="150" height="230"></img> -->
 				</a>
 			</div>
 		</div>
@@ -88,7 +97,7 @@
 			.charge(-50)
 			.size([width, height]);
 
-		var font_color = "#222"
+		var font_color = "#666"
 
 		//------------------------------------ RAINFOREST
 
@@ -116,11 +125,16 @@
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
-					if (d.group == 0) return 2;
-					else return 2;
+					if (d.group == 0) return 6;
+					else return 6;
 				})
 				.attr("fill", function (d) {
 					if (d.group == 0) return font_color;
+					else return "cyan";
+				})
+
+				.attr("stroke", function (d) {
+					if (d.group == 0) return "coral";
 					else return "cyan";
 				})
 

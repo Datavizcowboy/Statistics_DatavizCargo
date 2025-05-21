@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<script type="text/javascript"  src="./d3.min.js"></script>
+<script type="text/javascript" src="./topojson.js"></script>
+     <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+	 <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
+
+<script  type="text/javascript"  src="//d3js.org/d3.geo.projection.v0.min.js"></script>
+<!--<script src="./hexbin.js"></script>-->
+<link type="text/css" rel="stylesheet" href="./barrow_flux.css">
+</head>
+
+<body>
+
+<div class="leftlevel3-div"> 
+    
+<div class="thebutton">
+<!--<button id='saveButton' style="background: none; border: none;font-family: Arial;color:#999">&#91;&nbsp;Download as PNG&nbsp;&#93;</button>-->
+</div>    
+<button id='saveButton' style="margin-left: -125px; background: none; border: none;font-family: Arial;color:#999">Download as PNG</button>
+</div>
+
+<script type="text/javascript">
+    
+var width = 1200;
+var height = 900;
+
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+width2 = 1200 - margin.left - margin.right,
+height2 = 600 - margin.top - margin.bottom;
+
+//--------------------------------------------CONTAINERS
+
+var svg = d3.select("div.leftlevel3-div")
+   .append("svg")
+   .attr("viewBox","0 0 " + width + " " + height)   
+//            .attr('transform', 'translate(' + (20) + ',50)')
+
+var back=svg.append("g")
+
+var f=svg.append("g") 
+ .attr('transform', 'translate(' + (0) + ',200)')
+
+var fdotted=svg.append("g") 
+ .attr('transform', 'translate(' + (0) + ',200)')
+
+var header_hpitch=0
+
+var modelname=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var modelnamepre=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var modelnamevar=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var modelnamenav=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var regionname=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var regionnamepre=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var divtipmodel=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var svgmap2=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+var svgmap=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+
+divtipmodel.append("text")
+.attr("x",50)
+.attr("y",205)
+.text("Mikaloff-Fletcher region: Global")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 14)
+.attr("opacity", .8)
+.attr("id","thebanner")
+.style("fill", "white");
+
+//--------------------------------------------STATIC
+
+back.append("rect")
+.attr("x", 0)
+.attr("y", 0)
+.attr("width", "100%")
+.attr("height", "100%")
+.attr("id","hyp")
+.style("opacity",1)
+.style("stroke-width", 0)  
+.style("fill", "white") 
+    
+modelnamepre.append("rect")
+.attr("x", 50)
+.attr("y",180)
+.attr("height", 2)
+.attr("width", 1000)
+.attr("opacity",1)
+.attr("id","thebar")
+.style("fill", "white")
+    
+f.append("text")
+.attr("x",100)
+.attr("y",20)
+.text("pH units [-]")
+.attr("font-family", "Arial, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "white");
+    
+modelnamepre.append("text")
+.attr("x",70)
+.attr("y",10)
+.text("Select Model")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "white");
+    
+modelnamepre.append("text")
+.attr("x",710)
+.attr("y",10)
+.text("Select Mikaloff-Fletcher Region")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "white");
+    
+modelnamepre.append("text")
+.attr("x",650)
+.attr("y",10)
+.text("Select Variable")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "black");
+ 
+var allmodels=svg.append("g")
+            .attr('transform', 'translate(' + (header_hpitch) + ',0)')
+    
+var envelope=svg.append("g")
+            .attr('transform', 'translate(' + (0) + ',220)')  
+
+var bnu=svg.append("g")
+            .attr('transform', 'translate(' + (0) + ',220)')
+
+var themonths=svg.append("g")
+            .attr('transform', 'translate(' + (0) + ',600)')
+
+var reg=1
+
+var them2=["Alk", "CO3", "DIC", "HCO3", "OmegaA", "OmegaC", "pCO2", "pH", "Tis"]
+var them=[]
+
+var model=0 
+var region=2
+var variable=0
+
+//--------------------------------THE VARIABLES
+
+for (i=0;i<them2.length;i++){
+    
+    modelnamevar.append("text")
+    .attr("x",function(d){return 650;})
+    .attr("y",function(d){return 30+i*10;})
+    .text(function(d){return them2[i]})
+    .attr("font-family", "Arial, Century Gothic, sans-serif")
+    .attr("font-size", 9)
+    .attr("opacity", .8)
+    .style("fill", "#999")
+    
+    .on("mouseover",function(d) {
+        modelnamenav.selectAll("text").attr("opacity",0);
+        d3.select(this).style("cursor", "pointer")
+//        modelname.selectAll("text").text(""+list_models[data[0].mod])
+    })
+    
+    .on("click",function(d) {
+    
+    var circleUnderMouse = this;
+    modelnamevar.selectAll('text').filter(function(d,i) {
+        return (this !== circleUnderMouse);}).style("fill", "#d2d2d2");
+        d3.select(this).style("fill", function (d){return "black";})
+        
+//        ylim_transcom_min=list_transcom_ylim_min[d.indi-1];
+//        ylim_transcom_max=list_transcom_ylim_max[d.indi-1];
+        
+        variable=d3.select(this).text()
+//        console.log(d3.select(this).text())
+        redraw(region,variable)
+        
+    });   
+}
+
+//------------------------------------------ LINES AND AREAS
+
+var x = d3.scale.linear()
+    .range([70, width2-120]);
+    
+var y = d3.scale.linear().range([40, height2-80]);
+
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom")
+//    .tickFormat(function(d) { return them[d]; })
+//    .ticks(12);
+    
+var yAxis = d3.svg.axis().scale(y).orient("left").ticks(19);
+
+var theline = d3.svg.line()
+.interpolate("basis")
+.x(function(d) { return x(d.time-1)+45; })
+.y(function(d) { return y(d.mfmean);});
+    
+var thearea = d3.svg.area()
+.interpolate("basis")
+.x(function(d) { return x(d.index)+45; })
+.y0(function(d){return y(d.max);})
+.y1(function(d){return y(d.min);});   
+    
+//------------------------------------------- INPUT DATA - CMIP5 MODELS
+    
+d3.json("./seajson/AA_Counter_1_9_full.json", function(error,data) {
+           
+    for (var i = 0; i < data.length; i++) {
+        var obj = data[i].index
+//        console.log(i)
+//        for (var key in obj) {
+            d3.json("./seajson/montag/"+reg+"_mikaloff_for_"+obj+".json", function(error, data) { 
+                
+            x.domain([0, 250])
+//            x.domain([data[0].time, data[data.length-1].time])
+            y.domain([8.3, 7.4]);
+            bnu.append("path")
+            .attr('transform', 'translate(' + (0) + ',20)')
+            .attr("class", "line")
+            .style("stroke-width","2px")
+            .attr("id", function(d) { return ("model"+data[0].mod); })
+            .attr("opacity",.8)
+            .style("stroke",colors_cmip5[data[0].mod])
+            .attr("d", theline(data))
+            .on("mouseover",function(d) {
+                modelnamenav.selectAll("text").attr("opacity",0);
+                d3.select(this).style("cursor", "pointer")
+                modelname.selectAll("text").text(""+list_models[data[0].mod])
+            })
+            .on("click",function(d) {
+//                var state = d3.select(this).style("stroke-width")
+//                if (state == "2px") return d3.select(this).style("stroke-width",'8px');
+//                else return d3.select(this).style("stroke-width",'2px');
+            })
+            bnu.append("g")
+            .attr("class", "axis")
+            .attr('transform', 'translate(' + (100) + ',0)')
+            .call(yAxis); 
+            bnu.append("g")
+            .attr("class", "axis")
+            .attr('transform', 'translate(0,' + (height/3.43) + ')')
+            .call(xAxis)
+            .selectAll(".tick text")
+            .style("text-anchor", "start")
+            .attr("x", 35)
+            .attr("y", 270);
+            });
+//        } 
+    } 
+});  
+    
+//--------------------------------------------INPUT DATA - INVERSIONS
+    
+d3.json("./seajson/montag/1_maxmin.json", function(error, data) { 
+x.domain([data[0].index, data[data.length-1].index])
+y.domain([8.3, 7.4]);
+envelope.append('path')
+.attr('transform', 'translate(' + (0) + ',20)')
+.attr("id","CMIP5")
+.attr('class', 'area')
+.attr('fill', 'red')
+.attr('d', thearea(data));
+//.on("mouseover",function(d) {
+//divtipmodel.selectAll("text").style("fill","#d2d2d2")
+//divtipmodel.select("#cmip5").style("fill","darkslategray")
+//d3.select(this).style("cursor", "pointer")});
+}); 
+
+//--------------------------------------------TRANSCOM MAP
+    
+var projection = d3.geo.equirectangular()
+
+.center([0, 0 ])
+.scale(38)
+.rotate([0,0,0])
+.translate([430, 80])
+.precision(.1);
+    
+var graticuleflux = d3.geo.graticule();
+
+var path = d3.geo.path()
+.projection(projection);   
+
+d3.json("./world-110m2.json", function(error, world) {
+
+svgmap.insert("path", ".graticule")
+.datum(topojson.feature(world, world.objects.land))
+.attr("class", "land")
+.attr("d", path);
+}); 
+
+//--------------------------------------------UPDATE TRANSCOM REGIONS
+    
+d3.json("./MF_regions_HYP.json", function(error, data) { 
+    
+svgmap2.selectAll("text").data(data).enter()
+    .append("text")
+    .attr("x", function(d) { return projection([(d.lon), d.lat])[0];})
+    .attr("y",function(d) { return projection([d.lon, d.lat])[1];})
+    .text(function(d) {return (d.indi);})
+    .attr("font-family", "Arial")
+    .attr("font-size", 10)
+    .style("fill", function(d){
+           if (d.indi==12) return "white";
+           else return "#999"})    
+    .on("mouseover", function() {     
+        d3.select(this).style("cursor", "pointer")
+    })
+    .on("click",function(d) {
+    
+    var circleUnderMouse = this;
+    svgmap2.selectAll('text').filter(function(d,i) {
+        return (this !== circleUnderMouse);}).style("fill", "#666");
+        d3.select(this).style("fill", function (d){return "white";})
+
+//    var pos = d.indi-1
+//    axis_lev = list_axis_lev[d.indi-1]
+//        bnu.selectAll(".axis").remove();
+//        bnu.append("g")
+//        .attr("class", "axis")
+//        .attr('transform', 'translate(0,' + (height/axis_lev) + ')')
+//        .call(xAxis)
+//        .selectAll(".tick text")
+//        .style("text-anchor", "start")
+//        .attr("x", 35)
+//        .attr("y", 270);
+//
+        json_transcom=d.indi;
+        transcom_banner=d.indi;
+
+//        ylim_transcom_min=list_transcom_ylim_min[d.indi-1];
+//        ylim_transcom_max=list_transcom_ylim_max[d.indi-1];
+    
+//        d3.select("#thebanner").text(function(d){return "TRANSCOM region: "+transcom_banner;})
+        region=json_transcom
+        redraw(region,variable)
+    });        
+})
+
+var vpitch = 30
+
+//-------------------------------------- UPDATE MODEL LINES
+
+d3.json("./BRW_All_Models_Flux.json", function(error, data) { 
+    
+allmodels.selectAll("text").data(data).enter()
+    .append("text")
+    .attr("x",function(d){
+        if (d.num < 10) return 70; 
+        if (d.num >= 10 && d.num < 17) return 370; 
+        if (d.num >= 17 && d.num < 25) return 470; 
+        else return 570;})
+    .attr("y",function(d){
+        if (d.num < 10) return vpitch+(d.num-1)*10;
+        if (d.num >= 10 && d.num <17) return vpitch+(d.num-9)*10;
+        if (d.num >= 17 && d.num <25) return vpitch+(d.num-17)*10;
+        else return vpitch+(d.num-25)*10;})
+    .text(function(d){return d.model})
+    .attr("font-family", "Gill Sans Light, Century Gothic, sans-serif")
+    .attr("font-size", 8)
+    .attr("font-weight", "lighter")
+    .attr("id",function(d){return 'modelname_'+d.num})
+    .attr("opacity", 1)
+    .style("fill", "#999")
+    .on("mouseover", function() {     
+        d3.select(this).style("cursor", "pointer")
+    })
+    .on("click",function(d){
+            var labelstate=d3.select('#modelname_'+d.num).style('fill')
+            var state = d3.select('#model'+d.num).style("stroke-width")
+            checklines(state,d)
+            checklabels(labelstate,d)
+        });
+})
+    
+//--------------------------------------------SELECT ALL / NONE
+  
+modelnamepre.append("text")
+.attr("x",70)
+.attr("y",10)
+.text("Select all / ")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "black")
+.on("mouseover",function(d) {
+d3.select(this).style("cursor", "pointer")
+})
+.on("click",function(d){
+            for (i=0; i<28; i++) 
+            {
+            var labelstate=d3.select('#modelname_'+i).style('fill',function(d){return colors_cmip5[i-1];})
+            var state = d3.select('#model'+i).style("stroke-width",'2px')
+    }
+});
+    
+modelnamepre.append("text")
+.attr("x",120)
+.attr("y",10)
+.text("Select none")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "#999")
+    .on("mouseover",function(d) {
+d3.select(this).style("cursor", "pointer")
+})
+    .on("click",function(d){
+            for (i=0; i<28; i++) 
+            {
+            var labelstate=d3.select('#modelname_'+i).style('fill',"#999")
+            var state = d3.select('#model'+i).style("stroke-width",'0px')
+    }
+});
+    
+modelnamepre.append("text")
+.attr("x",320)
+.attr("y",10)
+.text("Select MF region")
+.attr("font-family", "Arial, Century Gothic, sans-serif")
+.attr("font-size", 10)
+.attr("opacity", .8)
+.style("fill", "#333")
+
+//----------------------------------- FUNCTION REDRAW EVERYTHING --------------------
+    
+function redraw(region,variable){
+    
+console.log(region)
+console.log(variable)
+    
+d3.json("./seajson/"+variable+"/"+region+"_maxmin.json", function(error, data) { 
+    
+    y.domain([30, 0]);
+    bnu.selectAll(".axis").remove();
+
+    bnu.append("g")
+            .attr("class", "axis")
+            .attr('transform', 'translate(' + (100) + ',0)')
+            .call(yAxis); 
+    
+    d3.select('#CMIP5').data(data).transition().duration(4000)
+    .attr("d", thearea(data))
+});
+
+d3.json("./seajson/UU_Counter_1_27.json", function(error,data) { 
+    for (var i = 0; i < data.length; i++) {
+        var obj = data[i].index
+        //        for (var key in obj) {
+        var counter = obj
+        d3.json("./seajson/"+variable+"/"+region+"_mikaloff_for_"+obj+".json", function(error, data) { 
+                    
+//        y.domain([ylim_transcom_max, ylim_transcom_min]);
+        
+        d3.select('#model'+data[0].mod).data(data).transition().duration(4000)
+        .attr("d", theline(data))
+        //            bnu.append("g")
+        //            .attr("class", "axis")
+        //            .attr('transform', 'translate(' + (100) + ',0)')
+        //            .call(yAxis); 
+        });
+    //        }   
+    }      
+    })    
+  
+}
+
+//---------------------------------------- FUNCTIONS --------------------------------
+     
+function checklabels(labelstate,d){
+            if (labelstate == 'rgb(153, 153, 153)') return d3.select('#modelname_'+d.num).style("fill",function(d){return colors_cmip5[d.num-1];});
+            else return d3.select('#modelname_'+d.num).style("fill",function(d){return '#999';}); 
+} 
+   
+function checklines(state,d){   
+            if (state == "3px") return d3.select('#model'+d.num).style("stroke-width",'0px');
+            else return d3.select('#model'+d.num).style("stroke-width",'3px');    
+} 
+//------------------------------------------------------------------------------    
+    
+var list_transcom = [
+                    "Boreal_North_America",
+                    "Temperate_North_America",
+                    "Europe",
+                    "Boreal_Asia",
+                    "Temperate_Asia",
+                    "Tropical_Asia",
+                    "Australia_NewZealand",
+                    "North_Africa",
+                    "South_Africa",
+                    "Tropical_South_America",
+                    "South_America_Temperate",
+                    "Global"
+                    ];  
+    
+    var list_transcom_names = [
+                    "North America Boreal",
+                    "North America Temperate",
+                    "Europe",
+                    "Eurasia Boreal",
+                    "Eurasia Temperate",
+                    "Tropical Asia",
+                    "Australia",
+                    "North Africa",
+                    "South Africa",
+                    "South America Tropical",
+                    "South America Temperate",
+                    "Global"
+                    ]; 
+    
+var list_transcom_ylim_max = [
+                    .4,
+                    .4,
+                    .6,
+                    .5,
+                    .4,
+                    .2,
+                    .2,
+                    1,
+                    1,
+                    .5,
+                    .6,
+                    3
+                    ];
+    
+var list_transcom_ylim_min = [
+                    -1,
+                    -.8,
+                    -1.0,
+                    -1.0,
+                    -.8,
+                    -.2,
+                    -.25,
+                    -.8,
+                    -.8,
+                    -.3,
+                    -.8,
+                    -4
+                    ];
+    
+var list_axis_lev = [
+                    4.75,
+                    4.22,
+                    3.82,
+                    4.22,
+                    4.22,
+                    3.,
+                    3.32,
+                    2.74,
+                    2.74,
+                    2.47,
+                    3.42,
+                    3.43
+                    ];
+    
+var list_models = ["BNU-ESM",
+                   "CanESM2",
+                   "CCSM4",
+                   "CESM1-BGC",
+                   "CESM1-CAM5",
+                   "CESM1-FASTCHEM",
+                   "CESM1-WACCM",
+                   "CNRM-ESM1",
+                   "GFDL-ESM2G",
+                   "GFDL-ESM2M",
+                   "HadGEM2-CC",
+                   "HadGEM2-ES",
+                   "inmcm4",
+                   "IPSL-CM5A-LR",
+                   "IPSL-CM5A-MR",
+                   "IPSL-CM5B-LR",
+                   "MIROC-ESM",
+                   "MIROC-ESM-CHEM",
+                   "MPI-ESM-LR",
+                   "MPI-ESM-MR",
+                   "MPI-ESM-P",
+                   "MRI-ESM1",
+                   "NorESM1-M",
+                   "NorESM1-ME",
+                   "JENA-s81-V3-6",
+                   "JMA-2010",
+                   "LSCE-var-MACC-V12-3"
+                  ];  
+    
+var colors_cmip5 = ["#C55CA2", "#AAACAE", "#3B63E6", "#865CA5", "#FF4500", "#FFE000", "#34D314","#B12121", "#75CFE5", "#FAB641", "#3DB555", "#6DBE50", "#FF1392", "#474096", "#00B3C3", "#FFF02D", "#F04F38", "#3DB555", "#474096", "#13BABA", "#FFA400", "#775BB4", "#C55CA2", "#F5E6BD",
+                    
+                    "white",
+                    "white",
+                    "white",
+                    
+                    "#3B63E6", "#FF4500", "#FFE000", "#34D314", "#FF1392", "#FFA400", "#775BB4", "#F5E6BD", "#789BF1", "#AFDFE6", "#0000C7", "#1FB1AA", "#B12121", "#DEB886", "#FFB6C1"]
+    
+//--------------------------------------------EXPORT BUTTON
+
+// Set-up the export button
+d3.select('#saveButton').on('click', function(){
+	var svgString = getSVGString(svg.node());
+	svgString2Image( svgString, 2*width, 2*height, 'png', save ); // passes Blob and filesize String to the callback
+
+	function save( dataBlob, filesize ){
+		saveAs( dataBlob, 'Carbon Flux.png' ); // FileSaver.js function
+	}
+});
+    
+    // Below are the functions that handle actual exporting:
+// getSVGString ( svgNode ) and svgString2Image( svgString, width, height, format, callback )
+function getSVGString( svgNode ) {
+	svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
+	var cssStyleText = getCSSStyles( svgNode );
+	appendCSS( cssStyleText, svgNode );
+
+	var serializer = new XMLSerializer();
+	var svgString = serializer.serializeToString(svgNode);
+	svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+	svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
+
+	return svgString;
+
+	function getCSSStyles( parentElement ) {
+		var selectorTextArr = [];
+
+		// Add Parent element Id and Classes to the list
+		selectorTextArr.push( '#'+parentElement.id );
+		for (var c = 0; c < parentElement.classList.length; c++)
+				if ( !contains('.'+parentElement.classList[c], selectorTextArr) )
+					selectorTextArr.push( '.'+parentElement.classList[c] );
+
+		// Add Children element Ids and Classes to the list
+		var nodes = parentElement.getElementsByTagName("*");
+		for (var i = 0; i < nodes.length; i++) {
+			var id = nodes[i].id;
+			if ( !contains('#'+id, selectorTextArr) )
+				selectorTextArr.push( '#'+id );
+
+			var classes = nodes[i].classList;
+			for (var c = 0; c < classes.length; c++)
+				if ( !contains('.'+classes[c], selectorTextArr) )
+					selectorTextArr.push( '.'+classes[c] );
+		}
+
+		// Extract CSS Rules
+		var extractedCSSText = "";
+		for (var i = 0; i < document.styleSheets.length; i++) {
+			var s = document.styleSheets[i];
+
+			try {
+			    if(!s.cssRules) continue;
+			} catch( e ) {
+		    		if(e.name !== 'SecurityError') throw e; // for Firefox
+		    		continue;
+		    	}
+
+			var cssRules = s.cssRules;
+//            			            console.log(cssRules)
+
+			for (var r = 0; r < cssRules.length; r++) {
+//				if ( contains( cssRules[r].selectorText, selectorTextArr ) )
+					extractedCSSText += cssRules[r].cssText;
+			}
+		}
+		
+
+		return extractedCSSText;
+
+		function contains(str,arr) {
+			return arr.indexOf( str ) === -1 ? false : true;
+		}
+	}
+
+	function appendCSS( cssText, element ) {
+		var styleElement = document.createElement("style");
+		styleElement.setAttribute("type","text/css"); 
+//		styleElement.setAttribute("href","./barrow.css"); 
+		styleElement.innerHTML = cssText;
+		var refNode = element.hasChildNodes() ? element.children[0] : null;
+		element.insertBefore( styleElement, refNode );
+	}
+}
+
+
+function svgString2Image( svgString, width, height, format, callback ) {
+	var format = format ? format : 'png';
+
+	var imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ); // Convert SVG string to data URL
+
+	var canvas = document.createElement("canvas");
+	var context = canvas.getContext("2d");
+
+	canvas.width = width;
+	canvas.height = height;
+
+	var image = new Image();
+	image.onload = function() {
+		context.clearRect ( 0, 0, width, height );
+		context.drawImage(image, 0, 0, width, height);
+
+		canvas.toBlob( function(blob) {
+			var filesize = Math.round( blob.length/1024 ) + ' KB';
+			if ( callback ) callback( blob, filesize );
+		});
+
+		
+	};
+
+	image.src = imgsrc;
+}
+    
+</script>
+
+</body></html>

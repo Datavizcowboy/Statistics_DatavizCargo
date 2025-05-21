@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+    <script type="text/javascript" src="./d3.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./time.css">
+</head>
+
+<body>
+    <div class="leftlevel3-div"> </div>
+    <script type="text/javascript">
+
+        var width = 600;
+        var height = 600;
+
+        //--------------------------------------------CONTAINERS
+
+        var svg = d3.select("div.leftlevel3-div")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        var header_hpitch = 0
+
+        //+++++++++++++++++++++++++++++++ LEGEND ++++++++++++++++++++++++++++    
+
+        var envelope = svg.append("g").attr('transform', 'translate(' + (0) + ',0)')
+        var bnu = svg.append("g").attr('transform', 'translate(' + (0) + ',0)')
+
+        var reg = 1
+        var them2 = ["Alk", "CO3", "DIC", "HCO3", "OmegaA", "OmegaC", "pCO2", "pH", "Tis"]
+        var them = []
+        var model = 0
+        var region = 1
+        var variable = 'pH'
+        var lowlim = 7.60
+        var highlim = 8.30
+
+        //------------------------------------------ LINES AND AREAS
+
+        var x = d3.scaleLinear()
+            .range([100, width]);
+
+        var y = d3.scaleLinear().range([60, height - 220]);
+
+        var xAxis = d3.axisBottom().scale(x)
+            .ticks(19, "f")
+            .tickPadding(5)
+            .tickValues(d3.range(1860, 2101, 20));
+
+        var yAxis = d3.axisLeft().scale(y).ticks(19);
+
+        var theline = d3.line()
+            .defined(function (d) { return d.index < 250; })
+            .curve(d3.curveBasisOpen)
+            .x(function (d) { return x(d.index + 1860); })
+            .y(function (d) { return y(d.mean); });
+
+        var thearea = d3.area()
+            .curve(d3.curveBasisOpen)
+            .x(function (d) { return x(d.index + 1860); })
+            .y0(function (d) { return y(d.max); })
+            .y1(function (d) { return y(7.6); });
+
+        bnu.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 30)
+            .attr("x", 0 - (230))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Value")
+            .attr("font-family", "Gill Sans, Arial, Century Gothic, sans-serif")
+            .attr("font-size", 14)
+            .attr("opacity", 1)
+            .attr("id", "theyaxis")
+            .style("fill", "#333");
+
+        bnu.append("text")
+            //    .attr("transform", "r")
+            .attr("y", 430)
+            .attr("x", 490)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Year")
+            .attr("font-family", "Gill Sans, Arial, Century Gothic, sans-serif")
+            .attr("font-size", 14)
+            .attr("opacity", 1)
+            .attr("id", "theyaxis")
+            .style("fill", "#333");
+        //--------------------------------------------INPUT DATA - INVERSIONS
+
+        envelope.append("line")
+            .attr("x1", 638)
+            .attr("y1", 50)
+            .attr("x2", 638)
+            .attr("y2", 400)
+            .attr("fill", "none")
+            .attr("stroke", function (d) { return d3.rgb(25, 25, 25); })
+            .attr("stroke-width", function (d) { return .8; })
+            .style("stroke-dasharray", ("4"))
+            .style("opacity", 1)
+
+        envelope.append("line")
+            .attr("x1", 975)
+            .attr("y1", 50)
+            .attr("x2", 975)
+            .attr("y2", 400)
+            .attr("fill", "none")
+            .attr("stroke", function (d) { return d3.rgb(25, 25, 25); })
+            .attr("stroke-width", function (d) { return .8; })
+            .style("stroke-dasharray", ("4"))
+            .style("opacity", 1)
+
+        d3.json("./seajson/pH/1_maxmin.json", function (error, data) {
+            x.domain([data[0].index + 1860, data[data.length - 1].index + 1860])
+            y.domain([8.3, 7.6]);
+
+            // envelope.append('path')
+            //     .attr('transform', 'translate(' + (0) + ',0)')
+            //     .attr("id", "CMIP5")
+            //     .attr('class', 'area')
+            //     .attr('fill', '#000')
+            //     .attr('d', thearea(data));
+
+            // envelope.append('path')
+            //     .attr('transform', 'translate(' + (0) + ',0)')
+            //     .attr("id", "SIGMA")
+            //     .attr('class', 'area')
+            //     .attr('fill', '#999')
+            //     .attr('d', thesigma(data));
+
+            envelope.append("path")
+                .attr('transform', 'translate(' + (0) + ',0)')
+                .attr("class", "line")
+                .style("stroke-width", "40px")
+                .attr("id", "MEAN")
+                .style("opacity", 1)
+                .style("stroke", "#000")
+                .attr("d", theline(data))
+
+            bnu.append("g")
+                .attr("class", "yaxis")
+                .attr('transform', 'translate(' + (100) + ',0)')
+                .call(yAxis);
+            bnu.append("g")
+                .attr("class", "xaxis")
+                .attr('transform', 'translate(0,' + (400) + ')')
+                .call(xAxis)
+        });
+
+        d3.json("./seajson26/pH/1_maxmin.json", function (error, data) {
+            x.domain([data[0].index + 1860, data[data.length - 1].index + 1860])
+            y.domain([8.3, 7.6]);
+
+            // envelope2.append('path')
+            //     .attr('transform', 'translate(' + (0) + ',0)')
+            //     .attr("id", "CMIP526")
+            //     .attr('class', 'area26')
+            //     .attr('fill', '#000')
+            //     .attr('d', thearea(data));
+
+            // envelope2.append('path')
+            //     .attr('transform', 'translate(' + (0) + ',0)')
+            //     .attr("id", "SIGMA26")
+            //     .attr('class', 'area26')
+            //     .attr('fill', 'cyan')
+            //     .attr('d', thesigma(data));
+
+            // envelope2.append("path")
+            //     .attr('transform', 'translate(' + (0) + ',0)')
+            //     .attr("class", "line")
+            //     .style("stroke-width", "20px")
+            //     .attr("id", "MEAN26")
+            //     .style("opacity", 1)
+            //     .style("stroke", "#000")
+            //     .attr("d", theline(data))
+
+            // envelope2.append("text")
+            //     .attr("transform", function (d, i) {
+            //         return "translate(" + (40 + x(data[data.length - 1].index + 1860))
+            //             + "," + y(data[data.length - 1].mean) + ")";
+            //     })
+            //     .attr("dx", ".35em")
+            //     .attr("text-anchor", "start")
+            //     .attr("font-family", "Gill Sans, Century Gothic, sans-serif")
+            //     .attr("font-size", 10)
+            //     .attr("id", "thecyanname")
+            //     .style("fill", "cyan")
+            //     .text("RCP 2.6");
+
+            // envelope.append("text")
+            //     .attr("transform", function (d, i) {
+            //         return "translate(" + (40 + x(data[data.length - 1].index + 1860))
+            //             + "," + (12 + y(data[data.length - 1].mean)) + ")";
+            //     })
+            //     .attr("dx", ".35em")
+            //     .attr("text-anchor", "start")
+            //     .attr("font-family", "Gill Sans, Century Gothic, sans-serif")
+            //     .attr("font-size", 10)
+            //     .attr("id", "thecyanmodels")
+            //     .style("fill", "cyan")
+            //     .text("8 Models");
+
+            //bnu.append("g")
+            //    .attr("class", "axis")
+            //    .attr('transform', 'translate(' + (100) + ',0)')
+            //    .call(yAxis); 
+            //bnu.append("g")
+            //    .attr("class", "axis")
+            //    .attr('transform', 'translate(0,' + (400) + ')')
+            //    .call(xAxis) 
+
+        });
+
+    </script>
+
+</body>
+
+</html>

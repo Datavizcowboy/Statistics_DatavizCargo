@@ -1,0 +1,245 @@
+p.title {
+    font-family: Gill Sans, Century Gothic, Verdana, sans-serif;
+    font-size: 44px;
+    letter-spacing: -3px;
+    line-height: 10px;
+    position: relative;
+    font-weight: bold;
+    margin-top: 120px;
+    margin-left: 10px;
+    color: goldenrod;
+}
+
+.subscript {
+    line-height: 0px;
+}
+
+p {
+    margin-top: 0.3em;
+    margin-bottom: 0em;
+}
+
+a:link {
+    color: #d2d2d2;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #d2d2d2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+a:active {
+    color: #999;
+    text-decoration: none;
+}
+
+body {
+    margin-top: 0px;
+    margin-left: 0px;
+    background: #999;
+}
+
+.xaxis path,
+.xaxis line {
+    fill: none;
+    stroke: #333;
+    opacity: .5;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.xaxis text {
+    fill: #333;
+    font-family: Tahoma, Garamond, Verdana, sans-serif;
+    font-size: 9px;
+    /* color: #ddd; */
+}
+
+/*  */
+.yaxis path,
+.yaxis line {
+    fill: none;
+    stroke: #333;
+    opacity: .5;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.yaxis text {
+    fill: #333;
+    font-family: Tahoma, Garamond, Verdana, sans-serif;
+    font-size: 9px;
+    /* color: gray; */
+}
+
+
+.x.axis path {
+    display: #333;
+}
+
+.x.axis line {
+    fill: none;
+    stroke: #333;
+    stroke-width: 1px;
+}
+
+.y.axis line {
+    fill: none;
+    stroke: #333;
+    stroke-width: 1.5px;
+}
+
+.area {
+    fill: #000;
+    stroke: none;
+    /*  fill: #999;*/
+    opacity: 1;
+}
+
+.area26 {
+    fill: #000;
+    stroke: none;
+    /*  fill: #999;*/
+    opacity: 1;
+}
+
+.stroke {
+    fill: none;
+    stroke: #000;
+    stroke-width: 3px;
+}
+
+.fill {
+    fill: #fff;
+}
+
+.boundary {
+    fill: none;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+/* Hide from IE Mac \*/
+.clearfix {
+    display: block;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.select {
+    float: left;
+    position: absolute;
+    width: 250px;
+    height: 20px;
+    margin-left: 0px;
+    margin-top: 40px;
+    text-align: left;
+    opacity: 1;
+}
+
+div.leftlevel3-div {
+    float: left;
+    position: absolute;
+    width: 1150px;
+    height: 500px;
+    margin-right: 8px;
+    margin-left: 100px;
+    margin-top: 200px;
+    opacity: 1.0;
+}
+
+.bar {
+    width: 3000px;
+    margin: 0px auto;
+    background-color: blue;
+}
+
+.node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+}
+
+.node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}
+
+.link:hover {
+    stroke-opacity: .5;
+}
+
+.void {
+    stroke: "gray";
+    fill: none;
+    stroke-opacity: 0;
+}
+
+path {
+    stroke: darkorange;
+    stroke-width: 1px;
+    opacity: 1;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: white;
+    opacity: .5;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    fill: white;
+    font-family: Verdana, sans-serif;
+    font-size: 9px;
+    color: white;
+    background: white;
+}
+
+.hidden {
+    display: none;
+}

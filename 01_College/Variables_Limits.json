@@ -1,0 +1,10 @@
+[{"index":1,"variable":"Alk","low":0.88,"high":3},
+ {"index":2,"variable":"CO3","low":0.01,"high":0.4},
+ {"index":3,"variable":"DIC","low":0.9,"high":2.8},
+ {"index":4,"variable":"HCO3","low":0.85,"high":2.6},
+ {"index":5,"variable":"OmegaA","low":0.10,"high":5.70},
+ {"index":6,"variable":"OmegaC","low":0.19,"high":8.50},
+ {"index":7,"variable":"pCO2","low":150,"high":1050},
+ {"index":8,"variable":"pH","low":7.4,"high":8.3},
+ {"index":9,"variable":"Tis","low":-2,"high":35}
+]

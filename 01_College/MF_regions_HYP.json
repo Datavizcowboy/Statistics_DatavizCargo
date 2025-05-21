@@ -1,0 +1,158 @@
+[
+
+    {
+        "indi": 2,
+        "lat": " 50",
+        "lon": " -50",
+        "station": "N Atl High-Lat",
+        "stationcomp": "Region 2 / North Atlantic High Latitude"
+
+    },
+    {
+        "indi": 3,
+        "lat": " 40",
+        "lon": " -55",
+        "station": "N Atl Mid-Lat",
+        "stationcomp": "Region 3 / North Atlantic Mid-Latitude"
+    },
+    {
+        "indi": 4,
+        "lat": " 25",
+        "lon": " -60",
+        "station": "N Atl Low-Lat",
+        "stationcomp": "Region 4 / North Atlantic Low-Latitude"
+    },
+    {
+        "indi": 5,
+        "lat": "7",
+        "lon": " -50",
+        "station": "N Atl Tropical",
+        "stationcomp": "Region 5 / North Atlantic Tropical"
+    },
+    {
+        "indi": 6,
+        "lat": " -7",
+        "lon": " -30",
+        "station": "S Atl Tropical",
+        "stationcomp": "Region 6 / South Atlantic Tropical"
+    },
+    {
+        "indi": 7,
+        "lat": "-20",
+        "lon": " -30",
+        "station": "S Atl Low-Lat",
+        "stationcomp": "Region 7 / South Atlantic Low-Latitude"
+    },
+    {
+        "indi": 8,
+        "lat": " -35",
+        "lon": " -40",
+        "station": "S Atl Mid-Lat",
+        "stationcomp": "Region 8 / South Atlantic Mid-Latitude"
+    },
+    {
+        "indi": 9,
+        "lat": " -50",
+        "lon": " -40",
+        "station": "S Sub-Polar Atl",
+        "stationcomp": "Region 9 / South Sub-Polar Atlantic"
+    },
+    {
+        "indi": 10,
+        "lat": " -60",
+        "lon": " 20",
+        "station": "Southern Ocean",
+        "stationcomp": "Region 10 / Southern Ocean"
+    },
+    {
+        "indi": 11,
+        "lat": " 50",
+        "lon": " 165",
+        "station": "NW Pac High-Lat",
+        "stationcomp": "Region 11 / North West Pacific High-Latitude, West of 195°E"
+    },
+    {
+        "indi": 12,
+        "lat": " 40",
+        "lon": " -175",
+        "station": "NE Pac High-Lat",
+        "stationcomp": "Region 12 / North East Pacific High-Latitude, East of 195°E"
+    },
+    {
+        "indi": 13,
+        "lat": " 30",
+        "lon": " 150",
+        "station": "NW Pac Low-Lat",
+        "stationcomp": "Region 13 / North West Pacific Low-Latitude, West of 195°E"
+    },
+    {
+        "indi": 15,
+        "lat": " 25",
+        "lon": " -160",
+        "station": "NE Pac Low-Lat",
+        "stationcomp": "Region 15 / North East Pacific Low-Latitude, East of 195°E"
+    },
+    {
+        "indi": 16,
+        "lat": " 10",
+        "lon": " 150",
+        "station": "NW Pac Tropical",
+        "stationcomp": "Region 16 / North West Pacific Tropical, West of 198.75°E"
+    },
+    {
+        "indi": 17,
+        "lat": "10",
+        "lon": " -140",
+        "station": "NE Pac Tropical",
+        "stationcomp": "Region 17 / North East Pacific Tropical, East of 198.75°E"
+    },
+    {
+        "indi": 18,
+        "lat": " -10",
+        "lon": " 170",
+        "station": "SW Pac Tropical",
+        "stationcomp": "Region 18 / South West Pacific Tropical, West of 198.75°E"
+    },
+    {
+        "indi": 19,
+        "lat": " -10",
+        "lon": " -130",
+        "station": "SE Pac Tropical",
+        "stationcomp": "Region 19 / South East Pacific Tropical, East of 198.75°E"
+    },
+    {
+        "indi": 20,
+        "lat": " -35",
+        "lon": " 160",
+        "station": "SW Pac Mid-Lat",
+        "stationcomp": "Region 20 / South West Pacific Mid-Latitude, West of 247.5°E"
+    },
+    {
+        "indi": 21,
+        "lat": " -35",
+        "lon": " -120",
+        "station": "SE Pac Mid-Lat",
+        "stationcomp": "Region 21 / South East Pacific Mid-Latitude, East of 247.5°E"
+    },
+    {
+        "indi": 25,
+        "lat": " -45",
+        "lon": " 65",
+        "station": "S SubPolar Pac & Indian",
+        "stationcomp": "Region 25 / South Sub-Polar Indian & Pacific basins"
+    },
+    {
+        "indi": 26,
+        "lat": " 0",
+        "lon": " 60",
+        "station": "Indian Tropical",
+        "stationcomp": "Region 26 / Indian Tropical"
+    },
+    {
+        "indi": 28,
+        "lat": " -20",
+        "lon": " 70",
+        "station": "S Indian Mid-Lat",
+        "stationcomp": "Region 28 / South Indian Mid-Latitude"
+    }
+]

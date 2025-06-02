@@ -4,14 +4,25 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
     <script type="text/javascript" src="./d3.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="./time.css">
+    <link type="text/css" rel="stylesheet" href="../css/time.css">
+    <link type="text/css" rel="stylesheet" href="../css/cover.css">
 </head>
 
 <body>
     <div class="leftlevel3-div"> </div>
+
+    <div class='header' id="header">
+        <p class="title">Splendid<span>Statistics</span></p>
+        <p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
+    </div>
+
+    
+
+
+
     <script type="text/javascript">
 
-        var width = 600;
+        var width = 1100;
         var height = 600;
 
         //--------------------------------------------CONTAINERS
@@ -40,7 +51,7 @@
         //------------------------------------------ LINES AND AREAS
 
         var x = d3.scaleLinear()
-            .range([100, width]);
+            .range([100, width - 100]);
 
         var y = d3.scaleLinear().range([60, height - 220]);
 
@@ -112,7 +123,7 @@
             .style("stroke-dasharray", ("4"))
             .style("opacity", 1)
 
-        d3.json("./seajson/pH/1_maxmin.json", function (error, data) {
+        d3.json("./1_maxmin.json", function (error, data) {
             x.domain([data[0].index + 1860, data[data.length - 1].index + 1860])
             y.domain([8.3, 7.6]);
 
@@ -149,7 +160,7 @@
                 .call(xAxis)
         });
 
-        d3.json("./seajson26/pH/1_maxmin.json", function (error, data) {
+        d3.json("./1_maxmin.json", function (error, data) {
             x.domain([data[0].index + 1860, data[data.length - 1].index + 1860])
             y.domain([8.3, 7.6]);
 

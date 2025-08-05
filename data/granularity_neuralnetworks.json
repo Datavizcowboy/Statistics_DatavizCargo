@@ -1,0 +1,15 @@
+{"nodes":
+  [
+    {"name": "Data Description", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Sensitivity Analysis", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Mutiple Linear Regression", "group": 0,"link": "https://datavizcowboy.com"},
+        {"name": "Clustering", "group": 0,"link": "https://datavizcowboy.com"},
+        {"name": "Neural Networks", "group": 0,"link": "https://datavizcowboy.com"}],
+
+  "links":[
+    {"source":0,"target":1,"value":0},
+    {"source":2,"target":3,"value":0},
+    {"source":3,"target":4,"value":0},
+    {"source":4,"target":2,"value":0}
+     ]
+}

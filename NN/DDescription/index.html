@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+</head>
+
+<body>
+
+	<div class='header' id="header">
+		<p class="title"><span>Data</br>Description</span></p>
+		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
+		<p class="credits"></br>
+			A soil moisture dataproduct on a global scale can be derived from
+			satellite observations of NDVI, surface temperature and backscatter
+			by using neural network statistical tools.
+		</p>
+	</div>
+
+	<!-- <div class='back-div'>
+		<p class="content">
+			A project on complex datasets </br> and its analysis through
+			<span>linear regression</span>,
+			<span>multiple linear regression</span>,
+			<span>classification</span>,
+			<span>clustering</span> and
+			<span>neural networks</span>, from data analysis to
+			data visualization. </span>
+		</p>
+	</div> -->
+
+	<div class="container">
+
+		<div class="option_var">
+			<p class="coverbig">ERS</br>Backscatter</p>
+			<p class="credits">
+				Retail data is used in this classification analysis to estimate
+				metrics on e-commerce, including revenue, visits and web surfing
+				behaviour.
+			</p>
+		</div>
+		<div class="option_var">
+			<p class="coverbig">SSM/ISurface</br>Emissivities</p>
+			<p class="credits">
+				Retail data is used in this classification analysis to estimate
+				metrics on e-commerce, including revenue, visits and web surfing
+				behaviour.
+			</p>
+		</div>
+		<div class="option_var">
+			<p class="coverbig">Surface Temperature</br>Diurnal Cycle Amplitude</p>
+			<p class="credits">
+				Retail data is used in this classification analysis to estimate
+				metrics on e-commerce, including revenue, visits and web surfing
+				behaviour.
+			</p>
+		</div>
+		<div class="option_var">
+			<p class="coverbig">NDVI</p>
+			<p class="credits">
+				Retail data is used in this classification analysis to estimate
+				metrics on e-commerce, including revenue, visits and web surfing
+				behaviour.
+			</p>
+		</div>
+		<div class="option_var">
+			<p class="coverbig">Soil Moisture</br>Dataset</p>
+			<p class="credits">
+				Retail data is used in this classification analysis to estimate
+				metrics on e-commerce, including revenue, visits and web surfing
+				behaviour.
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		var width = 400;
+		var height = 250;
+
+		var svg_rainforest = d3.select("div.left1-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		var svg_technology = d3.select("div.left2-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		var force1 = d3.layout.force()
+			.gravity(0.01)
+			.distance(160)
+			.charge(-10)
+			.size([width, height]);
+
+		var force2 = d3.layout.force()
+			.gravity(0.04)
+			.distance(120)
+			.charge(-50)
+			.size([width, height]);
+
+		var font_color = "#666"
+
+
+	</script>
+
+</html>

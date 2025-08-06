@@ -54,7 +54,7 @@ p.title {
   font-size: 66px;
   font-weight: bold;
   letter-spacing: -4px;
-  line-height: 80px;
+  line-height: 52px;
   position: relative;
   font-weight: bold;
   opacity: 1;
@@ -152,9 +152,7 @@ p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
   font-size: 12pt;
   line-height: 16pt;
-  letter-spacing: 0px;
   letter-spacing: -.5px;
-  /* text-align: right; */
   font-style: italic;
   opacity: 1;
   margin-left: 0px;
@@ -217,7 +215,7 @@ body {
   /*    background-image: url("./Fond.jpeg");*/
   /*    background-repeat:no-repeat;*/
   /* background: #002D48; */
-  background: #666;
+  background: #777;
 
   opacity: 1;
 }
@@ -281,9 +279,9 @@ border-top-style: solid; */
 .container {
   float: left;
   position: relative;
-  width: 100%;
+  width: 1250px;
   height: 100%;
-  margin-left: 0px;
+  margin-left: 100px;
   margin-top: 350px;
   opacity: 1.0;
   /* border-bottom-color: chocolate;
@@ -303,6 +301,21 @@ border-top-style: solid; */
   border-bottom-width: 1px;
   border-bottom-style: solid; */
 }
+
+
+.option_var{
+  float: left;
+  position: relative;
+  width: 340px;
+  height: 300px;
+  margin-right: 40px;
+  margin-top: 0px;
+  opacity: 1.0;
+  border-bottom-color: #fff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
 
 .back-div {
   float: left;

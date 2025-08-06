@@ -30,10 +30,11 @@
 
 		<div class="option0">
 			<div class="left1-div">
-				<p class="coverbig">Neural </br>Networks</br>on Satellite Observations</br></p>
+				<p class="coverbig"><span>Neural </br>Networks</span></br>on Satellite Observations</br></p>
 				<p class="credits">
-					This project is based on the "Introduction to Statistical Learning with Python",
-					from many authors. An overview of these datasets is displayed here.
+					A soil moisture dataproduct on a global scale can be derived from 
+					satellite observations of NDVI, surface temperature and backscatter 
+					by using neural network statistical tools. 
 				</p>
 			</div>
 			<div class="images">
@@ -54,10 +55,11 @@
 
 		<div class="option0">
 			<div class="left2-div">
-				<p class="coverbig">Classification</br>on E-Commerce</br></p>
+				<p class="coverbig"><span>Classification</span></br>on E-Commerce</br></p>
 				<p class="credits">
-					Magnitudes describing Capacity capabilities, both human and technological,
-					including explainability of processes, resources and satellite technology.
+					Retail data is used in this classification analysis to estimate
+					metrics on e-commerce, including revenue, visits and web surfing
+					behaviour. 
 				</p>
 			</div>
 			<div class="images">
@@ -87,8 +89,8 @@
 			.attr("height", height);
 
 		var force1 = d3.layout.force()
-			.gravity(0.02)
-			.distance(120)
+			.gravity(0.01)
+			.distance(160)
 			.charge(-10)
 			.size([width, height]);
 
@@ -138,18 +140,22 @@
 					if (d.group == 0) return "#fff";
 					else return "cyan";
 				})
+				.attr("stroke-width", function (d) {
+					if (d.group == 0) return 3;
+					else return 0;
+				})
 
 			node1.append("text")
 				.attr("dx", 14)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
 				.style("font-size", function (d) {
-					if (d.group != 2) return 10;
+					if (d.group != 2) return 8;
 					else return 8;
 				})
-				.style("fill", "#000")
-				.style("font-family", "Georgia")
-				.style("font-weight", "bold")
+				.style("fill", "#fff")
+				.style("font-family", "Menlo, Georgia")
+				// .style("font-weight", "bold")
 				.style("text-anchor", "start")
 
 			force1.on("tick", function (d) {
@@ -169,7 +175,7 @@
 					})
 			});
 
-			setInterval(function () { force1.alpha(0.09); });
+			setInterval(function () { force1.alpha(0.05); });
 
 		});
 

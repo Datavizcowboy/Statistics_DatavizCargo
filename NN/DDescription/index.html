@@ -10,7 +10,7 @@
 <body>
 
 	<div class='header' id="header">
-		<p class="title"><span>Data</br>Description</span></p>
+		<p class="title"><span>Data</span></br>Description</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
 			A soil moisture dataproduct on a global scale can be derived from
@@ -34,7 +34,7 @@
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig">ERS</br>Backscatter</p>
+			<p class="coverbig">ERS</br><span>Backscatter</span></p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -42,7 +42,7 @@
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">SSM/ISurface</br>Emissivities</p>
+			<p class="coverbig">SSM/I Surface</br><span>Emissivities</span></p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -50,7 +50,7 @@
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">Surface Temperature</br>Diurnal Cycle Amplitude</p>
+			<p class="coverbig">Surface<span> Temperature</span></br>Diurnal Amplitude</p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -58,7 +58,7 @@
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">NDVI</p>
+			<p class="coverbig"><span>NDVI</span></br>Dataproduct</p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -66,7 +66,7 @@
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">Soil Moisture</br>Dataset</p>
+			<p class="coverbig"><span>Soil Moisture</span></br>LMD Dataset</p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -75,35 +75,117 @@
 		</div>
 	</div>
 
+	<div class="data0-div">
+		<p class="coverbig">Statistical</br><span>Metrics</span></p>
+	</div>
+
+	<div class="data1-div">
+		<p class="coverbig">Remove</br><span>NaN</span></p>
+	</div>
+
 	<script type="text/javascript">
 
-		var width = 400;
-		var height = 250;
+		var width = 1100;
+		var height = 500;
 
-		var svg_rainforest = d3.select("div.left1-div")
+		var svg = d3.select("div.data0-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var svg_technology = d3.select("div.left2-div")
-			.append("svg")
-			.attr("width", width)
-			.attr("height", height);
+		list_variables = ['backscatter', 'emissivity_h', 'emissivity_v', 'amplitude', 'NDVI', 'soil moisture']
+		list_units = ['dB', 'K', 'K', 'K', '-', '-']
+		list_mean = [-11.8, 0.96, 0.91, 24.0, 0.34, 0.47]
 
-		var force1 = d3.layout.force()
-			.gravity(0.01)
-			.distance(160)
-			.charge(-10)
-			.size([width, height]);
 
-		var force2 = d3.layout.force()
-			.gravity(0.04)
-			.distance(120)
-			.charge(-50)
-			.size([width, height]);
+		var glegend = svg.append("g")
 
-		var font_color = "#666"
+		hpitch = 40
+		ypitch = 80
+		kern = 180
 
+		glegend
+			.append('text')
+			.attr("y", hpitch + 200)
+			.attr("x", ypitch)
+			.text("mean")
+			.attr("font-family", "Rockwell, Gill Sans")
+			.attr("font-size", 48)
+			.attr("letter-spacing", -4)
+			.attr("font-weight", "bold")
+			.attr("text-anchor", 'middle')
+			.style("fill", "#000")
+
+		glegend
+			.append('text')
+			.attr("y", hpitch + 220)
+			.attr("x", ypitch)
+			.text("min")
+			.attr("font-family", "Rockwell, Gill Sans")
+			.attr("font-size", 28)
+			.attr("letter-spacing", -1)
+			.attr("font-weight", "bold")
+			.attr("text-anchor", 'end')
+			.style("fill", "#000")
+
+		glegend
+			.append('text')
+			.attr("y", hpitch + 170)
+			.attr("x", ypitch)
+			.text("max")
+			.attr("font-family", "Rockwell, Gill Sans")
+			.attr("font-size", 28)
+			.attr("letter-spacing", -1)
+			.attr("font-weight", "bold")
+			.attr("text-anchor", 'start')
+			.style("fill", "#000")
+
+		for (hh = 0; hh < list_variables.length; hh++) {
+
+			// glegend
+			// 	.append("circle")
+			// 	.attr("cx", hpitch + 220)
+			// 	.attr("cy", ypitch + 92 + hh * 15)
+			// 	.attr("r", (list_examples[hh] / 500))
+			// 	.style('stroke-width', .7)
+			// 	.style("opacity", 1)
+			// 	.style("stroke", "none")
+			// 	.style("fill", "white");
+
+			glegend
+				.append('text')
+				.attr("y", hpitch)
+				.attr("x", ypitch + hh * kern)
+				.text(list_variables[hh])
+				.attr("font-family", "Georgia, Rockwell, Gill Sans")
+				.attr("font-size", 18)
+				.attr("font-style", "italic")
+				.attr("text-anchor", 'middle')
+				.style("fill", "#000")
+
+			glegend
+				.append('text')
+				.attr("y", hpitch + 20)
+				.attr("x", ypitch + hh * kern)
+				.text('[' + list_units[hh] + ']')
+				.attr("font-family", "Georgia, Rockwell, Gill Sans")
+				.attr("font-size", 18)
+				// .attr("font-style", "italic")
+				.attr("text-anchor", 'middle')
+				.style("fill", "#000")
+
+			glegend
+				.append('text')
+				.attr("y", hpitch + 100)
+				.attr("x", ypitch + hh * kern)
+				.text(list_mean[hh])
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 48)
+				.attr("letter-spacing", -4)
+				.attr("font-weight", "bold")
+				.attr("text-anchor", 'middle')
+				.style("fill", "#000")
+		}
 
 	</script>
 

@@ -66,7 +66,7 @@ p.title {
 }
 
 p.title span {
-  color: #ddd;
+  color: #bbb;
 
   margin-left: 0px;
   /*    color: white;*/
@@ -130,7 +130,7 @@ p.coverbig {
 }
 
 p.coverbig span {
-  color:#ddd;
+  color:#bbb;
 }
 
 
@@ -148,6 +148,10 @@ p.content {
   position: relative;
 }
 
+p.content span{
+  color: #bbb;
+}
+
 p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
   font-size: 12pt;
@@ -160,9 +164,7 @@ p.credits {
   position: relative;
 }
 
-p.content span{
-  color: #ddd;
-}
+
 
 p.plaintext {
   font-family: DM Sans, Arial, Gill Sans, sans-serif;

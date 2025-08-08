@@ -100,7 +100,7 @@
 			.charge(-50)
 			.size([width, height]);
 
-		var font_color = "#666"
+		var font_color = "#777"
 
 		//------------------------------------ RAINFOREST
 
@@ -137,7 +137,7 @@
 				})
 
 				.attr("stroke", function (d) {
-					if (d.group == 0) return "#fff";
+					if (d.group == 0) return "#bbb";
 					else return "cyan";
 				})
 				.attr("stroke-width", function (d) {
@@ -153,7 +153,7 @@
 					if (d.group != 2) return 8;
 					else return 8;
 				})
-				.style("fill", "#fff")
+				.style("fill", "#bbb")
 				.style("font-family", "Menlo, Georgia")
 				// .style("font-weight", "bold")
 				.style("text-anchor", "start")

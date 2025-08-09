@@ -66,7 +66,7 @@ p.title {
 }
 
 p.title span {
-  color: #bbb;
+  color: #ddd;
 
   margin-left: 0px;
   /*    color: white;*/
@@ -130,7 +130,7 @@ p.coverbig {
 }
 
 p.coverbig span {
-  color:#bbb;
+  color:#999;
 }
 
 
@@ -217,7 +217,7 @@ body {
   /*    background-image: url("./Fond.jpeg");*/
   /*    background-repeat:no-repeat;*/
   /* background: #002D48; */
-  background: #777;
+  background: #666;
 
   opacity: 1;
 }

@@ -96,17 +96,18 @@
 		list_variables = ['backscatter', 'emissivity_h', 'emissivity_v', 'amplitude', 'NDVI', 'soil moisture']
 		list_units = ['dB', 'K', 'K', 'K', '-', '-']
 		list_mean = [-11.8, 0.96, 0.91, 24.0, 0.34, 0.47]
-
+		list_max = [-5.485400,	1.034200,	1.010900,	62.281600,	0.794700,	1.011300]
+		list_min = [-27.228800,	0.687300,	0.389900,	1.327500,	-0.031400,	0.000000]
 
 		var glegend = svg.append("g")
 
-		hpitch = 40
-		ypitch = 80
+		hpitch = 20
+		ypitch = 60
 		kern = 180
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 200)
+			.attr("y", hpitch + 50)
 			.attr("x", ypitch)
 			.text("mean")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -118,7 +119,7 @@
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 220)
+			.attr("y", hpitch + 70)
 			.attr("x", ypitch)
 			.text("min")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -130,7 +131,7 @@
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 170)
+			.attr("y", hpitch + 20)
 			.attr("x", ypitch)
 			.text("max")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -154,7 +155,7 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch)
+				.attr("y", hpitch + 260)
 				.attr("x", ypitch + hh * kern)
 				.text(list_variables[hh])
 				.attr("font-family", "Georgia, Rockwell, Gill Sans")
@@ -165,7 +166,7 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 20)
+				.attr("y", hpitch + 280)
 				.attr("x", ypitch + hh * kern)
 				.text('[' + list_units[hh] + ']')
 				.attr("font-family", "Georgia, Rockwell, Gill Sans")
@@ -176,7 +177,7 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 100)
+				.attr("y", hpitch + 180)
 				.attr("x", ypitch + hh * kern)
 				.text(list_mean[hh])
 				.attr("font-family", "Rockwell, Gill Sans")
@@ -184,6 +185,30 @@
 				.attr("letter-spacing", -4)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'middle')
+				.style("fill", "#000")
+
+			glegend
+				.append('text')
+				.attr("y", hpitch + 210)
+				.attr("x", ypitch + hh * kern)
+				.text(d3.format('.1f')(list_min[hh]))
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 28)
+				.attr("letter-spacing", -3)
+				.attr("font-weight", "bold")
+				.attr("text-anchor", 'end')
+				.style("fill", "#000")
+
+			glegend
+				.append('text')
+				.attr("y", hpitch + 140)
+				.attr("x", ypitch + hh * kern)
+				.text(d3.format('.1f')(list_max[hh]))
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 28)
+				.attr("letter-spacing", -3)
+				.attr("font-weight", "bold")
+				.attr("text-anchor", 'start')
 				.style("fill", "#000")
 		}
 

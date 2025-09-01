@@ -3,14 +3,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script src="//d3js.org/d3.v4.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 </head>
 
 <body>
 
 	<div class='header' id="header">
-		<p class="title"><span>Data</span></br>Description</p>
+		<p class="title">Data</br><span>Description</span></p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
 			A soil moisture dataproduct on a global scale can be derived from
@@ -34,7 +34,7 @@
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig">ERS</br><span>Backscatter</span></p>
+			<p class="coverbig"><span>ERS</span></br>Backscatter</p>
 			<p class="credits">
 				Retail data is used in this classification analysis to estimate
 				metrics on e-commerce, including revenue, visits and web surfing
@@ -79,19 +79,29 @@
 		<p class="coverbig">Statistical</br><span>Metrics</span></p>
 	</div>
 
-	<div class="data1-div">
+	<div class="data1-div" id="vis" >
 		<p class="coverbig">Remove</br><span>NaN</span></p>
 	</div>
 
 	<script type="text/javascript">
 
-		var width = 1100;
+		var width = 1160;
 		var height = 500;
 
-		var svg = d3.select("div.data0-div")
+		var svg0 = d3.select("div.data0-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
+
+		var svg = d3.select("div.data1-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", 500);
+
+		var glegend = svg0.append("g")
+
+        var levels = svg.append("g")
+        var group = svg.append("g")
 
 		list_variables = ['backscatter', 'emissivity_h', 'emissivity_v', 'amplitude', 'NDVI', 'soil moisture']
 		list_units = ['dB', 'K', 'K', 'K', '-', '-']
@@ -99,7 +109,6 @@
 		list_max = [-5.485400,	1.034200,	1.010900,	62.281600,	0.794700,	1.011300]
 		list_min = [-27.228800,	0.687300,	0.389900,	1.327500,	-0.031400,	0.000000]
 
-		var glegend = svg.append("g")
 
 		hpitch = 20
 		ypitch = 60
@@ -107,7 +116,7 @@
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 50)
+			.attr("y", hpitch + 30)
 			.attr("x", ypitch)
 			.text("mean")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -119,7 +128,7 @@
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 70)
+			.attr("y", hpitch + 50)
 			.attr("x", ypitch)
 			.text("min")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -131,7 +140,7 @@
 
 		glegend
 			.append('text')
-			.attr("y", hpitch + 20)
+			.attr("y", hpitch + 0)
 			.attr("x", ypitch)
 			.text("max")
 			.attr("font-family", "Rockwell, Gill Sans")
@@ -155,7 +164,7 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 260)
+				.attr("y", hpitch + 290)
 				.attr("x", ypitch + hh * kern)
 				.text(list_variables[hh])
 				.attr("font-family", "Georgia, Rockwell, Gill Sans")
@@ -166,11 +175,11 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 280)
+				.attr("y", hpitch + 260)
 				.attr("x", ypitch + hh * kern)
-				.text('[' + list_units[hh] + ']')
-				.attr("font-family", "Georgia, Rockwell, Gill Sans")
-				.attr("font-size", 18)
+				.text('[ ' + list_units[hh] + ' ]')
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 28)
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'middle')
 				.style("fill", "#000")
@@ -197,11 +206,11 @@
 				.attr("letter-spacing", -3)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'end')
-				.style("fill", "#000")
+				.style("fill", "#333")
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 140)
+				.attr("y", hpitch + 135)
 				.attr("x", ypitch + hh * kern)
 				.text(d3.format('.1f')(list_max[hh]))
 				.attr("font-family", "Rockwell, Gill Sans")
@@ -211,6 +220,183 @@
 				.attr("text-anchor", 'start')
 				.style("fill", "#000")
 		}
+
+		//---------------------- REMOVE NANs -----------------------------
+
+        var yearCenters = {
+            2023: { x: 0, y: 50 },
+            2024: { x: 300, y: 50 },
+            2025: { x: 550, y: 50 }
+        };
+
+        var fillColor = d3.scaleOrdinal()
+            .domain(['low', 'medium', 'high'])
+            // .range(['chocolate', 'gold', 'goldenrod', 'darkgoldenrod']);
+            .range(['#333', '#666', '#999', '#bbb']);
+
+        var simulation = []
+        var center = { x: 0, y: 10 };
+        var forceStrength = 0.007;
+        var svg = null;
+        var bubbles = null;
+        var nodes = [];
+
+        function charge(d) {
+            return -Math.pow(d.radius, 3.2) * forceStrength;
+        }
+
+        function bubbleChart() {
+
+            simulation = d3.forceSimulation()
+                .velocityDecay(0.2)
+                .force('x', d3.forceX().strength(forceStrength).x(center.x))
+                .force('y', d3.forceY().strength(forceStrength).y(center.y))
+                .force('charge', d3.forceManyBody().strength(charge))
+                .on('tick', ticked);
+
+            simulation.stop();
+
+            function createNodes(rawData) {
+                var maxAmount = d3.max(rawData, function (d) { return +1; });
+                var radiusScale = d3.scalePow()
+                    .exponent(0)
+                    .range([4, 20])
+                    .domain([0, 10]);
+                var myNodes = rawData.map(function (d) {
+                    return {
+                        id: d.Tipo,
+                        radius: 4,
+                        value: +1,
+                        // name: d.grant_title,
+                        // org: d.organization,
+                        group: d.Sexo,
+                        year: d.Edicion,
+                        x: 300 + Math.random() * 200,
+                        y: Math.random() * 500
+                    };
+                });
+                myNodes.sort(function (a, b) { return b.value - a.value; });
+                return myNodes;
+            }
+
+            var chart = function chart(selector, rawData) {
+                nodes = createNodes(rawData);
+                svg = d3.select(selector)
+                    .append('svg')
+                    .attr('width', width)
+                    .attr('height', height);
+                bubbles = svg.selectAll('.bubble')
+                    .data(nodes, function (d) { return d.Tipo; });
+                var bubblesE = bubbles.enter().append('circle')
+                    .classed('bubble', true)
+                    .attr('r', 0)
+                    .attr('fill', function (d) {
+                        if (d.group == "Mujer") return "#000";
+                        else return "#ddd";
+                    })
+                    .attr('opacity', function (d) {
+                        if (d.group == "Mujer") return 1;
+                        else return 1;
+                    })
+                    // .attr('stroke', function (d) { return d3.rgb(fillColor(d.group)).darker(); })
+                    .attr('stroke', function (d) { return "none"; })
+                    .attr('stroke-width', .5)
+
+                bubbles = bubbles.merge(bubblesE);
+                bubbles.transition()
+                    .duration(2000)
+                    .attr('r', function (d) { return d.radius; });
+                simulation.nodes(nodes);
+                groupBubbles();
+            };
+
+            function ticked() {
+                bubbles
+                    .attr('cx', function (d) { return 200 + d.x; })
+                    .attr('cy', function (d) { return d.y - 50; });
+            }
+
+            function nodeYearPos(d) {
+                return yearCenters[d.year].x;
+            }
+
+            function groupBubbles() {
+                simulation.force('x', d3.forceY().strength(forceStrength).y(nodeYearPos));
+                simulation.alpha(1.6).restart();
+            }
+
+            function splitBubbles() {
+                simulation.force('x', d3.forceX().strength(forceStrength).x(nodeYearPos));
+                simulation.alpha(2).restart();
+            }
+
+            chart.toggleDisplay = function (displayName) {
+                if (displayName === 'year') {
+                    splitBubbles();
+                } else {
+                    groupBubbles();
+                }
+            };
+            return chart;
+        }
+
+        var myBubbleChart = bubbleChart();
+        function display(error, data) {
+            if (error) {
+                console.log(error);
+            }
+            myBubbleChart('#vis', data);
+        }
+
+        d3.csv('../../data/Remove_NaN.csv', display);
+
+
+		//---------------------------- LEGEND --------------------------------------
+
+       list_number = ['Raw Data', 'NaN Removed']
+        list_cat = ['5500443 Datapoints', '4500 Datapoints']
+
+        for (ii = 0; ii < 5; ii++) {
+
+            thefill = "#999"
+            vpitch = -5
+            thepitch = 220
+
+            group
+                .append("text")
+                .attr("x", function () {
+                    if (ii < 5) return 700;
+                    else return 380
+                })
+                .attr("y", function() {
+                    if (ii ==2) return 90 + ii * thepitch
+                    else return 60 + ii * thepitch
+                })
+                .text(list_number[ii])
+                // .text(function (d) { return datos[i].normalizedQuery.toUpperCase(); })
+                .attr("font-family", "Poppins, Gill Sans, sans-serif")
+                .attr("font-size", 14)
+                .attr("opacity", 1)
+				.attr("id","thetick")
+                .attr("text-anchor", "middle")
+                .style("fill", "#000")
+
+            group.append("text")
+                .attr("x", function () {
+                    if (ii < 5) return 700;
+                    else return 380
+                })
+                .attr("y", function() {
+                    if (ii ==2) return 108 + ii * thepitch
+                    else return 78 + ii * thepitch
+                })
+                .text(list_cat[ii])
+                .attr("font-family", "Poppins, Gill Sans, sans-serif")
+                .attr("font-size", 16)
+                .attr("text-anchor", "middle")
+                .style("fill", thefill)
+        }
+	
 
 	</script>
 

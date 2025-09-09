@@ -5,12 +5,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+	    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+    <script src="https://unpkg.com/@asymmetrik/leaflet-d3@4/dist/leaflet-d3.js" charset="utf-8"></script>
+		<script src="//d3js.org/d3-geo-projection.v1.min.js"></script>
+	<script src="//d3js.org/topojson.v1.min.js"></script>
 </head>
 
 <body>
 
 	<div class='header' id="header">
-		<p class="title">Data</br><span>Description</span></p>
+		<p class="title"><span>Data</span></br>Description</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
 			A soil moisture dataproduct on a global scale can be derived from
@@ -36,52 +42,116 @@
 		<div class="option_var">
 			<p class="coverbig"><span>ERS</span></br>Backscatter</p>
 			<p class="credits">
-				Retail data is used in this classification analysis to estimate
-				metrics on e-commerce, including revenue, visits and web surfing
-				behaviour.
+				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
+				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
+				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
+				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
+				is specified in units of decibel [dB]. 
+				</br></br>
+				In general, the backscatter from the Earth surface depends on the
+				characteristics of the surface (for example the soil wetness, soil roughness and the surface
+				temperature) as well as the viewing geometry of the instrument. In particular, the backscatter is highly
+				dependent on the incidence angle at which the observation was taken. In order to account for the effects
+				of the viewing geometry all backscatter measurements have been transformed to the same incidence angle.
+				</br></br>
+				The observations of active microwave instruments are very sensitive to soil moisture. This is because
+				the presence of water in the soil strongly changes the soil dielectric properties and hence the
+				scattering properties. For this reason the ERS backscatter measurements show a high sensitivity to
+				changes in the soil moisture.
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">SSM/I Surface</br><span>Emissivities</span></p>
+			<p class="coverbig">SSM/I</br> Surface</br><span>Emissivities</span></p>
 			<p class="credits">
-				Retail data is used in this classification analysis to estimate
-				metrics on e-commerce, including revenue, visits and web surfing
-				behaviour.
+				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
+				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
+				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
+				by the Earth surface. 
+				</br></br>
+				The quantity measured is the brightness temperature, which is defined as the
+				temperature a perfect black body would have to have in order to emit the same amount of radiation. The
+				original brightness temperatures measured were converted into surface emissivities by removing the
+				contributions from the atmosphere, clouds, rain and the surface temperature. For the retrieval of soil
+				moisture only the lowest frequency channel (at 19.35GHz) is of interest, since the other frequencies are
+				too high to penetrate the surface with a sufficient depth. 
+				</br></br>
+				The SSM/I instrument measures both at
+				vertical and horizontal polarization, thus two measurements are available for each grid point. The
+				sensitivity of the surface emissivities depends on the polarization considered. For a horizontal
+				polarization the emissivities are much more sensitive to the soil moisture than for a vertical
+				polarization. However, in general both passive microwave observations have a less strong relation with
+				the soil moisture than the active microwave observations.
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig">Surface<span> Temperature</span></br>Diurnal Amplitude</p>
+			<p class="coverbig">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
 			<p class="credits">
-				Retail data is used in this classification analysis to estimate
-				metrics on e-commerce, including revenue, visits and web surfing
-				behaviour.
+				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
+				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
+				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
+				point. 
+				</br></br>
+				Then the amplitude of this cycle was determined. The amplitude of the diurnal cycle of the
+				surface temperature can be used as an indicator of the soil moisture, because the thermal inertia of the
+				soil depends on its moisture content. For a wet soil, the thermal inertia is increased, that means the
+				surface temperature changes less for a certain incident solar flux. In a dry soil on the other hand the
+				same incident solar flux would result in a stronger temperature change and hence a larger diurnal cycle
+				amplitude.
 			</p>
 		</div>
 		<div class="option_var">
 			<p class="coverbig"><span>NDVI</span></br>Dataproduct</p>
 			<p class="credits">
-				Retail data is used in this classification analysis to estimate
-				metrics on e-commerce, including revenue, visits and web surfing
-				behaviour.
+				The normalized difference vegetation index (NDVI) is an index that is often used in remote sensing
+				applications to quantify the amount of vegetation present on the part of the surface that is observed.
+				In essence, this index provides a measure for the “greenness" of the vegetation, which is considered a
+				good indicator of the vegetation cover. The NDVI is computed from the reflectance measured in the
+				visible and near‐infrared part of the spectrum and is defined as 
+				</br></br>
+				NDVI = rnir − rvis / rnir −rvis 
+				</br></br>where
+				rNIR is the reflectance measured in the near‐infrared and rvis is the reflectance measured in the
+				visible red spectrum. The NDVI dataset to be used in this practical is based on reflectance observations
+				from the Advanc€ed Very High Resolution Radiometer (AVHRR) taken at the 0.58‐ 0.65 μm (visible) and the
+				0.73‐1.1 μm (near‐infrared) waveband respectively and ranges between ‐1 and 1. 
+				</br></br>
+				The NDVI and the soil
+				moisture are strongly related, since more plants will grow on a moist soil than on a dry soil. However,
+				the exact relationship between these two parameters depends on the observation region considered.
 			</p>
 		</div>
 		<div class="option_var">
-			<p class="coverbig"><span>Soil Moisture</span></br>LMD Dataset</p>
+			<p class="coverbig"><span>Soil</br> Moisture</span></br>LMD Dataset</p>
 			<p class="credits">
-				Retail data is used in this classification analysis to estimate
-				metrics on e-commerce, including revenue, visits and web surfing
-				behaviour.
+				In order to train the neural network there is the need to provide a global target dataset of soil
+				moistures. In this analysis the data chosen for this role is the soil moisture product of the land
+				surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. The model's soil
+				moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+				local wilting point and 1 corresponds to the local saturation level.
 			</p>
 		</div>
 	</div>
 
-	<div class="data0-div">
-		<p class="coverbig">Statistical</br><span>Metrics</span></p>
+	<div class="datagroup-div">
+		<!-- <p class="coverbig">Remove</br><span>NaN</span></p> -->
 	</div>
 
-	<div class="data1-div" id="vis" >
+	<div class="data0-div">
+		<!-- <p class="coverbig">Statistical</br><span>Metrics</span></p> -->
+	</div>
+
+	<div class="data1-div" id="vis">
 		<p class="coverbig">Remove</br><span>NaN</span></p>
 	</div>
+
+		<div class="map-div">
+		<!-- <p class="coverbig">Statistical</br><span>Metrics</span></p> -->
+	</div>
+
+    <!-- <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1150px; height: 700px; margin-left: 100px; margin-top: 3200px">
+    </div> -->
+
+	<!-- <script src="../../data/back.js"></script> -->
 
 	<script type="text/javascript">
 
@@ -93,21 +163,19 @@
 			.attr("width", width)
 			.attr("height", height);
 
-		var svg = d3.select("div.data1-div")
+		var svggroup = d3.select("div.datagroup-div")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", 500);
+			.attr("height", 550);
 
 		var glegend = svg0.append("g")
-
-        var levels = svg.append("g")
-        var group = svg.append("g")
+		var group = svggroup.append("g")
 
 		list_variables = ['backscatter', 'emissivity_h', 'emissivity_v', 'amplitude', 'NDVI', 'soil moisture']
 		list_units = ['dB', 'K', 'K', 'K', '-', '-']
 		list_mean = [-11.8, 0.96, 0.91, 24.0, 0.34, 0.47]
-		list_max = [-5.485400,	1.034200,	1.010900,	62.281600,	0.794700,	1.011300]
-		list_min = [-27.228800,	0.687300,	0.389900,	1.327500,	-0.031400,	0.000000]
+		list_max = [-5.485400, 1.034200, 1.010900, 62.281600, 0.794700, 1.011300]
+		list_min = [-27.228800, 0.687300, 0.389900, 1.327500, -0.031400, 0.000000]
 
 
 		hpitch = 20
@@ -164,7 +232,7 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 290)
+				.attr("y", hpitch + 260)
 				.attr("x", ypitch + hh * kern)
 				.text(list_variables[hh])
 				.attr("font-family", "Georgia, Rockwell, Gill Sans")
@@ -175,14 +243,14 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 260)
+				.attr("y", hpitch + 290)
 				.attr("x", ypitch + hh * kern)
-				.text('[ ' + list_units[hh] + ' ]')
-				.attr("font-family", "Rockwell, Gill Sans")
+				.text('' + list_units[hh] + '')
+				.attr("font-family", "Georgia, Rockwell, Gill Sans")
 				.attr("font-size", 28)
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'middle')
-				.style("fill", "#000")
+				.style("fill", "#999")
 
 			glegend
 				.append('text')
@@ -198,24 +266,24 @@
 
 			glegend
 				.append('text')
-				.attr("y", hpitch + 210)
-				.attr("x", ypitch + hh * kern)
+				.attr("y", hpitch + 205)
+				.attr("x", -10 + ypitch + hh * kern)
 				.text(d3.format('.1f')(list_min[hh]))
 				.attr("font-family", "Rockwell, Gill Sans")
-				.attr("font-size", 28)
-				.attr("letter-spacing", -3)
+				.attr("font-size", 20)
+				.attr("letter-spacing", -2)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'end')
-				.style("fill", "#333")
+				.style("fill", "#000")
 
 			glegend
 				.append('text')
 				.attr("y", hpitch + 135)
-				.attr("x", ypitch + hh * kern)
+				.attr("x", 20 + ypitch + hh * kern)
 				.text(d3.format('.1f')(list_max[hh]))
 				.attr("font-family", "Rockwell, Gill Sans")
-				.attr("font-size", 28)
-				.attr("letter-spacing", -3)
+				.attr("font-size", 20)
+				.attr("letter-spacing", -2)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'start')
 				.style("fill", "#000")
@@ -223,181 +291,291 @@
 
 		//---------------------- REMOVE NANs -----------------------------
 
-        var yearCenters = {
-            2023: { x: 0, y: 50 },
-            2024: { x: 300, y: 50 },
-            2025: { x: 550, y: 50 }
-        };
+		var yearCenters = {
+			2023: { x: 0, y: 50 },
+			2024: { x: 300, y: 50 },
+			2025: { x: 550, y: 50 }
+		};
 
-        var fillColor = d3.scaleOrdinal()
-            .domain(['low', 'medium', 'high'])
-            // .range(['chocolate', 'gold', 'goldenrod', 'darkgoldenrod']);
-            .range(['#333', '#666', '#999', '#bbb']);
+		var fillColor = d3.scaleOrdinal()
+			.domain(['low', 'medium', 'high'])
+			// .range(['chocolate', 'gold', 'goldenrod', 'darkgoldenrod']);
+			.range(['#333', '#666', '#999', '#bbb']);
 
-        var simulation = []
-        var center = { x: 0, y: 10 };
-        var forceStrength = 0.007;
-        var svg = null;
-        var bubbles = null;
-        var nodes = [];
+		var simulation = []
+		var center = { x: 0, y: 10 };
+		var forceStrength = 0.007;
+		var svg = null;
+		var bubbles = null;
+		var nodes = [];
 
-        function charge(d) {
-            return -Math.pow(d.radius, 3.2) * forceStrength;
-        }
+		function charge(d) {
+			return -Math.pow(d.radius, 3.2) * forceStrength;
+		}
 
-        function bubbleChart() {
+		function bubbleChart() {
 
-            simulation = d3.forceSimulation()
-                .velocityDecay(0.2)
-                .force('x', d3.forceX().strength(forceStrength).x(center.x))
-                .force('y', d3.forceY().strength(forceStrength).y(center.y))
-                .force('charge', d3.forceManyBody().strength(charge))
-                .on('tick', ticked);
+			simulation = d3.forceSimulation()
+				.velocityDecay(0.2)
+				.force('x', d3.forceX().strength(forceStrength).x(center.x))
+				.force('y', d3.forceY().strength(forceStrength).y(center.y))
+				.force('charge', d3.forceManyBody().strength(charge))
+				.on('tick', ticked);
 
-            simulation.stop();
+			simulation.stop();
 
-            function createNodes(rawData) {
-                var maxAmount = d3.max(rawData, function (d) { return +1; });
-                var radiusScale = d3.scalePow()
-                    .exponent(0)
-                    .range([4, 20])
-                    .domain([0, 10]);
-                var myNodes = rawData.map(function (d) {
-                    return {
-                        id: d.Tipo,
-                        radius: 4,
-                        value: +1,
-                        // name: d.grant_title,
-                        // org: d.organization,
-                        group: d.Sexo,
-                        year: d.Edicion,
-                        x: 300 + Math.random() * 200,
-                        y: Math.random() * 500
-                    };
-                });
-                myNodes.sort(function (a, b) { return b.value - a.value; });
-                return myNodes;
-            }
+			function createNodes(rawData) {
+				var maxAmount = d3.max(rawData, function (d) { return +1; });
+				var radiusScale = d3.scalePow()
+					.exponent(0)
+					.range([4, 20])
+					.domain([0, 10]);
+				var myNodes = rawData.map(function (d) {
+					return {
+						id: d.Tipo,
+						radius: 4,
+						value: +1,
+						// name: d.grant_title,
+						// org: d.organization,
+						group: d.Sexo,
+						year: d.Edicion,
+						x: 300 + Math.random() * 200,
+						y: Math.random() * 500
+					};
+				});
+				myNodes.sort(function (a, b) { return b.value - a.value; });
+				return myNodes;
+			}
 
-            var chart = function chart(selector, rawData) {
-                nodes = createNodes(rawData);
-                svg = d3.select(selector)
-                    .append('svg')
-                    .attr('width', width)
-                    .attr('height', height);
-                bubbles = svg.selectAll('.bubble')
-                    .data(nodes, function (d) { return d.Tipo; });
-                var bubblesE = bubbles.enter().append('circle')
-                    .classed('bubble', true)
-                    .attr('r', 0)
-                    .attr('fill', function (d) {
-                        if (d.group == "Mujer") return "#000";
-                        else return "#ddd";
-                    })
-                    .attr('opacity', function (d) {
-                        if (d.group == "Mujer") return 1;
-                        else return 1;
-                    })
-                    // .attr('stroke', function (d) { return d3.rgb(fillColor(d.group)).darker(); })
-                    .attr('stroke', function (d) { return "none"; })
-                    .attr('stroke-width', .5)
+			var chart = function chart(selector, rawData) {
+				nodes = createNodes(rawData);
+				svg = d3.select(selector)
+					.append('svg')
+					.attr('width', width)
+					.attr('height', height);
+				bubbles = svg.selectAll('.bubble')
+					.data(nodes, function (d) { return d.Tipo; });
+				var bubblesE = bubbles.enter().append('circle')
+					.classed('bubble', true)
+					.attr('r', 0)
+					.attr('fill', function (d) {
+						if (d.group == "Mujer") return "#ddd";
+						else return "orange";
+					})
+					.attr('opacity', function (d) {
+						if (d.group == "Mujer") return 1;
+						else return 1;
+					})
+					// .attr('stroke', function (d) { return d3.rgb(fillColor(d.group)).darker(); })
+					.attr('stroke', function (d) { return "none"; })
+					.attr('stroke-width', .5)
 
-                bubbles = bubbles.merge(bubblesE);
-                bubbles.transition()
-                    .duration(2000)
-                    .attr('r', function (d) { return d.radius; });
-                simulation.nodes(nodes);
-                groupBubbles();
-            };
+				bubbles = bubbles.merge(bubblesE);
+				bubbles.transition()
+					.duration(2000)
+					.attr('r', function (d) { return d.radius; });
+				simulation.nodes(nodes);
+				groupBubbles();
+			};
 
-            function ticked() {
-                bubbles
-                    .attr('cx', function (d) { return 200 + d.x; })
-                    .attr('cy', function (d) { return d.y - 50; });
-            }
+			function ticked() {
+				bubbles
+					.attr('cx', function (d) { return 200 + d.x; })
+					.attr('cy', function (d) { return d.y - 50; });
+			}
 
-            function nodeYearPos(d) {
-                return yearCenters[d.year].x;
-            }
+			function nodeYearPos(d) {
+				return yearCenters[d.year].x;
+			}
 
-            function groupBubbles() {
-                simulation.force('x', d3.forceY().strength(forceStrength).y(nodeYearPos));
-                simulation.alpha(1.6).restart();
-            }
+			function groupBubbles() {
+				simulation.force('x', d3.forceY().strength(forceStrength).y(nodeYearPos));
+				simulation.alpha(1.6).restart();
+			}
 
-            function splitBubbles() {
-                simulation.force('x', d3.forceX().strength(forceStrength).x(nodeYearPos));
-                simulation.alpha(2).restart();
-            }
+			function splitBubbles() {
+				simulation.force('x', d3.forceX().strength(forceStrength).x(nodeYearPos));
+				simulation.alpha(2).restart();
+			}
 
-            chart.toggleDisplay = function (displayName) {
-                if (displayName === 'year') {
-                    splitBubbles();
-                } else {
-                    groupBubbles();
-                }
-            };
-            return chart;
-        }
+			chart.toggleDisplay = function (displayName) {
+				if (displayName === 'year') {
+					splitBubbles();
+				} else {
+					groupBubbles();
+				}
+			};
+			return chart;
+		}
 
-        var myBubbleChart = bubbleChart();
-        function display(error, data) {
-            if (error) {
-                console.log(error);
-            }
-            myBubbleChart('#vis', data);
-        }
+		var myBubbleChart = bubbleChart();
+		function display(error, data) {
+			if (error) {
+				console.log(error);
+			}
+			myBubbleChart('#vis', data);
+		}
 
-        d3.csv('../../data/Remove_NaN.csv', display);
+		d3.csv('../../data/Remove_NaN.csv', display);
 
 
 		//---------------------------- LEGEND --------------------------------------
 
-       list_number = ['Raw Data', 'NaN Removed']
-        list_cat = ['5500443 Datapoints', '4500 Datapoints']
+		list_number = ['Raw Data', 'NaN Removed']
+		list_cat = ['660066 Datapoints', '45000 Datapoints']
 
-        for (ii = 0; ii < 5; ii++) {
+		for (ii = 0; ii < 5; ii++) {
 
-            thefill = "#999"
-            vpitch = -5
-            thepitch = 220
+			thefill = "#999"
+			vpitch = -5
+			thepitch = 120
+			dapitch = 300
 
-            group
-                .append("text")
-                .attr("x", function () {
-                    if (ii < 5) return 700;
-                    else return 380
-                })
-                .attr("y", function() {
-                    if (ii ==2) return 90 + ii * thepitch
-                    else return 60 + ii * thepitch
-                })
-                .text(list_number[ii])
-                // .text(function (d) { return datos[i].normalizedQuery.toUpperCase(); })
-                .attr("font-family", "Poppins, Gill Sans, sans-serif")
-                .attr("font-size", 14)
-                .attr("opacity", 1)
-				.attr("id","thetick")
-                .attr("text-anchor", "middle")
-                .style("fill", "#000")
+			group
+				.append("text")
+				.attr("x", function () {
+					if (ii < 5) return 600;
+					else return 280
+				})
+				.attr("y", function () {
+					if (ii == 2) return dapitch + 90 + ii * thepitch
+					else return dapitch + 60 + ii * thepitch
+				})
+				.text(list_number[ii])
+				// .text(function (d) { return datos[i].normalizedQuery.toUpperCase(); })
+				.attr("font-family", "Georgia")
+				.attr("font-size", 14)
+				.attr("opacity", 1)
+				.attr("id", "thetick")
+				.attr("text-anchor", "middle")
+				.style("fill", "#000")
 
-            group.append("text")
-                .attr("x", function () {
-                    if (ii < 5) return 700;
-                    else return 380
-                })
-                .attr("y", function() {
-                    if (ii ==2) return 108 + ii * thepitch
-                    else return 78 + ii * thepitch
-                })
-                .text(list_cat[ii])
-                .attr("font-family", "Poppins, Gill Sans, sans-serif")
-                .attr("font-size", 16)
-                .attr("text-anchor", "middle")
-                .style("fill", thefill)
-        }
+			group.append("text")
+				.attr("x", function () {
+					if (ii < 5) return 600;
+					else return 280
+				})
+				.attr("y", function () {
+					if (ii == 2) return dapitch + 108 + ii * thepitch
+					else return dapitch + 78 + ii * thepitch
+				})
+				.text(list_cat[ii])
+				.attr("font-family", "Georgia")
+				.attr("font-size", 16)
+				.attr("text-anchor", "middle")
+				.style("fill", thefill)
+		}
+
+		//------------------------------- D3.js DOTS MAP -----------------------------
+		
+		var svgmap = d3.select("div.map-div")
+			.append("svg")
+			.attr("width", 1250)
+			.attr("height", 550)
+
+		var g4 = svgmap.append("g");
+		var gdots = svgmap.append("g");
+		// var frame = svgmap.append("g");
+		// var legend = svgmap.append("g");
+
+		var projection = d3.geoEquirectangular()
+			.center([0, 0])
+			.scale(200)
+			.translate([500, 340])
+
+		var path = d3.geoPath()
+			.projection(projection);
+
+		var graticule = d3.geoGraticule();
+
+		g4.append("path")
+			.datum(graticule)
+			.attr("class", "graticule")
+			.attr("d", path);
+		
+		d3.json("../../DATA/world-110m2.json", function (error, topology) {
+
+			g4.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries)
+					.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("stroke", 'none')
+				.style("stroke-width", 1)
+								.attr("opacity", .1)
+
+				.style("fill", function (d) {
+					if (d.id == 152) return "#000";
+					else return "#000";
+				})
+		});
+		
+		d3.json("../../DATA/back.json", function (data) {
+
+			// console.log(data)
+
+			gdots.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) { 
+					// console.log(d.lon) 
+					return projection([d.lon, d.lat])[0]; })
+				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+				.attr("r", 1.5)
+				.attr("opacity", 1)
+				.style("fill", function (d) {return d3.rgb(255,255-(-1)*d.wind*10, 55+d.wind*10)
+				})
+				// .attr("fill", function (d) {
+				// 	if (d.wind == "null") return "#fff"
+				// 	else return d3.rgb(255+d.wind, d.wind, 255)
+				// });
+		})
+
+		//------------------------------- LEAFLET MAP -----------------------------
+
+        // var zomi = 3
+        // var map = L.map('map').setView([0, 0], zomi);
+
+        // var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        //     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        // });
+
+        // var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        //     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+        // });
+
+        // var esriRelief = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
+        // // var esriRelief = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+        
+		// var basemap = L.tileLayer(esriRelief, {
+        //     attribution: '<a href="http://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">ESRI shaded relief</a>, <a href="http://www.horizon-systems.com/NHDPlus/NHDPlusV2_home.php">NHDPlus v2</a>, OpenStreetMap',
+        //     maxZoom: zomi + 5, minZoom: 1, opacity: 1
+        // });
+
+        // // basemap.addTo(map);
+        // Esri_WorldGrayCanvas.addTo(map);
+
+		// L.svg().addTo(map);
+
+  		// var svg = d3.select(map.getPanes().overlayPane).append("svg"),
+        //     g = svg.append("g").attr("class", "leaflet-zoom-hide");
+        // g2 = svg.append("g")
+
+        // L.geoJSON(back, {
+        //     style: function (feature) {
+        //         console.log(feature)
+        //         return {
+        //             "stroke": feature.properties.stroke,
+        //             "color": feature.properties.fill,
+        //             "fillOpacity": feature.properties.fillOpacity,
+        //             "weight": 1,
+                   
+        //         };
+        //     }
+        // }).addTo(map)
 	
-
 	</script>
 
 </html>

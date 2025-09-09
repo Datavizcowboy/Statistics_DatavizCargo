@@ -1,3 +1,14 @@
+
+.leaflet-tile-pane {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  /* opacity: .6; */
+
+  /* -webkit-filter: brightness(0.5);
+  filter: brightness(0.5); */
+}
+
+
 .node--internal circle {
   fill: #999;
 }
@@ -160,6 +171,7 @@ p.credits {
   font-style: italic;
   opacity: 1;
   margin-left: 0px;
+  margin-top: 10px;
   color: #000;
   position: relative;
 }
@@ -309,7 +321,7 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 340px;
-  height: 300px;
+  height: 900px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1.0;
@@ -347,10 +359,23 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 1150px;
-  height: 500px;
+  height: 350px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 940px;
+  margin-top: 2180px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.datagroup-div {
+  float: left;
+  position: absolute;
+  width: 1150px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2540px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -363,7 +388,20 @@ border-top-style: solid; */
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1440px;
+  margin-top: 2540px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.map-div {
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 800px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3100px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;

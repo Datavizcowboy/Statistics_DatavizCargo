@@ -229,7 +229,7 @@ body {
   /*    background-image: url("./Fond.jpeg");*/
   /*    background-repeat:no-repeat;*/
   /* background: #002D48; */
-  background: #666;
+  background: #777;
 
   opacity: 1;
 }
@@ -411,10 +411,10 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 1180px;
-  height: 800px;
+  height: 1000px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 400px;
+  margin-top: 1100px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -493,34 +493,34 @@ path {
 .axis path,
 .axis line {
   fill: none;
-  stroke: #999;
-  opacity: .5;
+  stroke: #fff;
+  opacity: 1;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }
 
 .axis text {
-  fill: #999;
+  fill: #fff;
   font-family: Verdana, sans-serif;
   font-size: 9px;
   color: white;
   background: white;
 }
 
-.x.axis path {
+/* .x.axis path {
   display: white;
 }
 .x.axis line {
   fill: none;
-  stroke: none;
-  stroke-width: 0px;
-}
+  stroke: white;
+  stroke-width: 1px;
+} */
 
 .yaxis path,
 .yaxis line {
   fill: none;
-  stroke: none;
-  opacity: .5;
+  stroke: white;
+  opacity: 1;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }

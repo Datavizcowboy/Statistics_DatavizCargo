@@ -108,7 +108,7 @@
 	<script type="text/javascript">
 
 		var width = 1160;
-		var height = 800;
+		var height = 1000;
 
 		var svg = d3.select("div.scattermatrix-div")
 			.append("svg")
@@ -133,14 +133,17 @@
 			.range([350, width - 40]);
 
 		var y = d3.scale.linear()
-			.range([40, height - 40]);
+			.range([40, height - 300]);
 
-		var xAxis = d3.svg.axis().scale(x)
+		var xAxis = d3.svg.axis()
+		.scale(x)
 			.orient("bottom")
 			// .tickFormat(function (d) { return them[d]; })
 			.ticks(12);
 
-		var yAxis = d3.svg.axis().scale(y).orient("left").ticks(19);
+		var yAxis = d3.svg.axis().scale(y)
+		.orient("left")
+		.ticks(10);
 
 		var theline = d3.svg.line()
 			.interpolate("basis")
@@ -154,17 +157,24 @@
 			.y1(function (d) { return y(d.min); });
 
 		g.append("g")
-			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
-			.call(yAxis);
-		g.append("g")
 			.attr("class", "axis")
-			.attr('transform', 'translate(0,' + (300) + ')')
+			.attr('transform', 'translate(0,' + (700) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
+			.style("text-anchor", "middle")
+			.attr("x", 0)
+			.attr("y", 10);
+
+		g.append("g")
+			.attr("class", "yaxis")
+			.attr('transform', 'translate(' + (350) + ',0)')
+			.call(yAxis)
+			.selectAll(".tick text")
 			.style("text-anchor", "start")
-			.attr("x", 35)
-			.attr("y", 270);
+			.attr("x", 0)
+			.attr("y", 0);
+
+
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 

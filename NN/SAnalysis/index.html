@@ -125,25 +125,25 @@
 
 		var group = svggroup.append("g")
 
-		//----------------------------- ScatterMatrix
-
 		//--------------------------------------------LINES AND AREAS
 
 		var x = d3.scale.linear()
-			.range([350, width - 40]);
+			.domain([0, 60])
+			.range([350, 1000]);
 
 		var y = d3.scale.linear()
-			.range([40, height - 300]);
+			.domain([1, 0.15])
+			.range([50, 500]);
 
 		var xAxis = d3.svg.axis()
-		.scale(x)
+			.scale(x)
 			.orient("bottom")
 			// .tickFormat(function (d) { return them[d]; })
 			.ticks(12);
 
 		var yAxis = d3.svg.axis().scale(y)
-		.orient("left")
-		.ticks(10);
+			.orient("left")
+			.ticks(10);
 
 		var theline = d3.svg.line()
 			.interpolate("basis")
@@ -158,7 +158,7 @@
 
 		g.append("g")
 			.attr("class", "axis")
-			.attr('transform', 'translate(0,' + (700) + ')')
+			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
 			.style("text-anchor", "middle")
@@ -170,11 +170,48 @@
 			.attr('transform', 'translate(' + (350) + ',0)')
 			.call(yAxis)
 			.selectAll(".tick text")
-			.style("text-anchor", "start")
-			.attr("x", 0)
+			.style("text-anchor", "end")
+			.attr("x", -10)
 			.attr("y", 0);
 
+		g.append("text")
+			.attr("x", function (d) { return (350); })
+			.attr("y", function (d) { return (545); })
+			.text(function (d) { return "TS Amplitude"; })
+			.attr("font-family", "Georgia, Garamond, sans-serif")
+			.attr("font-size", 14)
+			.style("fill", "#000")
 
+		g.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 290)
+			.attr("x", 0 - (440))
+			.attr("dy", "1em")
+			.style("text-anchor", "middle")
+			.text("LMD Soil Moisture")
+			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+			.attr("font-size", 14)
+			.attr("opacity", 1)
+			.attr("id", "theyaxis")
+			.style("fill", "#000");
+
+		//------------------------------- SCATTER PLOT -------------------------------
+
+		d3.json("../../data/scatter.json", function (error, data) {
+
+			g.selectAll("dot")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr('transform', 'translate(0,' + (0) + ')')
+				.attr("r", function (d) { return 2})
+				.attr("cx", function (d) { return x(d.amplitude); })
+				.attr("cy", function (d) { return y(d.soil); })
+				.style("opacity", function (d) {return 1;})
+				.attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) { return "#000"; })
+		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 

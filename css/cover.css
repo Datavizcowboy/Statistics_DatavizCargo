@@ -493,18 +493,17 @@ path {
 .axis path,
 .axis line {
   fill: none;
-  stroke: #fff;
+  stroke: #333;
   opacity: 1;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }
 
 .axis text {
-  fill: #fff;
-  font-family: Verdana, sans-serif;
-  font-size: 9px;
-  color: white;
-  background: white;
+  fill: #333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+  /* background: white; */
 }
 
 /* .x.axis path {
@@ -519,22 +518,19 @@ path {
 .yaxis path,
 .yaxis line {
   fill: none;
-  stroke: white;
-  opacity: 1;
+  stroke: none;
+  opacity: 0;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }
 
 .yaxis text {
-  fill: #999;
-  font-family: Verdana, sans-serif;
-  font-size: 9px;
-  color: white;
-  opacity: .05;
+  fill: #333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+  opacity: 1;
   /* background: white; */
 }
-
-
 
 .area {
   fill: #999;

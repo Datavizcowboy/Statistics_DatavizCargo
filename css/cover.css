@@ -420,6 +420,136 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
+.correlation-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.simplelinear-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.fitted-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 4100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.multiple-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.interaction-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.poly-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.polymap-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 4100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.clusters-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.clustersballs-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.clustersmap-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
 .left1-div {
   float: left;
   position: absolute;
@@ -476,18 +606,14 @@ div.tooltip {
   height: 50px;
   margin-left: 0;
   margin-top: 300;
-  /*  padding: 6px; */
   background-color: none;
 }
 
 path {
-  /*  stroke: #6F6F6F;*/
   stroke: white;
-  /*  stroke: none;*/
   stroke-width: 0.75px;
   fill: none;
   opacity: .9;
-  /*  fill: #666;*/
 }
 
 .axis path,
@@ -503,17 +629,7 @@ path {
   fill: #333;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 11px;
-  /* background: white; */
 }
-
-/* .x.axis path {
-  display: white;
-}
-.x.axis line {
-  fill: none;
-  stroke: white;
-  stroke-width: 1px;
-} */
 
 .yaxis path,
 .yaxis line {
@@ -529,12 +645,10 @@ path {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 11px;
   opacity: 1;
-  /* background: white; */
 }
 
 .area {
   fill: #999;
   stroke: none;
-  /*  fill: #999;*/
   opacity: 1;
 }

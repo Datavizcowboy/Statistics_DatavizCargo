@@ -16,7 +16,7 @@
 <body>
 
 	<div class='header' id="header">
-		<p class="title"><span>Sensitivity</span></br>Analysis</p>
+		<p class="title"><span>Multiple</span></br>Linear</br>Regression</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
 			A soil moisture dataproduct on a global scale can be derived from
@@ -89,16 +89,16 @@
 		</div>
 	</div>
 
-	<div class="scattermatrix-div">
+	<div class="multiple-div">
 	</div>
 
-	<div class="correlation-div">
+	<div class="interaction-div">
 	</div>
 
-	<div class="simplelinear-div">
+	<div class="poly-div">
 	</div>
 
-	<div class="fitted-div">
+	<div class="polymap-div">
 	</div>
 
 	<script type="text/javascript">
@@ -106,7 +106,7 @@
 		var width = 1160;
 		var height = 1000;
 
-		var svg = d3.select("div.scattermatrix-div")
+		var svg = d3.select("div.multiple-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
@@ -114,28 +114,28 @@
 		var g = svg.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
-		var svgcorr = d3.select("div.correlation-div")
+		var svgint = d3.select("div.interaction-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var g_corr = svgcorr.append("g")
+		var g_int = svgint.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
-		var svgsimple = d3.select("div.simplelinear-div")
+		var svgpoly = d3.select("div.poly-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var g_simple = svgsimple.append("g")
+		var g_poly = svgpoly.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
-		var svgfitted = d3.select("div.fitted-div")
+		var svgpolymap = d3.select("div.polymap-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		var g_fitted = svgfitted.append("g")
+		var g_polymap = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
 		//--------------------------------------------LINES AND AREAS
@@ -169,7 +169,7 @@
 			.y0(function (d) { return y(d.max); })
 			.y1(function (d) { return y(d.min); });
 
-		//------------------------------- SCATTER PLOT -------------------------------
+		//------------------------------- MULTIPLE -------------------------------
 
 		g.append("g")
 			.attr("class", "axis")
@@ -226,11 +226,11 @@
 				.attr("fill", function (d) { return "#000"; })
 		})
 
-		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
+		//------------------------------- INTERACTION TERMS -------------------
 
 
 
-		g_simple.append("g")
+		g_int.append("g")
 			.attr("class", "axis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
@@ -239,7 +239,7 @@
 			.attr("x", 0)
 			.attr("y", 10);
 
-		g_simple.append("g")
+		g_int.append("g")
 			.attr("class", "yaxis")
 			.attr('transform', 'translate(' + (350) + ',0)')
 			.call(yAxis)
@@ -248,7 +248,7 @@
 			.attr("x", -10)
 			.attr("y", 0);
 
-		g_simple.append("text")
+		g_int.append("text")
 			.attr("x", function (d) { return (350); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
@@ -256,7 +256,7 @@
 			.attr("font-size", 14)
 			.style("fill", "#000")
 
-		g_simple.append("text")
+		g_int.append("text")
 			.attr("transform", "rotate(-90)")
 			.attr("y", 290)
 			.attr("x", 0 - (440))
@@ -271,7 +271,7 @@
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
-			g_simple.selectAll("dot")
+			g_int.selectAll("dot")
 				.data(data)
 				.enter()
 				.append("circle")
@@ -287,9 +287,9 @@
 
 
 
-		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
+		//------------------------------- POLYNOMIAL -------------------
 
-		g_fitted.append("g")
+		g_poly.append("g")
 			.attr("class", "axis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
@@ -298,7 +298,7 @@
 			.attr("x", 0)
 			.attr("y", 10);
 
-		g_fitted.append("g")
+		g_poly.append("g")
 			.attr("class", "yaxis")
 			.attr('transform', 'translate(' + (350) + ',0)')
 			.call(yAxis)
@@ -307,7 +307,7 @@
 			.attr("x", -10)
 			.attr("y", 0);
 
-		g_fitted.append("text")
+		g_poly.append("text")
 			.attr("x", function (d) { return (350); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
@@ -315,7 +315,7 @@
 			.attr("font-size", 14)
 			.style("fill", "#000")
 
-		g_fitted.append("text")
+		g_poly.append("text")
 			.attr("transform", "rotate(-90)")
 			.attr("y", 290)
 			.attr("x", 0 - (440))
@@ -330,7 +330,7 @@
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
-			g_fitted.selectAll("dot")
+			g_poly.selectAll("dot")
 				.data(data)
 				.enter()
 				.append("circle")
@@ -345,13 +345,6 @@
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
-
-		var svgmap = d3.select("div.map-div")
-			.append("svg")
-			.attr("width", 1250)
-			.attr("height", 550)
-
-		var g4 = svgmap.append("g");
 
 	</script>
 

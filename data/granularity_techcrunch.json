@@ -1,0 +1,14 @@
+{"nodes":
+  [
+    {"name": "Data Description", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Frequency", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Rank", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Neighborhood", "group": 0,"link": "https://datavizcowboy.com"}],
+
+  "links":[
+        {"source":0,"target":1,"value":0},  
+    {"source":1,"target":2,"value":0},    
+    {"source":2,"target":3,"value":0},
+    {"source":3,"target":0,"value":0}
+     ]
+}

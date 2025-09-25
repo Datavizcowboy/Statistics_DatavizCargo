@@ -1,12 +1,12 @@
 {"nodes":
   [
-    {"name": "Fire Weather Index", "group": 1, "link": "https://yeti.mitigasolutions.com/Wildfires_FWI/"},
-    {"name": "Ignition Points", "group": 1, "link": "https://yeti.mitigasolutions.com/MFS_Folium/"},
-    {"name": "Ignition Risk", "group": 1, "link": "https://yeti.mitigasolutions.com/MFS_Kepler_Demo/"}
+    {"name": "Data Description", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Sensitivity Analysis", "group": 0,"link": "https://datavizcowboy.com"},
+    {"name": "Mutiple Linear Regression", "group": 0,"link": "https://datavizcowboy.com"},
+        {"name": "Timeline Reconstruction", "group": 0,"link": "https://datavizcowboy.com"}],
 
-],
   "links":[
-    {"source":0,"target":1,"value":1},
-    {"source":1,"target":2,"value":1}
-  ]
+        {"source":0,"target":1,"value":0},  
+    {"source":1,"target":2,"value":0},    
+    {"source":1,"target":3,"value":0}     ]
 }

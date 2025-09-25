@@ -27,28 +27,18 @@
 	</div>
 
 	<div class="container">
-
 		<div class="option0">
 			<div class="left1-div">
 				<p class="coverbig"><span>Neural </br>Networks</span></br>on Satellite Observations</br></p>
 				<p class="credits">
-					A soil moisture dataproduct on a global scale can be derived from 
-					satellite observations of NDVI, surface temperature and backscatter 
-					by using neural network statistical tools. 
+					A soil moisture dataproduct on a global scale can be derived from
+					satellite observations of NDVI, surface temperature and backscatter
+					by using neural network statistical tools.
 				</p>
 			</div>
 			<div class="images">
-				<!-- <a href="https://datavizcowboy.com/capacity" target="_blank"> -->
-				<!-- <img src="./images/00_DEM.png" width="150" height="230"></img> -->
-				</a>
-				<!-- <a href="https://datavizcowboy.com/capacity" target="_blank"> -->
-				<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
-				</a>
-				<!-- <a href="https://datavizcowboy.com/capacity" target="_blank"> -->
-				<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
-				</a>
-				<a href="https://datavizcowboy.com/capacity" target="_blank">
-					<!-- <img src="./images/01_Amazon.png" width="150" height="230"></img> -->
+				<a href="./NN/DDescription/" target="_blank">
+					<img src="./images/soil_0.png" width="150" height="230"></img>
 				</a>
 			</div>
 		</div>
@@ -59,15 +49,44 @@
 				<p class="credits">
 					Retail data is used in this classification analysis to estimate
 					metrics on e-commerce, including revenue, visits and web surfing
-					behaviour. 
+					behaviour.
 				</p>
 			</div>
 			<div class="images">
-				<!-- <a href="https://datavizcowboy.com/capacity" target="_blank"> -->
-				<!-- <img src="./images/10_Hectares.png" width="150" height="230"></img> -->
+				<a href="./NN/DDescription/" target="_blank">
+					<img src="./images/soil_0.png" width="150" height="230"></img>
 				</a>
-				<!-- <a href="https://datavizcowboy.com/capacity" target="_blank"> -->
-				<!-- <img src="./images/11_Team.png" width="150" height="230"></img> -->
+			</div>
+		</div>
+
+		<div class="option0">
+			<div class="left3-div">
+				<p class="coverbig"><span>Neural </br>Networks</span></br>on Wildfire Timelines</br></p>
+				<p class="credits">
+					Retail data is used in this classification analysis to estimate
+					metrics on e-commerce, including revenue, visits and web surfing
+					behaviour.
+				</p>
+			</div>
+			<div class="images">
+				<a href="./NN/DDescription/" target="_blank">
+					<img src="./images/soil_0.png" width="150" height="230"></img>
+				</a>
+			</div>
+		</div>
+
+		<div class="option0">
+			<div class="left4-div">
+				<p class="coverbig"><span>Text Analysis</span></br>on Tech News Outlets</br></p>
+				<p class="credits">
+					Retail data is used in this classification analysis to estimate
+					metrics on e-commerce, including revenue, visits and web surfing
+					behaviour.
+				</p>
+			</div>
+			<div class="images">
+				<a href="./NN/DDescription/" target="_blank">
+					<img src="./images/soil_0.png" width="150" height="230"></img>
 				</a>
 			</div>
 		</div>
@@ -88,6 +107,16 @@
 			.attr("width", width)
 			.attr("height", height);
 
+		var svg_wildfires = d3.select("div.left3-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		var svg_techcrunch = d3.select("div.left4-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
 		var force1 = d3.layout.force()
 			.gravity(0.01)
 			.distance(160)
@@ -100,9 +129,22 @@
 			.charge(-50)
 			.size([width, height]);
 
-		var font_color = "#666"
+		var force3 = d3.layout.force()
+			.gravity(0.04)
+			.distance(120)
+			.charge(-50)
+			.size([width, height]);
 
-		//------------------------------------ RAINFOREST
+		var force4 = d3.layout.force()
+			.gravity(0.04)
+			.distance(120)
+			.charge(-50)
+			.size([width, height]);
+
+		var font_color = "#777"
+		var thesize = 9
+
+		//------------------------------------ NEURALNETWORKS
 
 		d3.json("./data/granularity_neuralnetworks.json", function (error, json) {
 			if (error) throw error;
@@ -137,7 +179,7 @@
 				})
 
 				.attr("stroke", function (d) {
-					if (d.group == 0) return "#bbb";
+					if (d.group == 0) return "#aaa";
 					else return "cyan";
 				})
 				.attr("stroke-width", function (d) {
@@ -149,10 +191,7 @@
 				.attr("dx", 14)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
-				.style("font-size", function (d) {
-					if (d.group != 2) return 8;
-					else return 8;
-				})
+				.style("font-size", function (d) {return thesize;})
 				.style("fill", "#bbb")
 				.style("font-family", "Menlo, Georgia")
 				// .style("font-weight", "bold")
@@ -174,14 +213,12 @@
 						// update_iframe_volcanoes(d.index)
 					})
 			});
-
 			setInterval(function () { force1.alpha(0.05); });
-
 		});
 
-		//---------------------------- TECHNOLOGY
+		//---------------------------- ECOMMERCE
 
-		d3.json("./data/granularity_technology.json", function (error, json) {
+		d3.json("./data/granularity_ecommerce.json", function (error, json) {
 			if (error) throw error;
 
 			force2
@@ -205,25 +242,32 @@
 				.attr("cx", 0)
 				.attr("cy", 0)
 				.attr("r", function (d) {
-					if (d.group == 0) return 12;
-					else return 3;
+					if (d.group == 0) return 6;
+					else return 6;
 				})
 				.attr("fill", function (d) {
 					if (d.group == 0) return font_color;
 					else return "cyan";
 				})
 
+				.attr("stroke", function (d) {
+					if (d.group == 0) return "#aaa";
+					else return "cyan";
+				})
+				.attr("stroke-width", function (d) {
+					if (d.group == 0) return 3;
+					else return 0;
+				})
+
 			node2.append("text")
 				.attr("dx", 14)
 				.attr("y", 5)
 				.text(function (d) { return d.name })
-				.style("font-size", function (d) {
-					if (d.group != 2) return 11;
-					else return 8;
-				})
-				.style("fill", "#000")
-				.style("font-family", "Rockwell")
-				.style("font-weight", "bold")
+				.style("font-size", function (d) {return thesize;})
+
+				.style("fill", "#bbb")
+				.style("font-family", "Menlo, Georgia")
+				// .style("font-weight", "bold")
 				.style("text-anchor", "start")
 
 			force2.on("tick", function (d) {
@@ -243,6 +287,152 @@
 					})
 			});
 			setInterval(function () { force2.alpha(0.01); });
+		});
+
+		//------------------------------------ WILDFIRES
+
+		d3.json("./data/granularity_wildfires.json", function (error, json) {
+			if (error) throw error;
+
+			force3
+				.nodes(json.nodes)
+				.links(json.links)
+				.start();
+
+			var link3 = svg_wildfires.selectAll(".link")
+				.data(json.links)
+				.enter()
+				.append("line")
+				.attr("class", "link");
+
+			var node3 = svg_wildfires.selectAll(".node")
+				.data(json.nodes)
+				.enter().append("g")
+				.attr("class", "node")
+				.call(force3.drag)
+
+			node3.append("circle")
+				.attr("cx", 0)
+				.attr("cy", 0)
+				.attr("r", function (d) {
+					if (d.group == 0) return 6;
+					else return 6;
+				})
+				.attr("fill", function (d) {
+					if (d.group == 0) return font_color;
+					else return "cyan";
+				})
+
+				.attr("stroke", function (d) {
+					if (d.group == 0) return "#aaa";
+					else return "cyan";
+				})
+				.attr("stroke-width", function (d) {
+					if (d.group == 0) return 3;
+					else return 0;
+				})
+
+			node3.append("text")
+				.attr("dx", 14)
+				.attr("y", 5)
+				.text(function (d) { return d.name })
+				.style("font-size", function (d) {return thesize;})
+
+				.style("fill", "#bbb")
+				.style("font-family", "Menlo, Georgia")
+				// .style("font-weight", "bold")
+				.style("text-anchor", "start")
+
+			force3.on("tick", function (d) {
+				link3.attr("x1", function (d) { return d.source.x; })
+					.attr("y1", function (d) { return d.source.y; })
+					.attr("x2", function (d) { return d.target.x; })
+					.attr("y2", function (d) { return d.target.y; });
+
+				node3.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
+					.on("mouseover", function () {
+						d3.select(this).style("cursor", "pointer")
+					})
+					.on("click", function (d) {
+						d3.select("#the_title2").text(d.name)
+						d3.select("#the_link2").text(d.link)
+						// update_iframe_ash(d.index)
+					})
+			});
+			setInterval(function () { force3.alpha(0.01); });
+		});
+
+		//------------------------ TEXT ANALYSIS
+
+		d3.json("./data/granularity_techcrunch.json", function (error, json) {
+			if (error) throw error;
+
+			force4
+				.nodes(json.nodes)
+				.links(json.links)
+				.start();
+
+			var link4 = svg_techcrunch.selectAll(".link")
+				.data(json.links)
+				.enter()
+				.append("line")
+				.attr("class", "link");
+
+			var node4 = svg_techcrunch.selectAll(".node")
+				.data(json.nodes)
+				.enter().append("g")
+				.attr("class", "node")
+				.call(force4.drag)
+
+			node4.append("circle")
+				.attr("cx", 0)
+				.attr("cy", 0)
+				.attr("r", function (d) {
+					if (d.group == 0) return 6;
+					else return 6;
+				})
+				.attr("fill", function (d) {
+					if (d.group == 0) return font_color;
+					else return "cyan";
+				})
+
+				.attr("stroke", function (d) {
+					if (d.group == 0) return "#aaa";
+					else return "cyan";
+				})
+				.attr("stroke-width", function (d) {
+					if (d.group == 0) return 3;
+					else return 0;
+				})
+
+			node4.append("text")
+				.attr("dx", 14)
+				.attr("y", 5)
+				.text(function (d) { return d.name })
+				.style("font-size", function (d) {return thesize;})
+
+				.style("fill", "#bbb")
+				.style("font-family", "Menlo, Georgia")
+				// .style("font-weight", "bold")
+				.style("text-anchor", "start")
+
+			force4.on("tick", function (d) {
+				link4.attr("x1", function (d) { return d.source.x; })
+					.attr("y1", function (d) { return d.source.y; })
+					.attr("x2", function (d) { return d.target.x; })
+					.attr("y2", function (d) { return d.target.y; });
+
+				node4.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
+					.on("mouseover", function () {
+						d3.select(this).style("cursor", "pointer")
+					})
+					.on("click", function (d) {
+						d3.select("#the_title2").text(d.name)
+						d3.select("#the_link2").text(d.link)
+						// update_iframe_ash(d.index)
+					})
+			});
+			setInterval(function () { force4.alpha(0.01); });
 		});
 
 	</script>

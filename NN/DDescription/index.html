@@ -5,6 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+		<link type="text/css" rel="stylesheet" href="../../css/description.css">
+
 	    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
     <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
@@ -25,32 +27,20 @@
 		</p>
 	</div>
 
-	<!-- <div class='back-div'>
-		<p class="content">
-			A project on complex datasets </br> and its analysis through
-			<span>linear regression</span>,
-			<span>multiple linear regression</span>,
-			<span>classification</span>,
-			<span>clustering</span> and
-			<span>neural networks</span>, from data analysis to
-			data visualization. </span>
-		</p>
-	</div> -->
-
 	<div class="container">
 
 		<div class="option_var">
 			<p class="coverbig"><span>ERS</span></br>Backscatter</p>
-			<p class="credits">
+			<p class="credits2"></br>
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
-				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
-				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
-				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
+				frequency of 5.25GHz. A scatterometer is an active instrument, which means <b>it sends out a radiation
+				pulse </b>and measures the amount of radiation that is reflected or scattered back in the direction of the
+				instrument. </br></br>This fraction of radiation that is received at the instrument is called the backscatter and
 				is specified in units of decibel [dB]. 
 				</br></br>
 				In general, the backscatter from the Earth surface depends on the
 				characteristics of the surface (for example the soil wetness, soil roughness and the surface
-				temperature) as well as the viewing geometry of the instrument. In particular, the backscatter is highly
+				temperature) as well as the viewing geometry of the instrument. </br></br>In particular, the backscatter is highly
 				dependent on the incidence angle at which the observation was taken. In order to account for the effects
 				of the viewing geometry all backscatter measurements have been transformed to the same incidence angle.
 				</br></br>
@@ -62,22 +52,22 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig">SSM/I</br> Surface</br><span>Emissivities</span></p>
-			<p class="credits">
+			<p class="credits2"></br>
 				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
-				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
+				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. </br></br>Since it is a passive instrument, it does not
 				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
 				by the Earth surface. 
 				</br></br>
 				The quantity measured is the brightness temperature, which is defined as the
 				temperature a perfect black body would have to have in order to emit the same amount of radiation. The
 				original brightness temperatures measured were converted into surface emissivities by removing the
-				contributions from the atmosphere, clouds, rain and the surface temperature. For the retrieval of soil
+				contributions from the atmosphere, clouds, rain and the surface temperature. </br></br>For the retrieval of soil
 				moisture only the lowest frequency channel (at 19.35GHz) is of interest, since the other frequencies are
 				too high to penetrate the surface with a sufficient depth. 
 				</br></br>
 				The SSM/I instrument measures both at
 				vertical and horizontal polarization, thus two measurements are available for each grid point. The
-				sensitivity of the surface emissivities depends on the polarization considered. For a horizontal
+				sensitivity of the surface emissivities depends on the polarization considered. </br></br>For a horizontal
 				polarization the emissivities are much more sensitive to the soil moisture than for a vertical
 				polarization. However, in general both passive microwave observations have a less strong relation with
 				the soil moisture than the active microwave observations.
@@ -85,15 +75,15 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
-			<p class="credits">
+			<p class="credits2"></br>
 				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
-				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
+				in Kelvin [K].</br></br> These values are based on the infrared surface temperature measurements made available by
 				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
 				point. 
 				</br></br>
 				Then the amplitude of this cycle was determined. The amplitude of the diurnal cycle of the
 				surface temperature can be used as an indicator of the soil moisture, because the thermal inertia of the
-				soil depends on its moisture content. For a wet soil, the thermal inertia is increased, that means the
+				soil depends on its moisture content. </br></br>For a wet soil, the thermal inertia is increased, that means the
 				surface temperature changes less for a certain incident solar flux. In a dry soil on the other hand the
 				same incident solar flux would result in a stronger temperature change and hence a larger diurnal cycle
 				amplitude.
@@ -101,18 +91,18 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig"><span>NDVI</span></br>Dataproduct</p>
-			<p class="credits">
+			<p class="credits2"></br>
 				The normalized difference vegetation index (NDVI) is an index that is often used in remote sensing
 				applications to quantify the amount of vegetation present on the part of the surface that is observed.
-				In essence, this index provides a measure for the “greenness" of the vegetation, which is considered a
+				</br></br>In essence, this index provides a measure for the “greenness" of the vegetation, which is considered a
 				good indicator of the vegetation cover. The NDVI is computed from the reflectance measured in the
 				visible and near‐infrared part of the spectrum and is defined as 
 				</br></br>
 				NDVI = rnir − rvis / rnir −rvis 
 				</br></br>where
 				rNIR is the reflectance measured in the near‐infrared and rvis is the reflectance measured in the
-				visible red spectrum. The NDVI dataset to be used in this practical is based on reflectance observations
-				from the Advanc€ed Very High Resolution Radiometer (AVHRR) taken at the 0.58‐ 0.65 μm (visible) and the
+				visible red spectrum. </br></br>The NDVI dataset to be used in this practical is based on reflectance observations
+				from the Advanced Very High Resolution Radiometer (AVHRR) taken at the 0.58‐ 0.65 μm (visible) and the
 				0.73‐1.1 μm (near‐infrared) waveband respectively and ranges between ‐1 and 1. 
 				</br></br>
 				The NDVI and the soil
@@ -122,10 +112,10 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig"><span>Soil</br> Moisture</span></br>LMD Dataset</p>
-			<p class="credits">
+			<p class="credits2">
 				In order to train the neural network there is the need to provide a global target dataset of soil
-				moistures. In this analysis the data chosen for this role is the soil moisture product of the land
-				surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. The model's soil
+				moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+				surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The model's soil
 				moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
 				local wilting point and 1 corresponds to the local saturation level.
 			</p>
@@ -250,7 +240,7 @@
 				.attr("font-size", 28)
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'middle')
-				.style("fill", "#999")
+				.style("fill", "#000")
 
 			glegend
 				.append('text')
@@ -262,7 +252,7 @@
 				.attr("letter-spacing", -4)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'middle')
-				.style("fill", "#000")
+				.style("fill", "#333")
 
 			glegend
 				.append('text')
@@ -274,7 +264,7 @@
 				.attr("letter-spacing", -2)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'end')
-				.style("fill", "#000")
+				.style("fill", "#333")
 
 			glegend
 				.append('text')
@@ -286,7 +276,7 @@
 				.attr("letter-spacing", -2)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'start')
-				.style("fill", "#000")
+				.style("fill", "#333")
 		}
 
 		//---------------------- REMOVE NANs -----------------------------
@@ -505,9 +495,7 @@
 				.style("stroke-width", 1)
 								.attr("opacity", .1)
 
-				.style("fill", function (d) {
-					if (d.id == 152) return "#000";
-					else return "#000";
+				.style("fill", function (d) { return "#666";
 				})
 		});
 		

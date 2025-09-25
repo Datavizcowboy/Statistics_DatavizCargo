@@ -1,0 +1,122 @@
+.datagroup-div {
+  float: left;
+  position: absolute;
+  width: 1150px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2300px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.data1-div {
+  float: left;
+  position: absolute;
+  width: 1150px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2300px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.map-div {
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2900px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.data0-div {
+  float: left;
+  position: absolute;
+  width: 1150px;
+  height: 350px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3550px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+p.credits2 {
+  font-family: Georgia, DM Sans, Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 16pt;
+  letter-spacing: -0.2px;
+  /* font-style: italic; */
+  opacity: 1;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #000;
+  position: relative;
+}
+
+.graticule {
+  fill: none;
+  stroke: none;
+  stroke-width: .1px;
+  stroke-opacity: 1;
+}
+
+.land {
+  fill: orange;
+  stroke: none;
+  opacity: 1;
+  stroke-width: 2px;
+}
+
+path {
+  stroke: white;
+  stroke-width: 0.75px;
+  fill: none;
+  opacity: 1;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #333;
+  opacity: 1;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+}
+
+.yaxis path,
+.yaxis line {
+  fill: none;
+  stroke: none;
+  opacity: 0;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.yaxis text {
+  fill: #333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+  opacity: 1;
+}
+
+.area {
+  fill: #999;
+  stroke: none;
+  opacity: 1;
+}

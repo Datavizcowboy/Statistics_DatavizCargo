@@ -242,8 +242,6 @@ body {
   background-size: cover;
 } */
 
-
-
 .stroke {
   fill: none;
   stroke: #000;
@@ -321,7 +319,7 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 340px;
-  height: 900px;
+  height: 950px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1.0;
@@ -355,57 +353,8 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.data0-div {
-  float: left;
-  position: absolute;
-  width: 1150px;
-  height: 350px;
-  margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2180px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
 
-.datagroup-div {
-  float: left;
-  position: absolute;
-  width: 1150px;
-  height: 600px;
-  margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2540px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
 
-.data1-div {
-  float: left;
-  position: absolute;
-  width: 1150px;
-  height: 600px;
-  margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2540px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.map-div {
-  float: left;
-  position: absolute;
-  width: 1180px;
-  height: 800px;
-  margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 3100px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
 
 .scattermatrix-div{
   float: left;
@@ -635,46 +584,3 @@ div.tooltip {
   background-color: none;
 }
 
-path {
-  stroke: white;
-  stroke-width: 0.75px;
-  fill: none;
-  opacity: .9;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #333;
-  opacity: 1;
-  stroke-width: 1px;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  fill: #333;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 11px;
-}
-
-.yaxis path,
-.yaxis line {
-  fill: none;
-  stroke: none;
-  opacity: 0;
-  stroke-width: 1px;
-  shape-rendering: crispEdges;
-}
-
-.yaxis text {
-  fill: #333;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 11px;
-  opacity: 1;
-}
-
-.area {
-  fill: #999;
-  stroke: none;
-  opacity: 1;
-}

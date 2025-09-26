@@ -1,0 +1,110 @@
+[
+    {
+        "index": "cellNr",
+        "cellNr": 1.0,
+        "latitude": 0.9996731679,
+        "longitude": -0.0708977291,
+        "backscatter": -0.2449741583,
+        "emissivity_v": 0.1911381755,
+        "emissivity_h": -0.3247717853,
+        "ts_amplitude": -0.1427872907,
+        "ndvi": -0.4110751198,
+        "lmd_soilWetness": -0.0122473142
+    },
+    {
+        "index": "latitude",
+        "cellNr": 0.9996731679,
+        "latitude": 1.0,
+        "longitude": -0.0688024245,
+        "backscatter": -0.2387756335,
+        "emissivity_v": 0.1886608359,
+        "emissivity_h": -0.3194541582,
+        "ts_amplitude": -0.1481624145,
+        "ndvi": -0.4054150738,
+        "lmd_soilWetness": -0.0103300009
+    },
+    {
+        "index": "longitude",
+        "cellNr": -0.0708977291,
+        "latitude": -0.0688024245,
+        "longitude": 1.0,
+        "backscatter": -0.2826489278,
+        "emissivity_v": 0.059292965,
+        "emissivity_h": -0.2737941496,
+        "ts_amplitude": 0.4336140292,
+        "ndvi": -0.3429263071,
+        "lmd_soilWetness": -0.3215790292
+    },
+    {
+        "index": "backscatter",
+        "cellNr": -0.2449741583,
+        "latitude": -0.2387756335,
+        "longitude": -0.2826489278,
+        "backscatter": 1.0,
+        "emissivity_v": -0.5462600855,
+        "emissivity_h": 0.7341164781,
+        "ts_amplitude": -0.5432464794,
+        "ndvi": 0.731294301,
+        "lmd_soilWetness": 0.5076559931
+    },
+    {
+        "index": "emissivity_v",
+        "cellNr": 0.1911381755,
+        "latitude": 0.1886608359,
+        "longitude": 0.059292965,
+        "backscatter": -0.5462600855,
+        "emissivity_v": 1.0,
+        "emissivity_h": -0.0077223632,
+        "ts_amplitude": 0.0850449877,
+        "ndvi": -0.2303339951,
+        "lmd_soilWetness": -0.1486562861
+    },
+    {
+        "index": "emissivity_h",
+        "cellNr": -0.3247717853,
+        "latitude": -0.3194541582,
+        "longitude": -0.2737941496,
+        "backscatter": 0.7341164781,
+        "emissivity_v": -0.0077223632,
+        "emissivity_h": 1.0,
+        "ts_amplitude": -0.5123721928,
+        "ndvi": 0.8040347375,
+        "lmd_soilWetness": 0.4675408927
+    },
+    {
+        "index": "ts_amplitude",
+        "cellNr": -0.1427872907,
+        "latitude": -0.1481624145,
+        "longitude": 0.4336140292,
+        "backscatter": -0.5432464794,
+        "emissivity_v": 0.0850449877,
+        "emissivity_h": -0.5123721928,
+        "ts_amplitude": 1.0,
+        "ndvi": -0.6894937086,
+        "lmd_soilWetness": -0.6860032592
+    },
+    {
+        "index": "ndvi",
+        "cellNr": -0.4110751198,
+        "latitude": -0.4054150738,
+        "longitude": -0.3429263071,
+        "backscatter": 0.731294301,
+        "emissivity_v": -0.2303339951,
+        "emissivity_h": 0.8040347375,
+        "ts_amplitude": -0.6894937086,
+        "ndvi": 1.0,
+        "lmd_soilWetness": 0.6043354555
+    },
+    {
+        "index": "lmd_soilWetness",
+        "cellNr": -0.0122473142,
+        "latitude": -0.0103300009,
+        "longitude": -0.3215790292,
+        "backscatter": 0.5076559931,
+        "emissivity_v": -0.1486562861,
+        "emissivity_h": 0.4675408927,
+        "ts_amplitude": -0.6860032592,
+        "ndvi": 0.6043354555,
+        "lmd_soilWetness": 1.0
+    }
+]

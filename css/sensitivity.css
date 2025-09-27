@@ -1,0 +1,70 @@
+p.credits2 {
+  font-family: Georgia, DM Sans, Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 16pt;
+  letter-spacing: -0.2px;
+  /* font-style: italic; */
+  opacity: 1;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #000;
+  position: relative;
+}
+
+.graticule {
+  fill: none;
+  stroke: none;
+  stroke-width: .1px;
+  stroke-opacity: 1;
+}
+
+.land {
+  fill: orange;
+  stroke: none;
+  opacity: 1;
+  stroke-width: 2px;
+}
+
+path {
+  stroke: white;
+  stroke-width: 0.75px;
+  fill: none;
+  opacity: 1;
+}
+
+.xaxis path,
+.xaxis line {
+  fill: none;
+  stroke: #bbb;
+  opacity: 1;
+  stroke-width: .5px;
+  shape-rendering: crispEdges;
+}
+
+.xaxis text {
+  fill: #999;
+  font-family: Menlo, Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+}
+
+.yaxis path,
+.yaxis line {
+  fill: none;
+  stroke: #bbb;
+  opacity: 1;
+  stroke-width: .5px;
+  shape-rendering: crispEdges;
+}
+
+.yaxis text {
+  fill: #999;
+  font-family: Menlo, Georgia, 'Times New Roman', Times, serif;
+  font-size: 11px;
+  opacity: 1;
+}
+
+.area {
+  fill: #999;
+  stroke: none;
+  opacity: 1;
+}

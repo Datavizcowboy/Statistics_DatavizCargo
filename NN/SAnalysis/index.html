@@ -5,6 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v3.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+		<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
+
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
 	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
@@ -29,7 +31,7 @@
 
 		<div class="option_var">
 			<p class="coverbig"><span>ERS</span></br>Backscatter</p>
-			<p class="credits">
+			<p class="credits2">
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
@@ -50,7 +52,7 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig">SSM/I</br> Surface</br><span>Emissivities</span></p>
-			<p class="credits">
+			<p class="credits2">
 				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
 				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
 				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
@@ -73,7 +75,7 @@
 		</div>
 		<div class="option_var">
 			<p class="coverbig">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
-			<p class="credits">
+			<p class="credits2">
 				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
 				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
 				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
@@ -152,11 +154,11 @@
 			.scale(x)
 			.orient("bottom")
 			// .tickFormat(function (d) { return them[d]; })
-			.ticks(12);
+			.ticks(5);
 
 		var yAxis = d3.svg.axis().scale(y)
 			.orient("left")
-			.ticks(10);
+			.ticks(5);
 
 		var theline = d3.svg.line()
 			.interpolate("basis")
@@ -172,7 +174,7 @@
 		//------------------------------- SCATTER PLOT -------------------------------
 
 		g.append("g")
-			.attr("class", "axis")
+			.attr("class", "xaxis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
@@ -190,25 +192,27 @@
 			.attr("y", 0);
 
 		g.append("text")
-			.attr("x", function (d) { return (350); })
+			.attr("x", function (d) { return (650); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
+			.attr("font-size", 12)
+			.style("fill", "#999")
 
 		g.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
+			.attr("y", 270)
+			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
 			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
+			.attr("font-family", "Menlo, Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+			.attr("font-size", 12)
 			.attr("opacity", 1)
 			.attr("id", "theyaxis")
-			.style("fill", "#000");
+			.style("fill", "#999");
+
+			g.selectAll("path").remove();
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
@@ -223,7 +227,7 @@
 				.style("opacity", function (d) { return 1; })
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("fill", function (d) { return "#999"; })
 		})
 
 		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
@@ -231,7 +235,7 @@
 
 
 		g_simple.append("g")
-			.attr("class", "axis")
+			.attr("class", "xaxis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
@@ -290,7 +294,7 @@
 		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
 
 		g_fitted.append("g")
-			.attr("class", "axis")
+			.attr("class", "xaxis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")

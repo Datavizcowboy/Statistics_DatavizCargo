@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v3.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
-		<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
+	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
@@ -121,8 +121,12 @@
 			.attr("width", width)
 			.attr("height", height);
 
-		var g_corr = svgcorr.append("g")
-			.attr('transform', 'translate(' + (0) + ',200)')
+		var g_corr_0 = svgcorr.append("g")
+		var g_corr_1 = svgcorr.append("g")
+		var g_corr_2 = svgcorr.append("g")
+		var g_corr_3 = svgcorr.append("g")
+		var g_corr_4 = svgcorr.append("g")
+		var g_corr_5 = svgcorr.append("g")
 
 		var svgsimple = d3.select("div.simplelinear-div")
 			.append("svg")
@@ -150,13 +154,33 @@
 			.domain([1, 0.15])
 			.range([50, 500]);
 
+		var xf = d3.scale.linear()
+			.domain([0, 1])
+			.range([350, 1000]);
+
+		var yf = d3.scale.linear()
+			.domain([1, -1])
+			.range([50, 500]);
+
 		var xAxis = d3.svg.axis()
 			.scale(x)
 			.orient("bottom")
 			// .tickFormat(function (d) { return them[d]; })
 			.ticks(5);
 
-		var yAxis = d3.svg.axis().scale(y)
+		var yAxis = d3.svg.axis()
+			.scale(y)
+			.orient("left")
+			.ticks(5);
+
+		var xAxisF = d3.svg.axis()
+			.scale(xf)
+			.orient("bottom")
+			// .tickFormat(function (d) { return them[d]; })
+			.ticks(5);
+
+		var yAxisF = d3.svg.axis()
+			.scale(yf)
 			.orient("left")
 			.ticks(5);
 
@@ -212,7 +236,7 @@
 			.attr("id", "theyaxis")
 			.style("fill", "#999");
 
-			g.selectAll("path").remove();
+		g.selectAll("path").remove();
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
@@ -227,7 +251,7 @@
 				.style("opacity", function (d) { return 1; })
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#999"; })
+				.attr("fill", function (d) { return "orange"; })
 		})
 
 		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
@@ -253,25 +277,27 @@
 			.attr("y", 0);
 
 		g_simple.append("text")
-			.attr("x", function (d) { return (350); })
+			.attr("x", function (d) { return (650); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
+			.attr("font-size", 12)
+			.style("fill", "#999")
 
 		g_simple.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
+			.attr("y", 270)
+			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
 			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
+			.attr("font-family", "Menlo, Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+			.attr("font-size", 12)
 			.attr("opacity", 1)
 			.attr("id", "theyaxis")
-			.style("fill", "#000");
+			.style("fill", "#999");
+
+		g_simple.selectAll("path").remove();
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
@@ -286,17 +312,164 @@
 				.style("opacity", function (d) { return 1; })
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("fill", function (d) { return "orange"; })
 		})
 
+		//------------------------------- CORRELATION --------------------------------
 
+		color_positive = "cadetblue"
+		color_negative = "coral"
+		pitch = 60
+		mag = 30
+
+		list_variables = ['backscatter', 'emissivity', 'emissivity', 'ts_amplitude', 'ndvi', 'lmd_soilwetness']
+
+		for (m = 0; m < list_variables.length; m++) {
+
+			g_corr_0
+				.append("text")
+				.attr("y", 170)
+				.attr("x", 300 + m * 100)
+				.style("text-anchor", "middle")
+				.text(list_variables[m])
+				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+				.attr("font-size", 14)
+				.attr("opacity", 1)
+				.attr("id", "theyaxis")
+				.style("fill", "#ddd");
+
+			g_corr_0
+				.append("text")
+				.attr("y", 225 + m * pitch)
+				.attr("x", 240)
+				.style("text-anchor", "end")
+				.text(list_variables[m])
+				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+				.attr("font-size", 14)
+				.attr("opacity", 1)
+				.attr("id", "theyaxis")
+				.style("fill", "#ddd");
+
+		}
+
+		d3.json("../../data/corr_matrix.json", function (error, data) {
+
+			console.log(data)
+			// for (m = 0; m < 6; m++) {
+			g_corr_0.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.backscatter) })
+				.attr("cx", function (d, i) { return 300 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return Math.abs(d.backscatter);
+				})
+				.attr("id", function (d, i) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.backscatter > 0) return color_positive;
+					else return color_negative;
+				})
+
+			g_corr_1.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.emissivity_v) })
+				.attr("cx", function (d, i) { return 400 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return Math.abs(d.emissivity_v);
+				})
+				.attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.emissivity_v > 0) return color_positive;
+					else return color_negative;
+				})
+
+			g_corr_2.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.emissivity_h) })
+				.attr("cx", function (d, i) { return 500 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return 1;
+				}).attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.emissivity_h > 0) return color_positive;
+					else return color_negative;
+				})
+
+			g_corr_3.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.ts_amplitude) })
+				.attr("cx", function (d, i) { return 600 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return 1;
+				}).attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.ts_amplitude > 0) return color_positive;
+					else return color_negative;
+				})
+
+			g_corr_4.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.ndvi) })
+				.attr("cx", function (d, i) { return 700 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return 1;
+				}).attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.ndvi > 0) return color_positive;
+					else return color_negative;
+				})
+
+			g_corr_5.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", function (d, i) { return mag * Math.abs(d.lmd_soilWetness) })
+				.attr("cx", function (d, i) { return 800 })
+				.attr("cy", function (d, i) { return 40 + i * pitch; })
+				.style("opacity", function (d, i) {
+					if (i < 3) return 0;
+					else return 1;
+				}).attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "none"; })
+				.attr("fill", function (d) {
+					if (d.lmd_soilWetness > 0) return color_positive;
+					else return color_negative;
+				})
+
+
+			// }
+		})
 
 		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
 
 		g_fitted.append("g")
 			.attr("class", "xaxis")
 			.attr('transform', 'translate(0,' + (500) + ')')
-			.call(xAxis)
+			.call(xAxisF)
 			.selectAll(".tick text")
 			.style("text-anchor", "middle")
 			.attr("x", 0)
@@ -305,34 +478,36 @@
 		g_fitted.append("g")
 			.attr("class", "yaxis")
 			.attr('transform', 'translate(' + (350) + ',0)')
-			.call(yAxis)
+			.call(yAxisF)
 			.selectAll(".tick text")
 			.style("text-anchor", "end")
 			.attr("x", -10)
 			.attr("y", 0);
 
 		g_fitted.append("text")
-			.attr("x", function (d) { return (350); })
+			.attr("x", function (d) { return (650); })
 			.attr("y", function (d) { return (545); })
-			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+			.text(function (d) { return "Fitted"; })
+			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
+			.attr("font-size", 12)
+			.style("fill", "#999")
 
 		g_fitted.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
+			.attr("y", 270)
+			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
-			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
+			.text("Residuals")
+			.attr("font-family", "Menlo, Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+			.attr("font-size", 12)
 			.attr("opacity", 1)
 			.attr("id", "theyaxis")
-			.style("fill", "#000");
+			.style("fill", "#999");
 
-		d3.json("../../data/scatter.json", function (error, data) {
+		g_fitted.selectAll("path").remove();
+
+		d3.json("../../data/fitted.json", function (error, data) {
 
 			g_fitted.selectAll("dot")
 				.data(data)
@@ -340,12 +515,12 @@
 				.append("circle")
 				.attr('transform', 'translate(0,' + (0) + ')')
 				.attr("r", function (d) { return 2 })
-				.attr("cx", function (d) { return x(d.amplitude); })
-				.attr("cy", function (d) { return y(d.soil); })
+				.attr("cx", function (d) { return xf(d.fit); })
+				.attr("cy", function (d) { return yf(d.res); })
 				.style("opacity", function (d) { return 1; })
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("fill", function (d) { return "cadetblue"; })
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------

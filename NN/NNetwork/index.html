@@ -3,8 +3,9 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script src="//d3js.org/d3.v4.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
 	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
@@ -16,7 +17,7 @@
 <body>
 
 	<div class='header' id="header">
-		<p class="title"><span>Multiple</span></br>Linear</br>Regression</p>
+		<p class="title"><span>Neural</span></br>Networks</br></p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
 			A soil moisture dataproduct on a global scale can be derived from
@@ -89,16 +90,16 @@
 		</div>
 	</div>
 
-	<div class="multiple-div">
+	<div class="epoch-div">
 	</div>
 
-	<div class="interaction-div">
+	<div class="noutput-div">
 	</div>
 
-	<div class="poly-div">
+	<div class="lmd-div">
 	</div>
 
-	<div class="polymap-div">
+		<div class="polymap-div">
 	</div>
 
 	<script type="text/javascript">
@@ -106,7 +107,7 @@
 		var width = 1160;
 		var height = 1000;
 
-		var svg = d3.select("div.multiple-div")
+		var svg = d3.select("div.epoch-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
@@ -114,7 +115,7 @@
 		var g = svg.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
-		var svgint = d3.select("div.interaction-div")
+		var svgint = d3.select("div.noutput-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
@@ -122,7 +123,7 @@
 		var g_int = svgint.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
-		var svgpoly = d3.select("div.poly-div")
+		var svgpoly = d3.select("div.lmd-div")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
@@ -140,31 +141,43 @@
 
 		//--------------------------------------------LINES AND AREAS
 
-		var x = d3.scale.linear()
+
+		var x = d3.scaleLinear()
 			.domain([0, 60])
 			.range([350, 1000]);
 
-		var y = d3.scale.linear()
+		var y = d3.scaleLinear()
 			.domain([1, 0.15])
 			.range([50, 500]);
 
-		var xAxis = d3.svg.axis()
+		var xf = d3.scaleLinear()
+			.domain([0, 1])
+			.range([350, 1000]);
+
+		var yf = d3.scaleLinear()
+			.domain([1, -1])
+			.range([50, 500]);
+
+		var xAxis = d3.axisBottom()
 			.scale(x)
-			.orient("bottom")
-			// .tickFormat(function (d) { return them[d]; })
 			.ticks(12);
 
-		var yAxis = d3.svg.axis().scale(y)
-			.orient("left")
+		var yAxis = d3.axisLeft()
+			.scale(y)
 			.ticks(10);
 
-		var theline = d3.svg.line()
-			.interpolate("basis")
+		var xAxisF = d3.axisBottom()
+			.scale(xf)
+			.ticks(5);
+
+		var yAxisF = d3.axisLeft().scale(yf)
+			.ticks(5);
+
+		var theline = d3.line()
 			.x(function (d) { return x(d.month - 1) + 35; })
 			.y(function (d) { return y(d.con); });
 
-		var thearea = d3.svg.area()
-			.interpolate("basis")
+		var thearea = d3.area()
 			.x(function (d) { return x(d.month - 1) + 35; })
 			.y0(function (d) { return y(d.max); })
 			.y1(function (d) { return y(d.min); });
@@ -172,7 +185,7 @@
 		//------------------------------- MULTIPLE -------------------------------
 
 		g.append("g")
-			.attr("class", "axis")
+			.attr("class", "xaxis")
 			.attr('transform', 'translate(0,' + (500) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
@@ -190,26 +203,28 @@
 			.attr("y", 0);
 
 		g.append("text")
-			.attr("x", function (d) { return (350); })
+			.attr("x", function (d) { return (650); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
+			.attr("font-size", 12)
+			.style("fill", "#999")
 
 		g.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
+			.attr("y", 270)
+			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
 			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
+			.attr("font-family", "Menlo, Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
+			.attr("font-size", 12)
 			.attr("opacity", 1)
 			.attr("id", "theyaxis")
-			.style("fill", "#000");
+			.style("fill", "#999");
 
+		g.selectAll("path").remove();
+		
 		d3.json("../../data/scatter.json", function (error, data) {
 
 			g.selectAll("dot")
@@ -223,125 +238,87 @@
 				.style("opacity", function (d) { return 1; })
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("fill", function (d) { return "orange"; })
 		})
 
 		//------------------------------- INTERACTION TERMS -------------------
 
 
+		var projection = d3.geoEquirectangular()
+			.center([0, 0])
+			.scale(200)
+			.translate([500, 340])
 
-		g_int.append("g")
-			.attr("class", "axis")
-			.attr('transform', 'translate(0,' + (500) + ')')
-			.call(xAxis)
-			.selectAll(".tick text")
-			.style("text-anchor", "middle")
-			.attr("x", 0)
-			.attr("y", 10);
+		var path = d3.geoPath()
+			.projection(projection);
 
-		g_int.append("g")
-			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
-			.call(yAxis)
-			.selectAll(".tick text")
-			.style("text-anchor", "end")
-			.attr("x", -10)
-			.attr("y", 0);
+		var graticule = d3.geoGraticule();
 
-		g_int.append("text")
-			.attr("x", function (d) { return (350); })
-			.attr("y", function (d) { return (545); })
-			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+		g_int.append("path")
+			.datum(graticule)
+			.attr("class", "graticule")
+			.attr("d", path);
 
-		g_int.append("text")
-			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
-			.attr("dy", "1em")
-			.style("text-anchor", "middle")
-			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
-			.attr("opacity", 1)
-			.attr("id", "theyaxis")
-			.style("fill", "#000");
+		d3.json("../../DATA/world-110m2.json", function (error, topology) {
 
-		d3.json("../../data/scatter.json", function (error, data) {
+			g_int.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries)
+					.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("stroke", 'none')
+				.style("stroke-width", 1)
+				.attr("opacity", .1)
+				.style("fill", function (d) {return "#666";})
+		});
 
-			g_int.selectAll("dot")
+		d3.json("../../DATA/back.json", function (data) {
+
+			g_int.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr('transform', 'translate(0,' + (0) + ')')
-				.attr("r", function (d) { return 2 })
-				.attr("cx", function (d) { return x(d.amplitude); })
-				.attr("cy", function (d) { return y(d.soil); })
-				.style("opacity", function (d) { return 1; })
-				.attr("id", function (d) { return "isl" })
-				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+				.attr("r", 1.5)
+				.attr("opacity", 1)
+				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
 		})
-
-
 
 		//------------------------------- POLYNOMIAL -------------------
 
-		g_poly.append("g")
-			.attr("class", "axis")
-			.attr('transform', 'translate(0,' + (500) + ')')
-			.call(xAxis)
-			.selectAll(".tick text")
-			.style("text-anchor", "middle")
-			.attr("x", 0)
-			.attr("y", 10);
 
-		g_poly.append("g")
-			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
-			.call(yAxis)
-			.selectAll(".tick text")
-			.style("text-anchor", "end")
-			.attr("x", -10)
-			.attr("y", 0);
+		g_poly.append("path")
+			.datum(graticule)
+			.attr("class", "graticule")
+			.attr("d", path);
 
-		g_poly.append("text")
-			.attr("x", function (d) { return (350); })
-			.attr("y", function (d) { return (545); })
-			.text(function (d) { return "TS Amplitude"; })
-			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 14)
-			.style("fill", "#000")
+		d3.json("../../DATA/world-110m2.json", function (error, topology) {
 
-		g_poly.append("text")
-			.attr("transform", "rotate(-90)")
-			.attr("y", 290)
-			.attr("x", 0 - (440))
-			.attr("dy", "1em")
-			.style("text-anchor", "middle")
-			.text("LMD Soil Moisture")
-			.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
-			.attr("font-size", 14)
-			.attr("opacity", 1)
-			.attr("id", "theyaxis")
-			.style("fill", "#000");
+			g_poly.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries)
+					.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("stroke", 'none')
+				.style("stroke-width", 1)
+				.attr("opacity", .1)
+				.style("fill", function (d) {return "#666";})
+		});
 
-		d3.json("../../data/scatter.json", function (error, data) {
+		d3.json("../../DATA/back.json", function (data) {
 
-			g_poly.selectAll("dot")
+			g_poly.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr('transform', 'translate(0,' + (0) + ')')
-				.attr("r", function (d) { return 2 })
-				.attr("cx", function (d) { return x(d.amplitude); })
-				.attr("cy", function (d) { return y(d.soil); })
-				.style("opacity", function (d) { return 1; })
-				.attr("id", function (d) { return "isl" })
-				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "#000"; })
+				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+				.attr("r", 1.5)
+				.attr("opacity", 1)
+				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------

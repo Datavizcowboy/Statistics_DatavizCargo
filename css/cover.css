@@ -176,8 +176,6 @@ p.credits {
   position: relative;
 }
 
-
-
 p.plaintext {
   font-family: DM Sans, Arial, Gill Sans, sans-serif;
   font-size: 8pt;
@@ -494,6 +492,45 @@ border-top-style: solid; */
   margin-right: 0px;
   margin-left: 100px;
   margin-top: 2100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.epoch-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.noutput-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2100px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.lmd-div{
+  float: left;
+  position: absolute;
+  width: 1180px;
+  height: 1000px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3100px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;

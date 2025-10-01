@@ -273,6 +273,44 @@ border-top-width: 20px;
 border-top-style: solid; */
 }
 
+.soon {
+  float: left;
+  width: 320px;
+  height: 180px;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 920px;
+  top: 0px;
+  left: 0px;
+  text-align: left;
+  opacity: 1;
+  /* border-top-color: chocolate;
+border-top-width: 20px;
+border-top-style: solid; */
+}
+
+.methods-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 1700px;
+  position: absolute;
+  background: #bbb;
+}
+
+.methods3-div{
+  float: left;
+  width: 280px;
+  height: 150px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 0px;
+  position: absolute;
+  background: none;
+}
+
 .images {
   float: left;
   position: absolute;
@@ -295,7 +333,7 @@ border-top-style: solid; */
   margin-top: 350px;
   opacity: 1.0;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -312,12 +350,25 @@ border-top-style: solid; */
   border-bottom-style: solid; */
 }
 
+.option1 {
+  float: left;
+  position: relative;
+  width: 380px;
+  height: 500px;
+  margin-left: 0px;
+  margin-top: 200px;
+  opacity: 1.0;
+  /* border-bottom-color: chocolate;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; */
+}
+
 
 .option_var{
   float: left;
   position: relative;
   width: 340px;
-  height: 950px;
+  height: 600px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1.0;
@@ -332,7 +383,7 @@ border-top-style: solid; */
   position: absolute;
   width: 500px;
   height: 300px;
-  margin-left: 600px;
+  margin-left: 560px;
   margin-top: 150px;
   background-color: none;
   opacity: 1;

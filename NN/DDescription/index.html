@@ -184,8 +184,8 @@
 
 		var svggroup = d3.select("div.datagroup-div")
 			.append("svg")
-			.attr("width", 750)
-			.attr("height", 550);
+			.attr("width", 850)
+			.attr("height", 650);
 
 		var glegend = svg0.append("g")
 		var group = svggroup.append("g")
@@ -315,7 +315,7 @@
 		var yearCenters = {
 			2023: { x: 0, y: 0 },
 			2024: { x: 450, y: 0 },
-			2025: { x: 750, y: 0 }
+			2025: { x: 800, y: 0 }
 		};
 
 		var fillColor = d3.scaleOrdinal()
@@ -325,7 +325,7 @@
 
 		var simulation = []
 		var center = { x: 0, y: 10 };
-		var forceStrength = 0.004;
+		var forceStrength = 0.0045;
 		var svg = null;
 		var bubbles = null;
 		var nodes = [];
@@ -449,13 +449,13 @@
 
 			thefill = "#999"
 			vpitch = -5
-			thepitch = 120
-			dapitch = 300
+			thepitch = 140
+			dapitch = 420
 
 			group
 				.append("text")
 				.attr("x", function () {
-					if (ii < 5) return 600;
+					if (ii < 5) return 750;
 					else return 280
 				})
 				.attr("y", function () {
@@ -473,7 +473,7 @@
 
 			group.append("text")
 				.attr("x", function () {
-					if (ii < 5) return 600;
+					if (ii < 5) return 750;
 					else return 280
 				})
 				.attr("y", function () {

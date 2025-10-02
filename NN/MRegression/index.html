@@ -173,8 +173,9 @@
 			.ticks(5);
 
 		var theline = d3.line()
-			.x(function (d) { return x(d.month - 1) + 35; })
-			.y(function (d) { return y(d.con); });
+		    .defined(function (d) { return d.res < 1; })
+			.x(function (d) { return x(d.ts); })
+			.y(function (d) { return y(d.res); });
 
 		var thearea = d3.area()
 			.x(function (d) { return x(d.month - 1) + 35; })
@@ -240,7 +241,21 @@
 				.attr("fill", function (d) { return "orange"; })
 		})
 
-		//------------------------------- INTERACTION TERMS -------------------
+		//------------------------------- POLYLINE --------------
+
+		d3.json("../../data/poly.json", function (error, data) {
+
+			g.append("path")
+				.attr("class", "line")
+				.style("stroke-width", "6px")
+				.attr("id", "MEAN")
+				.style("opacity", 1)
+				.style("stroke", "tan")
+				.attr("d", theline(data))
+
+		})
+
+		//------------------------------- MAP -------------------
 
 		var projection = d3.geoEquirectangular()
 			.center([0, 0])
@@ -268,20 +283,20 @@
 				.style("stroke", 'none')
 				.style("stroke-width", 1)
 				.attr("opacity", .1)
-				.style("fill", function (d) {return "#666";})
+				.style("fill", function (d) { return "#333"; })
 		});
 
-		d3.json("../../DATA/back.json", function (data) {
+		d3.json("../../DATA/poly_map.json", function (data) {
 
 			g_int.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1.5)
 				.attr("opacity", 1)
-				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
+				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
 		})
 
 		//------------------------------- POLYNOMIAL -------------------
@@ -327,7 +342,7 @@
 
 		g_poly.selectAll("path").remove();
 
-		d3.json("../../data/fitted.json", function (error, data) {
+		d3.json("../../data/poly_fitted.json", function (error, data) {
 
 			g_poly.selectAll("dot")
 				.data(data)
@@ -361,20 +376,20 @@
 				.style("stroke", 'none')
 				.style("stroke-width", 1)
 				.attr("opacity", .1)
-				.style("fill", function (d) {return "#666";})
+				.style("fill", function (d) { return "#666"; })
 		});
 
-		d3.json("../../DATA/back.json", function (data) {
+		d3.json("../../DATA/poly_lmd.json", function (data) {
 
 			g_polymap.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1.5)
 				.attr("opacity", 1)
-				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
+				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
 		})
 
 	</script>

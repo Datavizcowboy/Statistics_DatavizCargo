@@ -1,0 +1,65 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "there",
+   "children": [
+    {
+     "name": "industry",
+        "children": [
+          {
+            "name": "Cluster 0",
+            "size": 5085,
+            "click_count": 21
+          },
+          {
+            "name": "Cluster 1",
+            "size": 6491,
+            "click_count": 41
+          },
+          {
+            "name": "Cluster 2",
+            "size": 5483,
+            "click_count": 22
+          },
+          {
+            "name": "Cluster 3",
+            "size": 2877,
+            "click_count": 44
+          },
+          {
+            "name": "Cluster 4",
+            "size": 3318,
+            "click_count": 26
+          },
+          {
+            "name": "Cluster 5",
+            "size": 7366,
+            "click_count": 27
+          },
+          {
+            "name": "Cluster 6",
+            "size": 1417,
+            "click_count": 54
+          },
+          {
+            "name": "Cluster 7",
+            "size": 6597,
+            "click_count": 29
+          },
+          {
+            "name": "Cluster 8",
+            "size": 3876,
+            "click_count": 21
+          },
+          {
+            "name": "Cluster 9",
+            "size": 2021,
+            "click_count": 28
+          }
+     ]
+    }
+   ]
+  }
+ ]
+}

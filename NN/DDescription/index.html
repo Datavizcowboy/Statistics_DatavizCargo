@@ -159,7 +159,7 @@
 		<p class="coverbig"><span>03</span></br>Basic</br>Statistics</p>
 	</div>
 
-		<div class="text03-div">
+	<div class="text03-div">
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -167,13 +167,63 @@
 		</p>
 	</div>
 
-
 	<!-- <div class="map" id="map" style=" z-index: -1; position: absolute; width: 1150px; height: 700px; margin-left: 100px; margin-top: 3200px">
     </div> -->
 
 	<!-- <script src="../../data/back.js"></script> -->
 
 	<script type="text/javascript">
+
+		var selectphase = d3.select("div.map-div")
+			.append('select')
+			.attr('class', 'select')
+			.attr("id", "thephase")
+			.on('change', onchange)
+
+		var databut =
+			["Select Satellite Observation",
+				'Backscatter',
+				"Emissivity H",
+				'Emissivity V',
+				'TS Amplitude',
+				'NDVI',
+				'LMD SoilMoisture']
+
+		var list_models = ["../../data/back.json",
+			"../../data/emih.json",
+			"../../data/emiv.json",
+			"../../data/tsamp.json",
+			"../../data/ndvi.json",
+			"../../data/lmd.json",
+		];
+
+		var optionsphase = selectphase
+			.selectAll('option')
+			.data(databut).enter()
+			.append('option')
+			.text(function (d) { return d; })
+			.attr("id", function (d, i) { return i; })
+
+
+		function onchange() {
+			selectValue = d3.select('#thephase').property('value')
+			console.log(selectValue)
+			selectnumber = databut.indexOf(selectValue) - 1
+			console.log(selectnumber)
+			console.log(list_models[selectnumber])
+
+			json_model_ref = list_models[selectnumber];
+			console.log(json_model_ref)
+
+			d3.json(json_model_ref, function (error, data) {
+
+				gdots.selectAll("circle")
+					.data(data).transition().duration(2000)
+					.style("fill", function (d) {
+						return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
+					})
+			})
+		};
 
 		var width = 1180;
 		var height = 500;
@@ -244,7 +294,7 @@
 				.append("rect")
 				.attr("y", hpitch + 100)
 				.attr("x", -65 + ypitch + hh * kern)
-				.attr("width", kern-10)
+				.attr("width", kern - 10)
 				.attr("height", 185)
 				.style('stroke-width', 0)
 				.style("opacity", 1)
@@ -269,7 +319,7 @@
 				.text('' + list_units[hh] + '')
 				.attr("font-family", "Georgia, Rockwell, Gill Sans")
 				.attr("font-size", 28)
-				.attr("font-weight","bold")
+				.attr("font-weight", "bold")
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'start')
 				.style("fill", "#ddd")

@@ -1,3 +1,14 @@
+.select {
+  float: left;
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  margin-left: 0px;
+  margin-top: 450px;
+  text-align: left;
+  opacity: 1;
+}
+
 .datagroup-div {
   float: left;
   position: absolute;
@@ -8,7 +19,7 @@
   margin-top: 1500px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom-style: solid
 }
 
 .data1-div {
@@ -54,7 +65,7 @@
   float: left;
   position: absolute;
   width: 300px;
-  height: 600px;
+  height: 400px;
   margin-right: 0px;
   margin-left: 100px;
   margin-top: 2280px;
@@ -70,7 +81,7 @@
   height: 500px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2700px;
+  margin-top: 2750px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;

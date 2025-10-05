@@ -515,8 +515,8 @@
 				})
 				.text(list_number[ii])
 				// .text(function (d) { return datos[i].normalizedQuery.toUpperCase(); })
-				.attr("font-family", "Georgia")
-				.attr("font-size", 14)
+				.attr("font-family", "Menlo, Georgia")
+				.attr("font-size", 12)
 				.attr("opacity", 1)
 				.attr("id", "thetick")
 				.attr("text-anchor", "middle")
@@ -532,8 +532,8 @@
 					else return dapitch + 78 + ii * thepitch
 				})
 				.text(list_cat[ii])
-				.attr("font-family", "Georgia")
-				.attr("font-size", 16)
+				.attr("font-family", "Menlo, Georgia")
+				.attr("font-size", 14)
 				.attr("text-anchor", "middle")
 				.style("fill", thefill)
 		}
@@ -583,8 +583,6 @@
 		});
 
 		d3.json("../../DATA/back.json", function (data) {
-
-			// console.log(data)
 
 			gdots.selectAll("circle")
 				.data(data)

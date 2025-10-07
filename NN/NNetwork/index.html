@@ -29,7 +29,7 @@
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig"><span>ERS</span></br>Backscatter</p>
+			<p class="coverbig2"><span>ERS</span></br>Backscatter</p>
 			<p class="credits">
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
@@ -49,43 +49,63 @@
 				changes in the soil moisture.
 			</p>
 		</div>
-		<div class="option_var">
-			<p class="coverbig">SSM/I</br> Surface</br><span>Emissivities</span></p>
-			<p class="credits">
-				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
-				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
-				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
-				by the Earth surface.
+		<div class="option_var_code">
+			<p class="coverbig2">Neural</br> Network</br><span></span></p>
+			<p class="code">
+				hidden=100</br>
+				</br>
+				class SimpleNN(nn.Module):</br>
+				def __init__(self):</br>
+				super(SimpleNN, self).__init__()</br>
+				self.fc1 = nn.Linear(5,hidden)</br>
+				self.fc2 = nn.Linear(hidden,1)</br>
+				</br>
+				def forward(self, x):</br>
+				x = torch.relu(self.fc1(x))</br>
+				x = self.fc2(x)</br>
+				return x</br>
 				</br></br>
-				The quantity measured is the brightness temperature, which is defined as the
-				temperature a perfect black body would have to have in order to emit the same amount of radiation. The
-				original brightness temperatures measured were converted into surface emissivities by removing the
-				contributions from the atmosphere, clouds, rain and the surface temperature. For the retrieval of soil
-				moisture only the lowest frequency channel (at 19.35GHz) is of interest, since the other frequencies are
-				too high to penetrate the surface with a sufficient depth.
+				X_train = torch.tensor(alles).to(torch.float32)</br>
+				y_train = torch.tensor(lmd_soilWetness).to(torch.float32)</br>
+				y_train = y_train[...,None]</br>
 				</br></br>
-				The SSM/I instrument measures both at
-				vertical and horizontal polarization, thus two measurements are available for each grid point. The
-				sensitivity of the surface emissivities depends on the polarization considered. For a horizontal
-				polarization the emissivities are much more sensitive to the soil moisture than for a vertical
-				polarization. However, in general both passive microwave observations have a less strong relation with
-				the soil moisture than the active microwave observations.
-			</p>
-		</div>
-		<div class="option_var">
-			<p class="coverbig">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
-			<p class="credits">
-				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
-				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
-				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
-				point.
-				</br></br>
-				Then the amplitude of this cycle was determined. The amplitude of the diurnal cycle of the
-				surface temperature can be used as an indicator of the soil moisture, because the thermal inertia of the
-				soil depends on its moisture content. For a wet soil, the thermal inertia is increased, that means the
-				surface temperature changes less for a certain incident solar flux. In a dry soil on the other hand the
-				same incident solar flux would result in a stronger temperature change and hence a larger diurnal cycle
-				amplitude.
+				class MyDataset(Dataset):</br>
+				def __init__(self):</br>
+				self.data = X_train</br>
+				self.labels = y_train</br>
+				</br>
+				def __len__(self):</br>
+				return len(self.data)</br>
+				</br>
+				def __getitem__(self, idx):</br>
+				return self.data[idx], self.labels[idx]</br>
+				</br>
+				dataset = MyDataset()</br>
+				dataloader = DataLoader(dataset, batch_size=100, shuffle=True)</br>
+</br>
+				model = SimpleNN()</br>
+				criterion = nn.MSELoss()</br>
+				optimizer = optim.SGD(model.parameters(), lr=0.1)</br>
+				iter=0</br>
+</br>
+</br>
+				for epoch in range(100):</br>
+				for inputs, labels in dataloader:</br>
+				model.train()</br>
+
+				# Forward pass</br>
+				outputs = model(inputs)</br>
+				loss = criterion(outputs, labels)</br>
+
+				# Backward pass and optimize</br>
+				optimizer.zero_grad()</br>
+				loss.backward()</br>
+				optimizer.step()</br>
+
+				if (epoch + 1) % 10 == 0:</br>
+				print(f'Epoch [{epoch + 1}/100], Loss: {loss.item():.4f}')</br>
+
+
 			</p>
 		</div>
 	</div>
@@ -99,7 +119,7 @@
 	<div class="lmd-div">
 	</div>
 
-		<div class="polymap-div">
+	<div class="polymap-div">
 	</div>
 
 	<script type="text/javascript">
@@ -139,15 +159,19 @@
 		var g_polymap = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
+		//--------------------- EPOCHS ------------------------------
+
+		epoch = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+		loss = [0.0188, 0.0242, 0.0395, 0.0195, 0.0275, 0.0438, 0.0368, 0.0347, 0.0269, 0.0254]
+
 		//--------------------------------------------LINES AND AREAS
 
-
 		var x = d3.scaleLinear()
-			.domain([0, 60])
+			.domain([10, 100])
 			.range([350, 1000]);
 
 		var y = d3.scaleLinear()
-			.domain([1, 0.15])
+			.domain([0.045, 0.015])
 			.range([50, 500]);
 
 		var xf = d3.scaleLinear()
@@ -160,11 +184,11 @@
 
 		var xAxis = d3.axisBottom()
 			.scale(x)
-			.ticks(12);
+			.ticks(10);
 
 		var yAxis = d3.axisLeft()
 			.scale(y)
-			.ticks(10);
+			.ticks(4);
 
 		var xAxisF = d3.axisBottom()
 			.scale(xf)
@@ -174,8 +198,10 @@
 			.ticks(5);
 
 		var theline = d3.line()
-			.x(function (d) { return x(d.month - 1) + 35; })
-			.y(function (d) { return y(d.con); });
+			.curve(d3.curveBasisOpen)
+
+			.x(function (d) { return x(d.epoch); })
+			.y(function (d) { return y(d.loss); });
 
 		var thearea = d3.area()
 			.x(function (d) { return x(d.month - 1) + 35; })
@@ -224,21 +250,17 @@
 			.style("fill", "#999");
 
 		g.selectAll("path").remove();
-		
-		d3.json("../../data/scatter.json", function (error, data) {
 
-			g.selectAll("dot")
-				.data(data)
-				.enter()
-				.append("circle")
-				.attr('transform', 'translate(0,' + (0) + ')')
-				.attr("r", function (d) { return 2 })
-				.attr("cx", function (d) { return x(d.amplitude); })
-				.attr("cy", function (d) { return y(d.soil); })
-				.style("opacity", function (d) { return 1; })
-				.attr("id", function (d) { return "isl" })
-				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) { return "orange"; })
+		d3.json("../../data/epochloss.json", function (error, data) {
+
+			g.append("path")
+				.attr("class", "line")
+				.style("stroke-width", "6px")
+				.attr("id", "MEAN")
+				.style("opacity", 1)
+				.style("stroke", "tan")
+				.attr("d", theline(data))
+
 		})
 
 		//------------------------------- INTERACTION TERMS -------------------
@@ -270,20 +292,20 @@
 				.style("stroke", 'none')
 				.style("stroke-width", 1)
 				.attr("opacity", .1)
-				.style("fill", function (d) {return "#666";})
+				.style("fill", function (d) { return "#666"; })
 		});
 
-		d3.json("../../DATA/back.json", function (data) {
+		d3.json("../../DATA/nn_map.json", function (data) {
 
 			g_int.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1.5)
 				.attr("opacity", 1)
-				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
+				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
 		})
 
 		//------------------------------- POLYNOMIAL -------------------
@@ -305,20 +327,20 @@
 				.style("stroke", 'none')
 				.style("stroke-width", 1)
 				.attr("opacity", .1)
-				.style("fill", function (d) {return "#666";})
+				.style("fill", function (d) { return "#666"; })
 		});
 
-		d3.json("../../DATA/back.json", function (data) {
+		d3.json("../../DATA/poly_lmd.json", function (data) {
 
 			g_poly.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr("cx", function (d) {return projection([d.lon, d.lat])[0];})
+				.attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1.5)
 				.attr("opacity", 1)
-				.style("fill", function (d) {return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)})
+				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------

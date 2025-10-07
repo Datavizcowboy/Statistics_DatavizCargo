@@ -196,6 +196,19 @@ p.credits {
   position: relative;
 }
 
+p.code {
+  font-family: Menlo, Georgia, DM Sans, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 14pt;
+  letter-spacing: -.5px;
+  /* font-style: italic; */
+  opacity: 1;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #999;
+  position: relative;
+}
+
 p.plaintext {
   font-family: DM Sans, Arial, Gill Sans, sans-serif;
   font-size: 8pt;
@@ -388,6 +401,19 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 340px;
+  height: 550px;
+  margin-right: 40px;
+  margin-top: 0px;
+  opacity: 1.0;
+  border-bottom-color: #fff;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.option_var_code{
+  float: left;
+  position: relative;
+  width: 540px;
   height: 550px;
   margin-right: 40px;
   margin-top: 0px;

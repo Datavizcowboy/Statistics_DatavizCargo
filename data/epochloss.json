@@ -1,0 +1,52 @@
+[
+    {
+        "index": "epoch",
+        "epoch": 10,
+        "loss": 0.0188
+    },
+    {
+        "index": "loss",
+        "epoch": 20,
+        "loss": 0.0242
+    },
+    {
+        "index": "longitude",
+        "epoch": 30,
+        "loss": 0.0395
+    },
+    {
+        "index": "backscatter",
+        "epoch": 40,
+        "loss": 0.0195
+    },
+    {
+        "index": "emissivity_v",
+        "epoch": 50,
+        "loss": 0.0275
+    },
+    {
+        "index": "emissivity_h",
+        "epoch": 60,
+        "loss": 0.0438
+    },
+    {
+        "index": "ts_amplitude",
+        "epoch": 70,
+        "loss": 0.0368
+    },
+    {
+        "index": "ndvi",
+        "epoch": 80,
+        "loss": 0.0347
+    },
+    {
+        "index": "lmd_soilWetness",
+        "epoch": 90,
+        "loss": 0.0269
+    },
+    {
+        "index": "lmd_soilWetness",
+        "epoch": 100,
+        "loss": 0.0254
+    }
+]

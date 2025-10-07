@@ -4,6 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 	<link type="text/css" rel="stylesheet" href="../../css/description.css">
 
@@ -204,24 +205,60 @@
 			.text(function (d) { return d; })
 			.attr("id", function (d, i) { return i; })
 
+		dacolor = [d3.interpolateViridis,
+		d3.interpolateMagma,
+		d3.interpolateMagma,
+		d3.interpolateInferno,
+		d3.interpolateYlGn,
+		d3.interpolateInferno,
+		d3.interpolateInferno
+		]
 
 		function onchange() {
+
+			gdots.selectAll("circle").remove()
+
+			
 			selectValue = d3.select('#thephase').property('value')
 			console.log(selectValue)
 			selectnumber = databut.indexOf(selectValue) - 1
 			console.log(selectnumber)
-			console.log(list_models[selectnumber])
+			// console.log(list_models[selectnumber])
 
 			json_model_ref = list_models[selectnumber];
-			console.log(json_model_ref)
+			// console.log(json_model_ref)
+
+
+
 
 			d3.json(json_model_ref, function (error, data) {
 
+				const myColor = d3.scaleSequential(dacolor[selectnumber])
+					.domain(d3.extent(data, function (d) { return d.wind; }))
+
 				gdots.selectAll("circle")
-					.data(data).transition().duration(2000)
-					.style("fill", function (d) {
-						return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
-					})
+					.data(data)
+					
+					// .transition().duration(2000)
+					
+					
+	
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) {
+					// console.log(d.lon) 
+					return projection([d.lon, d.lat])[0];
+				})
+				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+				.attr("r", 1)
+				.attr("opacity", 1)
+					
+					
+					
+					.style("fill", function (d) { return myColor(d.wind) })
+				// .style("fill", function (d) {
+				// 	return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
+				// })
 			})
 		};
 
@@ -582,7 +619,20 @@
 				})
 		});
 
+		// var color = d3.scaleSequential([-10, 0],["brown", "steelblue"])
+		// var color = d3.scaleLinear(d3.interpolateWarm)
+
+
 		d3.json("../../DATA/back.json", function (data) {
+
+			const myColor = d3.scaleSequential(d3.interpolateViridis)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+			//    .interpolator(d3.interpolatePuRd);
+			//    .range(back_colors)
+
+			// console.log(d3.extent(data, function(d) { return d.wind; })[0])
+
+			// myColor= d3.scaleSequential([d3.extent(data, function(d) { return d.wind; })[0], d3.extent(data, function(d) { return d.wind; })[1]], d3.interpolateViridis)
 
 			gdots.selectAll("circle")
 				.data(data)
@@ -595,9 +645,12 @@
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1)
 				.attr("opacity", 1)
-				.style("fill", function (d) {
-					return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
-				})
+				.style("fill", function (d) { return myColor(d.wind); })
+
+			// .style("fill", function (d) {
+			// 	return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
+			// })
+
 			// .attr("fill", function (d) {
 			// 	if (d.wind == "null") return "#fff"
 			// 	else return d3.rgb(255+d.wind, d.wind, 255)

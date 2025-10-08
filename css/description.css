@@ -9,6 +9,19 @@
   opacity: 1;
 }
 
+.des_option_var_code{
+  float: left;
+  position: relative;
+  width: 540px;
+  height: 550px;
+  margin-left: 390px;
+  margin-top: 1220px;
+  opacity: 1.0;
+  border-bottom-color: #fff;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
 .datagroup-div {
   float: left;
   position: absolute;

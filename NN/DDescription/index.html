@@ -161,10 +161,23 @@
 	</div>
 
 	<div class="text03-div">
-		<p class="credits2">
+		<p class="credits2"></br></br>
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
 			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>
+		</p>
+
+	</div>
+
+	<div class="des_option_var_code">
+		<p class="coverbig2">Neural</br> Network</br><span></span></p>
+		<p class="code">
+			data = pd.read_csv(thefile, sep='\t', header=None)</br>
+			data.columns = ["cellNr", "latitude", "longitude", "backscatter","emissivity_v","emissivity_h","ts_amplitude","ndvi","lmd_soilWetness"]
+</br></br>
+			data = data.replace('   NaN',pd.NA)</br></br>
+			data = data.dropna()</br></br>
+			data.describe()</br>
 		</p>
 	</div>
 
@@ -218,7 +231,7 @@
 
 			gdots.selectAll("circle").remove()
 
-			
+
 			selectValue = d3.select('#thephase').property('value')
 			console.log(selectValue)
 			selectnumber = databut.indexOf(selectValue) - 1
@@ -238,23 +251,23 @@
 
 				gdots.selectAll("circle")
 					.data(data)
-					
+
 					// .transition().duration(2000)
-					
-					
-	
-				.enter()
-				.append("circle")
-				.attr("cx", function (d) {
-					// console.log(d.lon) 
-					return projection([d.lon, d.lat])[0];
-				})
-				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
-				.attr("r", 1)
-				.attr("opacity", 1)
-					
-					
-					
+
+
+
+					.enter()
+					.append("circle")
+					.attr("cx", function (d) {
+						// console.log(d.lon) 
+						return projection([d.lon, d.lat])[0];
+					})
+					.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+					.attr("r", 1)
+					.attr("opacity", 1)
+
+
+
 					.style("fill", function (d) { return myColor(d.wind) })
 				// .style("fill", function (d) {
 				// 	return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
@@ -285,7 +298,7 @@
 		list_min = [-27.228800, 0.687300, 0.389900, 1.327500, -0.031400, 0.000000]
 
 
-		hpitch = 20
+		hpitch = 120
 		ypitch = 350
 		kern = 150
 

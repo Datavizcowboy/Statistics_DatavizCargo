@@ -51,23 +51,20 @@
 				</br></br>
 			</p>
 		</div>
-		<div class="option_var">
-			<p class="coverbig2">SSM/I</br> Surface</br><span>Emissivities</span></p>
-			<p class="credits2">
-				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
-				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
-				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
-				by the Earth surface.
-				</br></br>
-			</p>
-		</div>
-		<div class="option_var">
-			<p class="coverbig2">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
-			<p class="credits2">
-				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
-				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
-				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
-				point.
+		<div class="option_var_code">
+			<p class="coverbig2">Sklearn.cluster</br> KMeans</br><span></span></p>
+			<p class="code">
+				Xmeans = data[['ts_amplitude','ndvi','backscatter','emissivity_v','emissivity_h']]</br>
+				IDX = KMeans(n_clusters=10, random_state=0, n_init="auto").fit_predict(Xmeans)</br>
+				data['IDX']=IDX</br>
+
+				cluster_values = []</br>
+				for i in range(0,10):</br>
+				value = data['lmd_soilWetness'].loc[data['IDX'] == i].mean()</br>
+				cluster_values.append(value)</br>
+				</br>
+				data['Kmeans_SM']= data['IDX'].apply(lambda x: cluster_values[x])</br>
+
 
 			</p>
 		</div>
@@ -93,7 +90,7 @@
 			.attr("height", height);
 
 		var group = svg0.append("g")
-		    themap = svg0.append("g")
+		themap = svg0.append("g")
 
 		//---------------------- TREEMAP -----------------------------
 
@@ -102,7 +99,7 @@
 
 		const treemap = d3.treemap()
 			.tile(d3.treemapResquarify)
-			.size([800, 400])
+			.size([600, 400])
 			.round(true)
 			.paddingInner(1);
 
@@ -121,7 +118,7 @@
 			const cell = themap.selectAll("g")
 				.data(root.leaves())
 				.enter().append("g")
-				.attr("transform", function (d) { return "translate(" + (250 + d.x0) + "," + (0 + d.y0) + ")"; });
+				.attr("transform", function (d) { return "translate(" + (100 + d.x0) + "," + (0 + d.y0) + ")"; });
 
 			cell.append("rect")
 				.attr("id", function (d) { return d.data.id; })
@@ -139,11 +136,11 @@
 					// return d3.rgb(255, 255 - (d.data.click_count-50) * 5, 255 - (d.data.click_count-50) * 5);
 					return "darkorange"
 				})
-				// return d3.rgb(155-element*30,155-element*30,155-element*30)})
-				//----- Original Blue
-				// return d3.rgb(0, 205 - d.data.click_count * 2, 255 - d.data.click_count * 2);
+			// return d3.rgb(155-element*30,155-element*30,155-element*30)})
+			//----- Original Blue
+			// return d3.rgb(0, 205 - d.data.click_count * 2, 255 - d.data.click_count * 2);
 
-				// })
+			// })
 
 			cell.append("clipPath")
 				.attr("id", function (d) { return "clip-" + d.data.id; })
@@ -151,32 +148,32 @@
 				.attr("xlink:href", function (d) { return "#" + d.data.id; });
 
 			cell.append("text")
-			  .attr("font-family", "Arial, Century Gothic, sans-serif")
-			  .attr("font-size", 12)
-			  .attr("opacity", 1)
-			  .style("fill", "#444")
-			  .attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
-			  .selectAll("tspan")
-			  .data(function (d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
-			  .enter().append("tspan")
-			  .attr("x", 6)
-			  .attr("y", function (d, i) { return 16 + i * 10; })
-			  .text(function (d) { return d; });
+				.attr("font-family", "Arial, Century Gothic, sans-serif")
+				.attr("font-size", 12)
+				.attr("opacity", 1)
+				.style("fill", "#444")
+				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
+				.selectAll("tspan")
+				.data(function (d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
+				.enter().append("tspan")
+				.attr("x", 6)
+				.attr("y", function (d, i) { return 16 + i * 10; })
+				.text(function (d) { return d; });
 
 			cell.append("text")
-			  .attr("font-family", "Arial, Century Gothic, sans-serif")
-			  .attr("font-size", 14)
-			  .attr("opacity", 1)
-			  .style("fill", "#444")
-			  .attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
-			  .selectAll("tspan")
-			  .data(function (d) { return d.data.size.toString().split(/(?=[A-Z][^A-Z])/g); })
-			  .enter().append("tspan")
-			  .attr("x", 6)
-			  .attr("y", function (d, i) { return 30 + i * 10; })
-			  .text(function (d) {
-			    return d;
-			  });
+				.attr("font-family", "Arial, Century Gothic, sans-serif")
+				.attr("font-size", 14)
+				.attr("opacity", 1)
+				.style("fill", "#444")
+				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
+				.selectAll("tspan")
+				.data(function (d) { return d.data.size.toString().split(/(?=[A-Z][^A-Z])/g); })
+				.enter().append("tspan")
+				.attr("x", 6)
+				.attr("y", function (d, i) { return 30 + i * 10; })
+				.text(function (d) {
+					return d;
+				});
 
 			cell.append("title")
 				.attr("font-family", "Arial, Century Gothic, sans-serif")
@@ -225,8 +222,8 @@
 
 		var svgmap = d3.select("div.clustersmap-div")
 			.append("svg")
-			.attr("width", 1250)
-			.attr("height", 550)
+			.attr("width", 950)
+			.attr("height", 400)
 
 		var g4 = svgmap.append("g");
 		var gdots = svgmap.append("g");
@@ -235,8 +232,8 @@
 
 		var projection = d3.geoEquirectangular()
 			.center([0, 0])
-			.scale(180)
-			.translate([600, 340])
+			.scale(160)
+			.translate([500, 240])
 
 		var path = d3.geoPath()
 			.projection(projection);
@@ -261,8 +258,8 @@
 				.attr("opacity", .1)
 
 				.style("fill", function (d) {
-					if (d.id == 152) return "#000";
-					else return "#000";
+					if (d.id == 152) return "#333";
+					else return "#333";
 				})
 		});
 

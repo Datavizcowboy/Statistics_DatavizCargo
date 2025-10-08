@@ -412,17 +412,17 @@ border-top-style: solid; */
 
 .option_var_code{
   float: left;
-  position: relative;
-  width: 540px;
+  position: absolute;
+  width: 740px;
   height: 550px;
   margin-right: 40px;
+    margin-left: 400px;
   margin-top: 0px;
   opacity: 1.0;
   border-bottom-color: #fff;
   border-bottom-width: 0px;
   border-bottom-style: solid;
 }
-
 
 .back-div {
   float: left;
@@ -448,30 +448,27 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-
-
-
 .scattermatrix-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 1100px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
+  margin-left: 410px;
+  margin-top: 550px;
+  border-bottom-color: #999;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
 .correlation-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 600px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2100px;
+  margin-left: 400px;
+  margin-top: 1250px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -480,11 +477,11 @@ border-top-style: solid; */
 .simplelinear-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 3100px;
+  margin-left: 400px;
+  margin-top: 1700px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -493,11 +490,11 @@ border-top-style: solid; */
 .fitted-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 4100px;
+  margin-left: 400px;
+  margin-top: 2300px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -506,24 +503,11 @@ border-top-style: solid; */
 .multiple-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
+  margin-left: 400px;
   margin-top: 1100px;
-  border-bottom-color: #333;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.interaction-div{
-  float: left;
-  position: absolute;
-  width: 1180px;
-  height: 1000px;
-  margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2100px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -532,11 +516,24 @@ border-top-style: solid; */
 .poly-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 3100px;
+  margin-left: 400px;
+  margin-top: 1700px;
+  border-bottom-color: #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.interaction-div{
+  float: left;
+  position: absolute;
+  width: 850px;
+  height: 700px;
+  margin-right: 0px;
+  margin-left: 250px;
+  margin-top: 2300px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -545,11 +542,11 @@ border-top-style: solid; */
 .polymap-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 700px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 4100px;
+  margin-left: 250px;
+  margin-top: 2850px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -571,11 +568,11 @@ border-top-style: solid; */
 .clustersballs-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 400px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 1100px;
+  margin-left: 400px;
+  margin-top: 800px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -584,11 +581,11 @@ border-top-style: solid; */
 .clustersmap-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 700px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2100px;
+  margin-left: 200px;
+  margin-top: 1300px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -597,11 +594,11 @@ border-top-style: solid; */
 .epoch-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 800px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 1100px;
+  margin-left: 400px;
+  margin-top: 1200px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -610,11 +607,11 @@ border-top-style: solid; */
 .noutput-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 650px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 2100px;
+  margin-left: 200px;
+  margin-top: 1800px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -623,11 +620,11 @@ border-top-style: solid; */
 .lmd-div{
   float: left;
   position: absolute;
-  width: 1180px;
-  height: 1000px;
+  width: 850px;
+  height: 650px;
   margin-right: 0px;
-  margin-left: 100px;
-  margin-top: 3100px;
+  margin-left: 200px;
+  margin-top: 2300px;
   border-bottom-color: #333;
   border-bottom-width: 1px;
   border-bottom-style: solid;

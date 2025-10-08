@@ -37,56 +37,26 @@
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
 				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
 				is specified in units of decibel [dB].
-				</br></br>
-				In general, the backscatter from the Earth surface depends on the
-				characteristics of the surface (for example the soil wetness, soil roughness and the surface
-				temperature) as well as the viewing geometry of the instrument. In particular, the backscatter is highly
-				dependent on the incidence angle at which the observation was taken. In order to account for the effects
-				of the viewing geometry all backscatter measurements have been transformed to the same incidence angle.
-				</br></br>
-				The observations of active microwave instruments are very sensitive to soil moisture. This is because
-				the presence of water in the soil strongly changes the soil dielectric properties and hence the
-				scattering properties. For this reason the ERS backscatter measurements show a high sensitivity to
-				changes in the soil moisture.
+
 			</p>
 		</div>
-		<div class="option_var">
-			<p class="coverbig2">SSM/I</br> Surface</br><span>Emissivities</span></p>
-			<p class="credits2">
-				The Special Sensor Microwave/Imager (SSM/I) instrument is a passive microwave radiometer that observes
-				at frequencies of 19.35GHz, 22.235GHz, 37GHz and 85GHz. Since it is a passive instrument, it does not
-				send out a radiation pulse like a scatterometer, but measures the amount of radiation naturally emitted
-				by the Earth surface.
+		<div class="option_var_code">
+			<p class="coverbig2">Neural</br> Network</br><span></span></p>
+			<p class="code">
+				fig, ax = pl.subplots()</br>
+				ax = pd.plotting.scatter_matrix(data[['ts_amplitude','lmd_soilWetness']],ax=ax);
+				</br>
+				</br>
+				data.corr(min_periods=3)
 				</br></br>
-				The quantity measured is the brightness temperature, which is defined as the
-				temperature a perfect black body would have to have in order to emit the same amount of radiation. The
-				original brightness temperatures measured were converted into surface emissivities by removing the
-				contributions from the atmosphere, clouds, rain and the surface temperature. For the retrieval of soil
-				moisture only the lowest frequency channel (at 19.35GHz) is of interest, since the other frequencies are
-				too high to penetrate the surface with a sufficient depth.
-				</br></br>
-				The SSM/I instrument measures both at
-				vertical and horizontal polarization, thus two measurements are available for each grid point. The
-				sensitivity of the surface emissivities depends on the polarization considered. For a horizontal
-				polarization the emissivities are much more sensitive to the soil moisture than for a vertical
-				polarization. However, in general both passive microwave observations have a less strong relation with
-				the soil moisture than the active microwave observations.
-			</p>
-		</div>
-		<div class="option_var">
-			<p class="coverbig2">Surface<span></br> Temperature</span></br>Diurnal </br>Amplitude</p>
-			<p class="credits2">
-				This data set contains the amplitude of the daily temperature cycle in each grid point and is specified
-				in Kelvin [K]. These values are based on the infrared surface temperature measurements made available by
-				the ISCCP. The original 8 measurements per day were interpolated to yield a full 24h cycle for each grid
-				point.
-				</br></br>
-				Then the amplitude of this cycle was determined. The amplitude of the diurnal cycle of the
-				surface temperature can be used as an indicator of the soil moisture, because the thermal inertia of the
-				soil depends on its moisture content. For a wet soil, the thermal inertia is increased, that means the
-				surface temperature changes less for a certain incident solar flux. In a dry soil on the other hand the
-				same incident solar flux would result in a stronger temperature change and hence a larger diurnal cycle
-				amplitude.
+				X = pd.DataFrame({'intercept':np.ones(data.shape[0]),'TS_amplitude':data['ts_amplitude']})</br>
+				y = data['lmd_soilWetness']</br>
+				model = sm.OLS(y,X)</br>
+				results = model.fit()</br>
+				results.summary() </br>
+				results.params</br>
+				</br>
+				ax.scatter(results.fittedvalues, results.resid,c='k',s=1,alpha=0.2)</br>
 			</p>
 		</div>
 	</div>
@@ -148,7 +118,7 @@
 
 		var x = d3.scale.linear()
 			.domain([0, 60])
-			.range([350, 1000]);
+			.range([150, 800]);
 
 		var y = d3.scale.linear()
 			.domain([1, 0.15])
@@ -156,7 +126,7 @@
 
 		var xf = d3.scale.linear()
 			.domain([0, 1])
-			.range([350, 1000]);
+			.range([150, 800]);
 
 		var yf = d3.scale.linear()
 			.domain([1, -1])
@@ -208,7 +178,7 @@
 
 		g.append("g")
 			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
+			.attr('transform', 'translate(' + (150) + ',0)')
 			.call(yAxis)
 			.selectAll(".tick text")
 			.style("text-anchor", "end")
@@ -216,7 +186,7 @@
 			.attr("y", 0);
 
 		g.append("text")
-			.attr("x", function (d) { return (650); })
+			.attr("x", function (d) { return (400); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
 			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
@@ -225,7 +195,7 @@
 
 		g.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 270)
+			.attr("y", 70)
 			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
@@ -269,7 +239,7 @@
 
 		g_simple.append("g")
 			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
+			.attr('transform', 'translate(' + (150) + ',0)')
 			.call(yAxis)
 			.selectAll(".tick text")
 			.style("text-anchor", "end")
@@ -277,7 +247,7 @@
 			.attr("y", 0);
 
 		g_simple.append("text")
-			.attr("x", function (d) { return (650); })
+			.attr("x", function (d) { return (450); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "TS Amplitude"; })
 			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
@@ -286,7 +256,7 @@
 
 		g_simple.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 270)
+			.attr("y", 70)
 			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")
@@ -328,27 +298,27 @@
 
 			g_corr_0
 				.append("text")
+				.attr("x", 250 + m * 100)
 				.attr("y", 170)
-				.attr("x", 300 + m * 100)
 				.style("text-anchor", "middle")
 				.text(list_variables[m])
 				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
 				.attr("font-size", 14)
 				.attr("opacity", 1)
 				.attr("id", "theyaxis")
-				.style("fill", "#ddd");
+				.style("fill", "#999");
 
 			g_corr_0
 				.append("text")
+				.attr("x", 190)
 				.attr("y", 225 + m * pitch)
-				.attr("x", 240)
 				.style("text-anchor", "end")
 				.text(list_variables[m])
 				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")
 				.attr("font-size", 14)
 				.attr("opacity", 1)
 				.attr("id", "theyaxis")
-				.style("fill", "#ddd");
+				.style("fill", "#999");
 
 		}
 
@@ -361,11 +331,11 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.backscatter) })
-				.attr("cx", function (d, i) { return 300 })
+				.attr("cx", function (d, i) { return 250 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
-					else return Math.abs(d.backscatter);
+					else return 1;
 				})
 				.attr("id", function (d, i) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
@@ -379,11 +349,11 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.emissivity_v) })
-				.attr("cx", function (d, i) { return 400 })
+				.attr("cx", function (d, i) { return 350 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
-					else return Math.abs(d.emissivity_v);
+					else return 1;
 				})
 				.attr("id", function (d) { return "isl" })
 				.attr("stroke", function (d) { return "none"; })
@@ -397,7 +367,7 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.emissivity_h) })
-				.attr("cx", function (d, i) { return 500 })
+				.attr("cx", function (d, i) { return 450 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
@@ -414,7 +384,7 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.ts_amplitude) })
-				.attr("cx", function (d, i) { return 600 })
+				.attr("cx", function (d, i) { return 550 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
@@ -431,7 +401,7 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.ndvi) })
-				.attr("cx", function (d, i) { return 700 })
+				.attr("cx", function (d, i) { return 650 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
@@ -448,7 +418,7 @@
 				.enter()
 				.append("circle")
 				.attr("r", function (d, i) { return mag * Math.abs(d.lmd_soilWetness) })
-				.attr("cx", function (d, i) { return 800 })
+				.attr("cx", function (d, i) { return 750 })
 				.attr("cy", function (d, i) { return 40 + i * pitch; })
 				.style("opacity", function (d, i) {
 					if (i < 3) return 0;
@@ -477,7 +447,7 @@
 
 		g_fitted.append("g")
 			.attr("class", "yaxis")
-			.attr('transform', 'translate(' + (350) + ',0)')
+			.attr('transform', 'translate(' + (150) + ',0)')
 			.call(yAxisF)
 			.selectAll(".tick text")
 			.style("text-anchor", "end")
@@ -485,7 +455,7 @@
 			.attr("y", 0);
 
 		g_fitted.append("text")
-			.attr("x", function (d) { return (650); })
+			.attr("x", function (d) { return (450); })
 			.attr("y", function (d) { return (545); })
 			.text(function (d) { return "Fitted"; })
 			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
@@ -494,7 +464,7 @@
 
 		g_fitted.append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 270)
+			.attr("y", 70)
 			.attr("x", 0 - (260))
 			.attr("dy", "1em")
 			.style("text-anchor", "middle")

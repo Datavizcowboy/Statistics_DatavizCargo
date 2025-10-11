@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="container">
-		<p class="coverbig"><span>00</span></br>Variable</br>Definition</p>
+		<p class="coverbig"><span>00</span></br>Variables</br>Definition</p>
 
 		<div class="option_var">
 			<p class="coverbig2">ERS</br><span>Backscatter</span></p>
@@ -149,10 +149,8 @@
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>
+
 		</p>
 	</div>
 
@@ -170,13 +168,19 @@
 	</div>
 
 	<div class="des_option_var_code">
-		<p class="coverbig2">Neural</br> Network</br><span></span></p>
+		<p class="coverbig2">Pandas</br>Dataframe</br><span></span></p>
 		<p class="code">
-			data = pd.read_csv(thefile, sep='\t', header=None)</br>
-			data.columns = ["cellNr", "latitude", "longitude", "backscatter","emissivity_v","emissivity_h","ts_amplitude","ndvi","lmd_soilWetness"]
-</br></br>
-			data = data.replace('   NaN',pd.NA)</br></br>
+			</br></br>
+			# Read the input file</br>
+			data = pd.read_csv(./TP_3487347, sep='\t', header=None)</br></br>
+			# Assign column names</br>
+			data.columns = ["cellNr", "latitude", "longitude", </br>
+			&nbsp;&nbsp;&nbsp;&nbsp;"backscatter","emissivity_v","emissivity_h","ts_amplitude","ndvi","lmd_soilWetness"]
+			</br></br>
+			# Replace and remove NaN</br>
+			data = data.replace(' NaN',pd.NA)</br>
 			data = data.dropna()</br></br>
+			# Deliver basic statistics</br>
 			data.describe()</br>
 		</p>
 	</div>
@@ -208,7 +212,7 @@
 			"../../data/emiv.json",
 			"../../data/tsamp.json",
 			"../../data/ndvi.json",
-			"../../data/lmd.json",
+			"../../data/poly_lmd.json",
 		];
 
 		var optionsphase = selectphase
@@ -218,13 +222,13 @@
 			.text(function (d) { return d; })
 			.attr("id", function (d, i) { return i; })
 
-		dacolor = [d3.interpolateViridis,
+		dacolor = [d3.interpolateOrRd,
 		d3.interpolateMagma,
 		d3.interpolateMagma,
 		d3.interpolateInferno,
 		d3.interpolateYlGn,
-		d3.interpolateInferno,
-		d3.interpolateInferno
+		d3.interpolateYlGnBu,
+		d3.interpolateYlGnBu
 		]
 
 		function onchange() {
@@ -241,9 +245,6 @@
 			json_model_ref = list_models[selectnumber];
 			// console.log(json_model_ref)
 
-
-
-
 			d3.json(json_model_ref, function (error, data) {
 
 				const myColor = d3.scaleSequential(dacolor[selectnumber])
@@ -251,27 +252,15 @@
 
 				gdots.selectAll("circle")
 					.data(data)
-
-					// .transition().duration(2000)
-
-
-
 					.enter()
 					.append("circle")
 					.attr("cx", function (d) {
-						// console.log(d.lon) 
 						return projection([d.lon, d.lat])[0];
 					})
 					.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 					.attr("r", 1)
 					.attr("opacity", 1)
-
-
-
 					.style("fill", function (d) { return myColor(d.wind) })
-				// .style("fill", function (d) {
-				// 	return d3.rgb(255, 255 - (-1) * d.wind * 10, 55 + d.wind * 10)
-				// })
 			})
 		};
 
@@ -298,7 +287,7 @@
 		list_min = [-27.228800, 0.687300, 0.389900, 1.327500, -0.031400, 0.000000]
 
 
-		hpitch = 120
+		hpitch = 220
 		ypitch = 350
 		kern = 150
 
@@ -356,23 +345,23 @@
 				.attr("y", hpitch + 240)
 				.attr("x", -50 + ypitch + hh * kern)
 				.text(list_variables[hh])
-				.attr("font-family", "Georgia, Rockwell, Gill Sans")
-				.attr("font-size", 18)
+				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
+				.attr("font-size", 12)
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'start')
-				.style("fill", "#ddd")
+				.style("fill", "#fff")
 
 			glegend
 				.append('text')
 				.attr("y", hpitch + 270)
 				.attr("x", -50 + ypitch + hh * kern)
 				.text('' + list_units[hh] + '')
-				.attr("font-family", "Georgia, Rockwell, Gill Sans")
+				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
 				.attr("font-size", 28)
 				.attr("font-weight", "bold")
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'start')
-				.style("fill", "#ddd")
+				.style("fill", "#fff")
 
 			glegend
 				.append('text')
@@ -638,7 +627,7 @@
 
 		d3.json("../../DATA/back.json", function (data) {
 
-			const myColor = d3.scaleSequential(d3.interpolateViridis)
+			const myColor = d3.scaleSequential(d3.interpolateOrRd)
 				.domain(d3.extent(data, function (d) { return d.wind; }))
 			//    .interpolator(d3.interpolatePuRd);
 			//    .range(back_colors)

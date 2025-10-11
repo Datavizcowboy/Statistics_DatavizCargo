@@ -25,13 +25,15 @@
 			satellite observations of NDVI, surface temperature and backscatter
 			by using neural network statistical tools.
 		</p>
+
+				<p class="coverbig"><span>05</span></br>Simple Linear</br>Regression</p>
+
 	</div>
 
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig2"><span>ERS</span></br>Backscatter</p>
-			<p class="credits2">
+			<p class="credits2"></br></br></br></br></br></br>
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
@@ -41,14 +43,16 @@
 			</p>
 		</div>
 		<div class="option_var_code">
-			<p class="coverbig2">Neural</br> Network</br><span></span></p>
-			<p class="code">
-				fig, ax = pl.subplots()</br>
+			<p class="coverbig2">Stats</br> Models</br><span></span></p>
+			<p class="code"></br>
+							# Plot the scatter matrix</br>
 				ax = pd.plotting.scatter_matrix(data[['ts_amplitude','lmd_soilWetness']],ax=ax);
 				</br>
 				</br>
+					# Correlation matrix</br>
 				data.corr(min_periods=3)
 				</br></br>
+					# Simple Linear Regression</br>
 				X = pd.DataFrame({'intercept':np.ones(data.shape[0]),'TS_amplitude':data['ts_amplitude']})</br>
 				y = data['lmd_soilWetness']</br>
 				model = sm.OLS(y,X)</br>
@@ -56,6 +60,7 @@
 				results.summary() </br>
 				results.params</br>
 				</br>
+					# Plot Fitted vs Residuals</br>
 				ax.scatter(results.fittedvalues, results.resid,c='k',s=1,alpha=0.2)</br>
 			</p>
 		</div>
@@ -64,13 +69,57 @@
 	<div class="scattermatrix-div">
 	</div>
 
+		<div class="text01-div">
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
+
 	<div class="correlation-div">
+	</div>
+
+			<div class="text02-div">
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<div class="simplelinear-div">
 	</div>
 
+			<div class="text03-div">
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
+
 	<div class="fitted-div">
+	</div>
+
+			<div class="text04-div">
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<script type="text/javascript">

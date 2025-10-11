@@ -196,6 +196,20 @@ p.credits {
   position: relative;
 }
 
+p.credits2 {
+  font-family: Georgia, DM Sans, Arial, sans-serif;
+  font-size: 13pt;
+  line-height: 18pt;
+  letter-spacing: -0.2px;
+  /* font-style: italic; */
+  opacity: 1;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #000;
+  position: relative;
+}
+
+
 p.code {
   font-family: Menlo, Georgia, DM Sans, Arial, sans-serif;
   font-size: 10pt;
@@ -455,7 +469,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 410px;
-  margin-top: 550px;
+  margin-top: 580px;
   border-bottom-color: #999;
   border-bottom-width: 0px;
   border-bottom-style: solid;

@@ -1,7 +1,7 @@
 p.credits2 {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 12pt;
-  line-height: 16pt;
+  font-size: 13pt;
+  line-height: 18pt;
   letter-spacing: -0.2px;
   /* font-style: italic; */
   opacity: 1;
@@ -67,4 +67,59 @@ path {
   fill: #999;
   stroke: none;
   opacity: 1;
+}
+
+.text01-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 820px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text02-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1420px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text03-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top:1940px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text04-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2540px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
 }

@@ -334,6 +334,20 @@
 				.attr("fill", function (d) { return "orange"; })
 		})
 
+			g_simple
+				.append("line")
+				.attr('transform', 'translate(0,' + (0) + ')')
+				.attr("x1", function (d) { return x(0); })
+				.attr("y1", function (d) { return y(0.844); })
+				.attr("x2", function (d) { return x(50); })
+				.attr("y2", function (d) { return y(0.2); })
+				.style("opacity", function (d) { return 1; })
+				.attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "tan"; })
+								.attr("stroke-width", function (d) { return 6; })
+				// .attr("fill", function (d) { return "orange"; })
+
+
 		//------------------------------- CORRELATION --------------------------------
 
 		color_positive = "cadetblue"
@@ -541,6 +555,18 @@
 				.attr("stroke", function (d) { return "none"; })
 				.attr("fill", function (d) { return "cadetblue"; })
 		})
+
+					g_fitted
+				.append("line")
+				.attr('transform', 'translate(0,' + (0) + ')')
+				.attr("x1", function (d) { return xf(0); })
+				.attr("y1", function (d) { return yf(0); })
+				.attr("x2", function (d) { return xf(1); })
+				.attr("y2", function (d) { return yf(0); })
+				.style("opacity", function (d) { return 1; })
+				.attr("id", function (d) { return "isl" })
+				.attr("stroke", function (d) { return "#fff"; })
+								.attr("stroke-width", function (d) { return 1; })
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 

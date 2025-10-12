@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
 	<div class='header' id="header">
 		<p class="title"><span>Polynomial</span></br>Regression</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
@@ -102,6 +101,9 @@
 	<div class="polymap-div">
 	</div>
 
+	<div class="rsquared-div">
+	</div>
+
 	<script type="text/javascript">
 
 		var width = 1160;
@@ -139,6 +141,58 @@
 		var g_polymap = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
+		//-----------------------------------------------------------
+		var svg_r2 = d3.select("div.rsquared-div")
+			.append("svg")
+			.attr("width", 800)
+			.attr("height", 700);
+
+		var gr2 = svg_r2.append("g")
+			.attr('transform', 'translate(' + (0) + ',0)')
+
+		hpitch = 120
+		ypitch = 0
+		kern = 210
+
+		list_variables = ['R Squared', 'R Squared', 'R Squared']
+		list_mean = [0.508, 0.539, 0.908]
+
+		for (hh = 0; hh < list_variables.length; hh++) {
+
+			gr2
+				.append("rect")
+				.attr("x", hpitch)
+				.attr("y", ypitch + hh * kern)
+				.attr("width", 160)
+				.attr("height",120)
+				.style('stroke-width', 0)
+				.style("opacity", 1)
+				.style("stroke", "none")
+				.style("fill", "darkorange");
+
+			gr2
+				.append('text')
+				.attr("x", 15 + hpitch)
+				.attr("y", 90 + ypitch + hh * kern)
+				.text(list_variables[hh])
+				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
+				.attr("font-size", 12)
+				// .attr("font-style", "italic")
+				.attr("text-anchor", 'start')
+				.style("fill", "#fff")
+
+			gr2
+				.append('text')
+				.attr("x", 15 + hpitch)
+				.attr("y", 70 + ypitch + hh * kern)
+				.text(list_mean[hh])
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 48)
+				.attr("letter-spacing", -2)
+				.attr("font-weight", "bold")
+				.attr("text-anchor", 'start')
+				.style("fill", "#111")
+		}
 		//--------------------------------------------LINES AND AREAS
 
 		var x = d3.scaleLinear()
@@ -359,6 +413,19 @@
 				.attr("stroke", function (d) { return "none"; })
 				.attr("fill", function (d) { return "cadetblue"; })
 		})
+
+
+		g_poly
+			.append("line")
+			.attr('transform', 'translate(0,' + (0) + ')')
+			.attr("x1", function (d) { return xf(0); })
+			.attr("y1", function (d) { return yf(0); })
+			.attr("x2", function (d) { return xf(1); })
+			.attr("y2", function (d) { return yf(0); })
+			.style("opacity", function (d) { return 1; })
+			.attr("id", function (d) { return "isl" })
+			.attr("stroke", function (d) { return "#fff"; })
+			.attr("stroke-width", function (d) { return 1; })
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 

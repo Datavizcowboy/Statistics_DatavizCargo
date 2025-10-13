@@ -268,14 +268,12 @@ a:active {
 
 body {
   margin-left: 0px;
-
   left: 0px;
   top: 0px;
   /*    background-image: url("./Fond.jpeg");*/
   /*    background-repeat:no-repeat;*/
   /* background: #002D48; */
   background: #555;
-
   opacity: 1;
 }
 

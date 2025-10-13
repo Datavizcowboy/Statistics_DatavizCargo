@@ -4,6 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
+			<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
@@ -24,13 +26,17 @@
 			satellite observations of NDVI, surface temperature and backscatter
 			by using neural network statistical tools.
 		</p>
+
+							<p class="coverbig"><span>07</span></br>Multiple Linear</br>Regression</p>
+
 	</div>
 
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig2"><span>ERS</span></br>Backscatter</p>
-			<p class="credits">
+			<p class="credits2">
+											</br></br></br></br></br></br>	</br></br>	
+
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
@@ -112,11 +118,46 @@
 
 	<div class="epoch-div">
 	</div>
+		<div class="text01n-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
 
 	<div class="noutput-div">
 	</div>
 
+	<div class="text02n-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
+
 	<div class="lmd-div">
+	</div>
+
+			<div class="text03n-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<div class="polymap-div">
@@ -297,6 +338,9 @@
 
 		d3.json("../../DATA/nn_map.json", function (data) {
 
+												const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
 			g_int.selectAll("circle")
 				.data(data)
 				.enter()
@@ -305,7 +349,7 @@
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1)
 				.attr("opacity", 1)
-				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
+				.style("fill", function (d) { return myColor(d.wind) })
 		})
 
 		//------------------------------- POLYNOMIAL -------------------
@@ -332,6 +376,9 @@
 
 		d3.json("../../DATA/poly_lmd.json", function (data) {
 
+												const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
 			g_poly.selectAll("circle")
 				.data(data)
 				.enter()
@@ -340,7 +387,7 @@
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1)
 				.attr("opacity", 1)
-				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
+				.style("fill", function (d) { return myColor(d.wind) })
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------

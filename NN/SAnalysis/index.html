@@ -26,12 +26,10 @@
 			by using neural network statistical tools.
 		</p>
 
-				<p class="coverbig"><span>05</span></br>Simple Linear</br>Regression</p>
-
+		<p class="coverbig"><span>04</span></br>Simple Linear</br>Regression</p>
 	</div>
 
 	<div class="container">
-
 		<div class="option_var">
 			<p class="credits2"></br></br></br></br></br></br>
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
@@ -39,20 +37,19 @@
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
 				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
 				is specified in units of decibel [dB].
-
 			</p>
 		</div>
 		<div class="option_var_code">
 			<p class="coverbig2">Stats</br> Models</br><span></span></p>
 			<p class="code"></br>
-							# Plot the scatter matrix</br>
+				# Plot the scatter matrix</br>
 				ax = pd.plotting.scatter_matrix(data[['ts_amplitude','lmd_soilWetness']],ax=ax);
 				</br>
 				</br>
-					# Correlation matrix</br>
+				# Correlation matrix</br>
 				data.corr(min_periods=3)
 				</br></br>
-					# Simple Linear Regression</br>
+				# Simple Linear Regression</br>
 				X = pd.DataFrame({'intercept':np.ones(data.shape[0]),'TS_amplitude':data['ts_amplitude']})</br>
 				y = data['lmd_soilWetness']</br>
 				model = sm.OLS(y,X)</br>
@@ -60,7 +57,7 @@
 				results.summary() </br>
 				results.params</br>
 				</br>
-					# Plot Fitted vs Residuals</br>
+				# Plot Fitted vs Residuals</br>
 				ax.scatter(results.fittedvalues, results.resid,c='k',s=1,alpha=0.2)</br>
 			</p>
 		</div>
@@ -69,7 +66,8 @@
 	<div class="scattermatrix-div">
 	</div>
 
-		<div class="text01-div">
+	<div class="text01-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -83,7 +81,8 @@
 	<div class="correlation-div">
 	</div>
 
-			<div class="text02-div">
+	<div class="text02-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -97,7 +96,8 @@
 	<div class="simplelinear-div">
 	</div>
 
-			<div class="text03-div">
+	<div class="text03-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -111,7 +111,8 @@
 	<div class="fitted-div">
 	</div>
 
-			<div class="text04-div">
+	<div class="text04-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -334,18 +335,18 @@
 				.attr("fill", function (d) { return "orange"; })
 		})
 
-			g_simple
-				.append("line")
-				.attr('transform', 'translate(0,' + (0) + ')')
-				.attr("x1", function (d) { return x(0); })
-				.attr("y1", function (d) { return y(0.844); })
-				.attr("x2", function (d) { return x(50); })
-				.attr("y2", function (d) { return y(0.2); })
-				.style("opacity", function (d) { return 1; })
-				.attr("id", function (d) { return "isl" })
-				.attr("stroke", function (d) { return "tan"; })
-								.attr("stroke-width", function (d) { return 6; })
-				// .attr("fill", function (d) { return "orange"; })
+		g_simple
+			.append("line")
+			.attr('transform', 'translate(0,' + (0) + ')')
+			.attr("x1", function (d) { return x(0); })
+			.attr("y1", function (d) { return y(0.844); })
+			.attr("x2", function (d) { return x(50); })
+			.attr("y2", function (d) { return y(0.2); })
+			.style("opacity", function (d) { return 1; })
+			.attr("id", function (d) { return "isl" })
+			.attr("stroke", function (d) { return "tan"; })
+			.attr("stroke-width", function (d) { return 6; })
+		// .attr("fill", function (d) { return "orange"; })
 
 
 		//------------------------------- CORRELATION --------------------------------
@@ -556,17 +557,19 @@
 				.attr("fill", function (d) { return "cadetblue"; })
 		})
 
-					g_fitted
-				.append("line")
-				.attr('transform', 'translate(0,' + (0) + ')')
-				.attr("x1", function (d) { return xf(0); })
-				.attr("y1", function (d) { return yf(0); })
-				.attr("x2", function (d) { return xf(1); })
-				.attr("y2", function (d) { return yf(0); })
-				.style("opacity", function (d) { return 1; })
-				.attr("id", function (d) { return "isl" })
-				.attr("stroke", function (d) { return "#fff"; })
-								.attr("stroke-width", function (d) { return 1; })
+		g_fitted
+			.append("line")
+			.attr('transform', 'translate(0,' + (0) + ')')
+			.attr("x1", function (d) { return xf(0); })
+			.attr("y1", function (d) { return yf(0); })
+			.attr("x2", function (d) { return xf(1); })
+			.attr("y2", function (d) { return yf(0); })
+			.style("opacity", function (d) { return 1; })
+			.attr("id", function (d) { return "isl" })
+			.attr("stroke", function (d) { return "#999"; })
+			            .style("stroke-dasharray", ("4,4"))
+
+			.attr("stroke-width", function (d) { return 1; })
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 

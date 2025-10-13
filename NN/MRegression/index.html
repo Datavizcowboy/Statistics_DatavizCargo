@@ -4,6 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
@@ -23,13 +24,18 @@
 			satellite observations of NDVI, surface temperature and backscatter
 			by using neural network statistical tools.
 		</p>
+
+			<p class="coverbig"><span>05</span></br>Multiple Linear</br>Regression</p>
+
 	</div>
+
+
 
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig2"><span>ERS</span></br>Backscatter</p>
-			<p class="credits2">
+		<p class="credits2">
+			</br></br></br></br></br></br>	</br></br>	
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
@@ -92,13 +98,61 @@
 	<div class="multiple-div">
 	</div>
 
+	<div class="text01m-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
+
 	<div class="interaction-div">
+	</div>
+
+	<div class="text02m-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<div class="poly-div">
 	</div>
 
+	<div class="text03m-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
+
 	<div class="polymap-div">
+	</div>
+
+	<div class="text04m-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<div class="rsquared-div">
@@ -150,9 +204,9 @@
 		var gr2 = svg_r2.append("g")
 			.attr('transform', 'translate(' + (0) + ',0)')
 
-		hpitch = 120
+		hpitch = 240
 		ypitch = 0
-		kern = 210
+		kern = 230
 
 		list_variables = ['R Squared', 'R Squared', 'R Squared']
 		list_mean = [0.508, 0.539, 0.908]
@@ -163,8 +217,8 @@
 				.append("rect")
 				.attr("x", hpitch)
 				.attr("y", ypitch + hh * kern)
-				.attr("width", 160)
-				.attr("height",120)
+				.attr("width", 100)
+				.attr("height", 70)
 				.style('stroke-width', 0)
 				.style("opacity", 1)
 				.style("stroke", "none")
@@ -173,7 +227,7 @@
 			gr2
 				.append('text')
 				.attr("x", 15 + hpitch)
-				.attr("y", 90 + ypitch + hh * kern)
+				.attr("y", 50 + ypitch + hh * kern)
 				.text(list_variables[hh])
 				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
 				.attr("font-size", 12)
@@ -184,10 +238,10 @@
 			gr2
 				.append('text')
 				.attr("x", 15 + hpitch)
-				.attr("y", 70 + ypitch + hh * kern)
+				.attr("y", 35 + ypitch + hh * kern)
 				.text(list_mean[hh])
 				.attr("font-family", "Rockwell, Gill Sans")
-				.attr("font-size", 48)
+				.attr("font-size", 26)
 				.attr("letter-spacing", -2)
 				.attr("font-weight", "bold")
 				.attr("text-anchor", 'start')
@@ -344,6 +398,9 @@
 
 		d3.json("../../DATA/poly_map.json", function (data) {
 
+			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
 			g_int.selectAll("circle")
 				.data(data)
 				.enter()
@@ -352,7 +409,7 @@
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1)
 				.attr("opacity", 1)
-				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
+				.style("fill", function (d) { return myColor(d.wind) })
 		})
 
 		//------------------------------- POLYNOMIAL -------------------
@@ -424,7 +481,9 @@
 			.attr("y2", function (d) { return yf(0); })
 			.style("opacity", function (d) { return 1; })
 			.attr("id", function (d) { return "isl" })
-			.attr("stroke", function (d) { return "#fff"; })
+			.attr("stroke", function (d) { return "#999"; })
+			.style("stroke-dasharray", ("4,4"))
+
 			.attr("stroke-width", function (d) { return 1; })
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
@@ -450,6 +509,9 @@
 
 		d3.json("../../DATA/poly_lmd.json", function (data) {
 
+			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
 			g_polymap.selectAll("circle")
 				.data(data)
 				.enter()
@@ -458,7 +520,7 @@
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 				.attr("r", 1)
 				.attr("opacity", 1)
-				.style("fill", function (d) { return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 255) })
+				.style("fill", function (d) { return myColor(d.wind) })
 		})
 
 	</script>

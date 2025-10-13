@@ -223,8 +223,8 @@
 
 		dacolor = [
 			d3.interpolateMagma,
-			d3.interpolateOrRd,
-			d3.interpolateOrRd,
+			d3.interpolatePlasma,
+			d3.interpolatePlasma,
 			d3.interpolateInferno,
 			d3.interpolateYlGn,
 			d3.interpolateYlGnBu,
@@ -254,14 +254,45 @@
 					.data(data)
 					.enter()
 					.append("circle")
-					.attr("cx", function (d) {
-						return projection([d.lon, d.lat])[0];
-					})
+					.attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
 					.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
 					.attr("r", 1)
 					.attr("opacity", 1)
 					.style("fill", function (d) { return myColor(d.wind) })
 			})
+
+			stripe.selectAll("text").remove()
+			stripe.selectAll("rect").remove()
+
+			for (k = 0; k < list_color_discrete[0].length; k++) {
+				console.log(k)
+
+				stripe.append('rect')
+					.attr('x', 0 + k * 20)
+					.attr('y', vpitch + 50)
+					.attr('width', 20)
+					.attr('height', 6)
+					.attr('fill', list_color_discrete[selectnumber][k])
+					.attr('stroke', 'none')
+					.attr('opacity', .7)
+					.attr("id","goddamn")
+					.attr('stroke-width', 1);
+			}
+
+			for (k = 0; k < list_scale_discrete.length; k++) {
+
+				stripe.append('text')
+					.attr('x', function (d) { return 10 + k * 20; })
+					.attr('y', 3 + vpitch + 70)
+					.text(function () { return list_scale_discrete[selectnumber][k]; })
+					.attr('font-family', font_family)
+					.attr('font-size', 12)
+					.attr('font-weight', 'lighter')
+					.attr('opacity', 1)
+					.style('fill', 'white')
+					.attr("text-anchor", "middle")
+			}
+
 		};
 
 		var width = 1180;
@@ -292,44 +323,36 @@
 
 		var vpitch = -350
 		var list_colorvalues_log = ['0', 1, 10, '100']
-		// var list_color_discrete = ['#e9fffc','#b2dee1','#005599','#16045c']
-		// var list_scale_discrete = ['0 - 0.1%','0.1 - 1%','1-10%','10-100%']
 
-		// var list_color_discrete = ['#e9fffc','#b2dee1','#7bbdce','#449bbd','#0078ad','#005599','#00317f','#16045c']
-		// var list_color_discrete = ['#ffffe5', '#fff7bc', '#fee391', '#fec44f', '#fe9929', '#ec7014', '#cc4c02', '#8c2d04']
+		var list_color_discrete = [
+			['#000004', '#221150', '#5f187f', '#982d80', '#d3436e', '#f8765c', '#febb81', '#fcfdbf'], // Magma
+			['#0d0887', '#5302a3', '#8b0aa5', '#b83289', '#db5c68', '#f48849', '#febd2a', '#f0f921'], // Plasma
+			['#0d0887', '#5302a3', '#8b0aa5', '#b83289', '#db5c68', '#f48849', '#febd2a', '#f0f921'], // Plasma
+			['#000004', '#280b53', '#65156e', '#9f2a63', '#d44842', '#f57d15', '#fac228', '#fcffa4'], // Inferno
+			['#ffffe5', '#f3fab6', '#cceb9d', '#96d385', '#59b769', '#2c8f4a', '#056c39', '#004529'], // YlGn
+			['#ffffd9', '#e8f6b1', '#b2e1b6', '#64c3bf', '#2ca1c2', '#216daf', '#253a97', '#081d58'], // YlGnBu
+			['#ffffd9', '#e8f6b1', '#b2e1b6', '#64c3bf', '#2ca1c2', '#216daf', '#253a97', '#081d58']  // YlGnBu
+		]
 
-        var list_color_discrete = [
-			            ['#000004', '#221150', '#5f187f', '#982d80', '#d3436e', '#f8765c', '#febb81', '#fcfdbf'], // Magma
+		var list_scale_discrete = [
+			['0', '1', '2', '3', '4', '5', '6', '7'], // Backscatter
+			['0', '1', '2', '3', '4', '5', '6', '7'], // Emissivity H
+			['0', '1', '2', '3', '4', '5', '6', '7'], // Emissivity V
+			['0', '1', '2', '3', '4', '5', '6', '7'], // TS Amplitude
+			['0', '1', '2', '3', '4', '5', '6', '7'], // NDVI
+			['0', '1', '2', '3', '4', '5', '6', '7'], // LMD SoilMoisture
+			['0', '1', '2', '3', '4', '5', '6', '7'], // LMD SoilMoisture
 
-						
-        ['#440154', '#46327e', '#365c8d', '#277f8e', '#1fa187', '#4ac16d', '#a0da39', '#fde725'], // Viridis 
-            // ['#000004', '#221150', '#5f187f', '#982d80', '#d3436e', '#f8765c', '#febb81', '#fcfdbf'], // Magma
-            ['#000000', '#20202c', '#404059', '#60657f', '#7f919f', '#9fbdbf', '#cddfdf', '#ffffff'], // Bone
-            // ['#440154', '#46327e', '#365c8d', '#277f8e', '#1fa187', '#4ac16d', '#a0da39', '#fde725'], // Viridis
-            ['#0d0887', '#5302a3', '#8b0aa5', '#b83289', '#db5c68', '#f48849', '#febd2a', '#f0f921'], // Plasma
-            // ['#000004', '#280b53', '#65156e', '#9f2a63', '#d44842', '#f57d15', '#fac228', '#fcffa4'], // Inferno
-            ['#543005', '#a26619', '#dab972', '#f6ecd1', '#d4edea', '#75c5ba', '#177b73', '#003c30'], //BrBG
-            ['#00224e', '#213b6e', '#4c556c', '#6c6e72', '#8e8978', '#b1a570', '#d9c55c', '#fee838'], // Cividis
-            ['#000000', '#2d1c12', '#5a3924', '#875536', '#b47248', '#e18e5b', '#ffab6d', '#ffc77f'], // Copper
-            ['#000000', '#2d1c12', '#5a3924', '#875536', '#b47248', '#e18e5b', '#ffab6d', '#ffc77f'], // Copper
-            // ['#008066', '#249266', '#49a466', '#6db666', '#92c866', '#b6db66', '#dbed66', '#ffff66'], // Summer
+		]
 
-            // ['#1e0000', '#7b4f4f', '#ac6f6f', '#c99588', '#d8bf9d', '#e5e1b0', '#f3f3d8', '#ffffff'], // Pink
-            ['#2d004b', '#674897', '#aba3cd', '#e1e2ee', '#fce7c9', '#f9b058', '#c66a0c', '#7f3b08'], //PuOr_r
-            // ['#008000', '#004924', '#001249', '#00246d', '#005b92', '#2492b6', '#92c8db', '#ffffff']  // Ocean
-            ['#08306b', '#0c56a0', '#2a7aba', '#549ecd', '#88bedc', '#bbd6eb', '#dbe9f6', '#f7fbff'] // Blues_r
-        ]
-		// var list_scale_discrete = ['4', '4.5', '5', '5.5', '6', '6.5', '7', '7.5','8','8.5']
-		var list_scale_discrete = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-		for (k = 0; k < list_color_discrete.length; k++) {
+		for (k = 0; k < list_color_discrete[0].length; k++) {
 
 			stripe.append('rect')
 				.attr('x', 0 + k * 20)
 				.attr('y', vpitch + 395)
 				.attr('width', 20)
 				.attr('height', 6)
-				.attr('fill', list_color_discrete[0][k])
+				.attr('fill', list_color_discrete[5][k])
 				.attr('stroke', 'none')
 				.attr('opacity', .7)
 				.attr('stroke-width', 1);

@@ -1,7 +1,7 @@
 p.credits2 {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 13pt;
-  line-height: 18pt;
+  font-size: 12pt;
+  line-height: 16pt;
   letter-spacing: -0.2px;
   /* font-style: italic; */
   opacity: 1;
@@ -132,6 +132,126 @@ path {
   margin-right: 0px;
   margin-left: 100px;
   margin-top: 2540px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text01m-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1300px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text02m-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1920px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text03m-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top:2500px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text04m-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 3000px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text01c-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 800px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+
+.text02c-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1300px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text01n-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 1400px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text02n-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top: 2000px;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.text03n-div {
+  float: left;
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  margin-right: 0px;
+  margin-left: 100px;
+  margin-top:2500px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;

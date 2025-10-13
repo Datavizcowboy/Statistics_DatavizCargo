@@ -4,8 +4,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
+			<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 	<link type="text/css" rel="stylesheet" href="../../css/description.css">
+		<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
 	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
@@ -24,6 +27,9 @@
 			satellite observations of NDVI, surface temperature and backscatter
 			by using neural network statistical tools.
 		</p>
+
+					<p class="coverbig"><span>06</span></br>Multiple Linear</br>Regression</p>
+
 	</div>
 
 	<!-- <div class='back-div'>
@@ -41,8 +47,9 @@
 	<div class="container">
 
 		<div class="option_var">
-			<p class="coverbig2"><span>ERS</span></br>Backscatter</p>
 			<p class="credits2">
+							</br></br></br></br></br></br>	</br></br>	
+
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
 				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
@@ -75,8 +82,30 @@
 
 	<div class="clustersballs-div" id="vis">
 	</div>
+		<div class="text01c-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
+	</div>
 
 	<div class="clustersmap-div">
+	</div>
+		<div class="text02c-div">
+		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="credits2">
+			In order to train the neural network there is the need to provide a global target dataset of soil
+			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
+			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
+			model's soil
+			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
+			local wilting point and 1 corresponds to the local saturation level.
+		</p>
 	</div>
 
 	<script type="text/javascript">
@@ -265,6 +294,9 @@
 
 		d3.json("../../DATA/kmeans_map.json", function (data) {
 
+									const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
 			// console.log(data)
 
 			gdots.selectAll("circle")
@@ -279,7 +311,7 @@
 				.attr("r", 1.5)
 				.attr("opacity", 1)
 				.style("fill", function (d) {
-					return d3.rgb(255, 255 - d.wind * 255, 0 + d.wind * 225)
+					return myColor(d.wind);
 				})
 			// .attr("fill", function (d) {
 			// 	if (d.wind == "null") return "#fff"

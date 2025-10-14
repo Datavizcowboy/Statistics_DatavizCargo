@@ -7,6 +7,8 @@
   margin-top: 0px;
   text-align: left;
   opacity: 1;
+  background-color: #333;
+  color:#999 !important; 
 }
 
 .des_option_var_code{

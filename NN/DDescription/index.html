@@ -199,12 +199,12 @@
 
 		var databut =
 			["Select Satellite Observation",
-				'Backscatter',
-				"Emissivity H",
-				'Emissivity V',
-				'TS Amplitude',
-				'NDVI',
-				'LMD SoilMoisture']
+				'Backscatter (dB)',
+				"Emissivity H (K)",
+				'Emissivity V (K)',
+				'TS Amplitude (K)',
+				'NDVI (-)',
+				'LMD SoilMoisture (-)']
 
 		var list_models = ["../../data/back.json",
 			"../../data/emih.json",
@@ -235,15 +235,11 @@
 
 			gdots.selectAll("circle").remove()
 
-
 			selectValue = d3.select('#thephase').property('value')
 			console.log(selectValue)
 			selectnumber = databut.indexOf(selectValue) - 1
 			console.log(selectnumber)
-			// console.log(list_models[selectnumber])
-
 			json_model_ref = list_models[selectnumber];
-			// console.log(json_model_ref)
 
 			d3.json(json_model_ref, function (error, data) {
 
@@ -265,42 +261,41 @@
 			stripe.selectAll("rect").remove()
 
 			for (k = 0; k < list_color_discrete[0].length; k++) {
-				console.log(k)
 
 				stripe.append('rect')
-					.attr('x', 0 + k * 20)
-					.attr('y', vpitch + 50)
-					.attr('width', 20)
-					.attr('height', 6)
+					.attr('x', 0)
+					.attr('y', vpitch + 180 - k * 20)
+					.attr('width', 30)
+					.attr('height', 20)
 					.attr('fill', list_color_discrete[selectnumber][k])
 					.attr('stroke', 'none')
 					.attr('opacity', .7)
-					.attr("id","goddamn")
+					.attr("id", "goddamn")
 					.attr('stroke-width', 1);
 			}
 
-			for (k = 0; k < list_scale_discrete.length; k++) {
+			for (k = 0; k < list_scale_discrete.length + 1; k++) {
 
 				stripe.append('text')
-					.attr('x', function (d) { return 10 + k * 20; })
-					.attr('y', 3 + vpitch + 70)
-					.text(function () { return list_scale_discrete[selectnumber][k]; })
+					.attr('x', function (d) { return 55; })
+					.attr('y', 3 + vpitch + 190 - k * 20)
+					.text(function () { return d3.format('.2f')(list_scale_discrete[selectnumber][k]); })
 					.attr('font-family', font_family)
-					.attr('font-size', 12)
+					.attr('font-size', 10)
 					.attr('font-weight', 'lighter')
 					.attr('opacity', 1)
-					.style('fill', 'white')
+					.style('fill', '#bbb')
 					.attr("text-anchor", "middle")
 			}
 
 		};
 
 		var width = 1180;
-		var height = 500;
+		var height = 550;
 
 		var svg0 = d3.select("div.data0-div")
 			.append("svg")
-			.attr("width", 1160)
+			.attr("width", 1180)
 			.attr("height", height);
 
 		var svggroup = d3.select("div.datagroup-div")
@@ -311,7 +306,7 @@
 		var svglegend = d3.select("div.text02-div")
 			.append("svg")
 			.attr("width", 350)
-			.attr("height", 150);
+			.attr("height", 200);
 
 		var stripe = svglegend.append("g")
 
@@ -336,46 +331,49 @@
 
 		var list_scale_discrete = [
 			[-27.2288, -24.1226, -21.016399999999997, -17.9102, -14.803999999999998, -11.697799999999997, -8.5916, -5.4854]
-, // Backscatter
+			, // Backscatter
 			[0.3899, 0.4786142857142857, 0.5673285714285714, 0.6560428571428571, 0.7447571428571429, 0.8334714285714285, 0.9221857142857143, 1.0109]
-, // Emissivity H
+			, // Emissivity H
 			[0.6873, 0.7368571428571429, 0.7864142857142857, 0.8359714285714286, 0.8855285714285714, 0.9350857142857143, 0.9846428571428572, 1.0342]
-, // Emissivity V
+			, // Emissivity V
 			[1.3275, 10.035228571428572, 18.742957142857144, 27.450685714285715, 36.15841428571429, 44.86614285714286, 53.57387142857143, 62.2816]
-, // TS Amplitude
+			, // TS Amplitude
 			[-0.0314, 0.08661428571428571, 0.20462857142857144, 0.3226428571428571, 0.44065714285714286, 0.5586714285714286, 0.6766857142857142, 0.7947]
-, // NDVI
+			, // NDVI
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
-, // LMD SoilMoisture
+			, // LMD SoilMoisture
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
- // LMD SoilMoisture
+			// LMD SoilMoisture
 
 		]
 
 		for (k = 0; k < list_color_discrete[0].length; k++) {
 
 			stripe.append('rect')
-				.attr('x', 0 + k * 20)
-				.attr('y', vpitch + 395)
-				.attr('width', 20)
-				.attr('height', 6)
-				.attr('fill', list_color_discrete[5][k])
+				.attr('x', 0)
+				.attr('y', vpitch + 520 - k * 20)
+				.attr('width', 30)
+				.attr('height', 20)
+				.attr('fill', list_color_discrete[0][k])
 				.attr('stroke', 'none')
 				.attr('opacity', .7)
 				.attr('stroke-width', 1);
 		}
 
-		for (k = 0; k < list_scale_discrete.length; k++) {
+		for (k = 0; k < list_scale_discrete.length + 1; k++) {
 
 			stripe.append('text')
-				.attr('x', function (d) { return 10 + k * 20; })
-				.attr('y', 3 + vpitch + 413)
-				.text(function (d) { return list_scale_discrete[k]; })
+				.attr('x', function (d) { return 55; })
+				.attr('y', 3 + vpitch + 530 - k * 20)
+				.text(function (d) {
+					console.log(list_scale_discrete[k])
+					return d3.format('.1f')(list_scale_discrete[0][k]);
+				})
 				.attr('font-family', font_family)
-				.attr('font-size', 12)
+				.attr('font-size', 10)
 				.attr('font-weight', 'lighter')
 				.attr('opacity', 1)
-				.style('fill', 'white')
+				.style('fill', '#bbb')
 				.attr("text-anchor", "middle")
 		}
 
@@ -435,12 +433,14 @@
 				.append("rect")
 				.attr("y", hpitch + 100)
 				.attr("x", -65 + ypitch + hh * kern)
+				.attr("rx", 6)
+				.attr("ry", 6)
 				.attr("width", kern - 10)
 				.attr("height", 185)
 				.style('stroke-width', 0)
 				.style("opacity", 1)
 				.style("stroke", "none")
-				.style("fill", "darkorange");
+				.style("fill", "tan");
 
 			glegend
 				.append('text')
@@ -448,7 +448,7 @@
 				.attr("x", -50 + ypitch + hh * kern)
 				.text(list_variables[hh])
 				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
-				.attr("font-size", 12)
+				.attr("font-size", 14)
 				// .attr("font-style", "italic")
 				.attr("text-anchor", 'start')
 				.style("fill", "#fff")
@@ -684,7 +684,7 @@
 		var svgmap = d3.select("div.map-div")
 			.append("svg")
 			.attr("width", 1250)
-			.attr("height", 550)
+			.attr("height", 415)
 
 		var g4 = svgmap.append("g");
 		var gdots = svgmap.append("g");

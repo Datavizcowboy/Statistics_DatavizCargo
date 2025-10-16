@@ -324,7 +324,7 @@ border-top-style: solid; */
   height: 180px;
   position: absolute;
   margin-left: 100px;
-  margin-top: 820px;
+  margin-top: 860px;
   top: 0px;
   left: 0px;
   text-align: left;
@@ -340,7 +340,7 @@ border-top-style: solid; */
   height: 200px;
   margin-right: 0px;
   margin-left: 0px;
-  margin-top: 1700px;
+  margin-top: 1500px;
   position: absolute;
   background: #bbb;
 }
@@ -375,7 +375,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 350px;
+  margin-top: 400px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -445,7 +445,7 @@ border-top-style: solid; */
   width: 500px;
   height: 300px;
   margin-left: 550px;
-  margin-top: 160px;
+  margin-top: 200px;
   background-color: none;
   text-align: right;
   opacity: 1;

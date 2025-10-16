@@ -210,7 +210,7 @@
 			.attr("height", height);
 
 
-					var g_polymap_lines = svgpolymap.append("g")
+		var g_polymap_lines = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
 
 		var g_polymap = svgpolymap.append("g")
@@ -522,18 +522,21 @@
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
 
+		var list_variables = ["Backscatter", "Emissivity H", "Emissivity V", "Amplitude", "NDVI"]
+		var four = [[100, 20], [100, 80], [100, 140], [100, 200], [100, 260]]
+		var six = [[300, -40], [300, 20], [300, 80], [300, 140], [300, 200], [300, 260], [300, 320]]
+		var six2 = [[500, -40], [500, 20], [500, 80], [500, 140], [500, 200], [500, 260], [500, 320]]
+		var six3 = [[700, -40], [700, 20], [700, 80], [700, 140], [700, 200], [700, 260], [700, 320]]
 
-		var four = [[20, 20], [20, 80], [20, 140], [20, 200], [20, 260]]
 
-		var six = [[300, 20], [300, 80], [300, 140], [300, 200], [300, 260]]
-
-		var six2 = [[500, 20], [500, 80], [500, 140], [500, 200], [500, 260]]
-
-
+		thefill = "tan"
+		thethick = 1
+		thecircle = "#fff"
+		therad = 15
 
 		for (k = 0; k < four.length; k++) {
 
-			for (m = 0; m < six.length; m++) {
+			for (m = 0; m < six2.length; m++) {
 
 				g_polymap_lines
 					.append("line")
@@ -541,43 +544,53 @@
 					.attr("y1", four[k][1])
 					.attr("x2", six[m][0])
 					.attr("y2", six[m][1])
-					.style("opacity", function (d) { return 1; })
-					.attr("stroke", function (d) { return "#000"; })
+					.style("opacity", function (d) { return Math.random(); })
+					.attr("stroke", function (d) { return thefill; })
 					.attr("stroke-width", function (d) { return 1; })
 			}
 
 			g_polymap.append('circle')
 				.attr('cx', four[k][0])
 				.attr('cy', four[k][1])
-				.attr('r', 10)
-				.attr('fill', "#999")
-				.attr('stroke', 'none')
+				.attr('r', therad)
+				.attr('fill', "#555")
+				.attr('stroke', thecircle)
 				.attr('opacity', 1)
-				.attr('stroke-width', 1);
+				.attr('stroke-width', thethick);
 
-			g_polymap.append('circle')
-				.attr('cx', six[k][0])
-				.attr('cy', six[k][1])
-				.attr('r', 20)
-				.attr('fill', "#999")
-				.attr('stroke', 'none')
-				.attr('opacity', 1)
-				.attr('stroke-width', 1);
+			g_polymap.append("text")
+				.attr('x', four[k][0])
+				.attr('y', four[k][1] + 35)
+				.text(list_variables[k])
+				.attr("font-family", "Georgia, Garamond, sans-serif")
+				.attr("font-size", 12)
+				.style("fill", "#000")
+				.style("font-style", "italic")
+				.style("text-anchor", "middle")
 		}
 
 
 		for (k = 0; k < six2.length; k++) {
 
 			g_polymap.append('circle')
+				.attr('cx', six[k][0])
+				.attr('cy', six[k][1])
+				.attr('r', therad)
+				.attr('fill', "#555")
+				.attr('stroke', thecircle)
+				.attr('opacity', 1)
+				.attr('stroke-width', thethick);
+
+			g_polymap.append('circle')
 				.attr('cx', six2[k][0])
 				.attr('cy', six2[k][1])
-				.attr('r', 20)
-				.attr('fill', "#bbb")
-				.attr('stroke', 'none')
+				.attr('r', therad)
+				.attr('fill', "#555")
+				.attr('stroke', thecircle)
 				.attr('opacity', 1)
-				.attr('stroke-width', 1);
+				.attr('stroke-width', thethick);
 
-			for (m = 0; m < six.length; m++) {
+			for (m = 0; m < six2.length; m++) {
 
 				g_polymap_lines
 					.append("line")
@@ -585,25 +598,75 @@
 					.attr("y1", six[k][1])
 					.attr("x2", six2[m][0])
 					.attr("y2", six2[m][1])
-					.style("opacity", function (d) { return 1; })
-					.attr("stroke", function (d) { return "#000"; })
+					.style("opacity", function (d) { return Math.random(); })
+					.attr("stroke", function (d) { return thefill; })
 					.attr("stroke-width", function (d) { return 1; })
+			}
+		}
+
+		for (k = 0; k < six3.length; k++) {
+
+			g_polymap.append('circle')
+				.attr('cx', six3[k][0])
+				.attr('cy', six3[k][1])
+				.attr('r', therad)
+				.attr('fill', "#555")
+				.attr('stroke', thecircle)
+				.attr('opacity', 1)
+				.attr('stroke-width', thethick);
+
+			for (m = 0; m < six3.length; m++) {
 
 				g_polymap_lines
 					.append("line")
 					.attr("x1", six2[k][0])
 					.attr("y1", six2[k][1])
-					.attr("x2", 700)
+					.attr("x2", six3[m][0])
+					.attr("y2", six3[m][1])
+					.style("opacity", function (d) { return Math.random(); })
+					.attr("stroke", function (d) { return thefill; })
+					.attr("stroke-width", function (d) { return 1; })
+
+				g_polymap_lines
+					.append("line")
+					.attr("x1", six3[k][0])
+					.attr("y1", six3[k][1])
+					.attr("x2", 850)
 					.attr("y2", 150)
-					.style("opacity", function (d) { return 1; })
-					.attr("stroke", function (d) { return "#000"; })
+					.attr("opacity", function (d) { return Math.random(); })
+					.attr("stroke", function (d) { return thefill; })
 					.attr("stroke-width", function (d) { return 1; })
 			}
-
-
-
 		}
 
+		g_polymap.append('circle')
+			.attr('cx', 850)
+			.attr('cy', 150)
+			.attr('r', therad)
+			.attr('fill', "#555")
+			.attr('stroke', thecircle)
+			.attr('opacity', 1)
+			.attr('stroke-width', thethick);
+
+		g_polymap.append("text")
+			.attr('x', 850)
+			.attr('y', 150 + 30)
+			.text("Output")
+			.attr("font-family", "Georgia, Garamond, sans-serif")
+			.attr("font-size", 12)
+			.style("fill", "#000")
+			.style("font-style", "italic")
+			.style("text-anchor", "middle")
+
+		g_polymap.append("text")
+			.attr('x', 500)
+			.attr('y', 350 + 30)
+			.text("Hidden Layers")
+			.attr("font-family", "Georgia, Garamond, sans-serif")
+			.attr("font-size", 18)
+			.style("fill", "#000")
+			.style("font-style", "italic")
+			.style("text-anchor", "middle")
 
 	</script>
 

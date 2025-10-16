@@ -157,6 +157,21 @@
 		</p>
 	</div>
 
+	<div class="methodsneural-div">
+		<div class="methods3-div">
+			<!-- <p class="plaintext"><span>
+				For other data visualization and graphic design projects in science, please visit <a
+					href="https://graphicprototype.com/646-2/" target="_blank">graphicprototype.com</a>
+				or follow <a href="https://twitter.com/datavizcowboy" target="_blank">datavizcowboy</a>
+				on twitter.
+				</br></br>
+		</p></span> -->
+			<a href="https://datavizcowboy.com/" target="_blank">
+				<img height="100" width="100" src="../../images/Logo_Cowboy_Round.png" class="grayscale"></img>
+			</a>
+		</div>
+	</div>
+
 	<div class="polymap-div">
 	</div>
 
@@ -193,6 +208,10 @@
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
+
+
+					var g_polymap_lines = svgpolymap.append("g")
+			.attr('transform', 'translate(' + (0) + ',200)')
 
 		var g_polymap = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
@@ -245,9 +264,9 @@
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
 			, // LMD SoilMoisture
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113],
-			
+
 			// LMD SoilMoisture
-[-1.0, -0.7142857142857143, -0.4285714285714286, -0.1428571428571429, 0.1428571428571428, 0.4285714285714284, 0.7142857142857142, 1.0] // Difference
+			[-1.0, -0.7142857142857143, -0.4285714285714286, -0.1428571428571429, 0.1428571428571428, 0.4285714285714284, 0.7142857142857142, 1.0] // Difference
 		]
 
 		for (k = 0; k < list_color_discrete[0].length; k++) {
@@ -502,6 +521,89 @@
 		})
 
 		//------------------------------- D3.js DOTS MAP -----------------------------
+
+
+		var four = [[20, 20], [20, 80], [20, 140], [20, 200], [20, 260]]
+
+		var six = [[300, 20], [300, 80], [300, 140], [300, 200], [300, 260]]
+
+		var six2 = [[500, 20], [500, 80], [500, 140], [500, 200], [500, 260]]
+
+
+
+		for (k = 0; k < four.length; k++) {
+
+			for (m = 0; m < six.length; m++) {
+
+				g_polymap_lines
+					.append("line")
+					.attr("x1", four[k][0])
+					.attr("y1", four[k][1])
+					.attr("x2", six[m][0])
+					.attr("y2", six[m][1])
+					.style("opacity", function (d) { return 1; })
+					.attr("stroke", function (d) { return "#000"; })
+					.attr("stroke-width", function (d) { return 1; })
+			}
+
+			g_polymap.append('circle')
+				.attr('cx', four[k][0])
+				.attr('cy', four[k][1])
+				.attr('r', 10)
+				.attr('fill', "#999")
+				.attr('stroke', 'none')
+				.attr('opacity', 1)
+				.attr('stroke-width', 1);
+
+			g_polymap.append('circle')
+				.attr('cx', six[k][0])
+				.attr('cy', six[k][1])
+				.attr('r', 20)
+				.attr('fill', "#999")
+				.attr('stroke', 'none')
+				.attr('opacity', 1)
+				.attr('stroke-width', 1);
+		}
+
+
+		for (k = 0; k < six2.length; k++) {
+
+			g_polymap.append('circle')
+				.attr('cx', six2[k][0])
+				.attr('cy', six2[k][1])
+				.attr('r', 20)
+				.attr('fill', "#bbb")
+				.attr('stroke', 'none')
+				.attr('opacity', 1)
+				.attr('stroke-width', 1);
+
+			for (m = 0; m < six.length; m++) {
+
+				g_polymap_lines
+					.append("line")
+					.attr("x1", six[k][0])
+					.attr("y1", six[k][1])
+					.attr("x2", six2[m][0])
+					.attr("y2", six2[m][1])
+					.style("opacity", function (d) { return 1; })
+					.attr("stroke", function (d) { return "#000"; })
+					.attr("stroke-width", function (d) { return 1; })
+
+				g_polymap_lines
+					.append("line")
+					.attr("x1", six2[k][0])
+					.attr("y1", six2[k][1])
+					.attr("x2", 700)
+					.attr("y2", 150)
+					.style("opacity", function (d) { return 1; })
+					.attr("stroke", function (d) { return "#000"; })
+					.attr("stroke-width", function (d) { return 1; })
+			}
+
+
+
+		}
+
 
 	</script>
 

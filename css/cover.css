@@ -345,13 +345,68 @@ border-top-style: solid; */
   background: #bbb;
 }
 
+.methodsdescription-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 3700px;
+  position: absolute;
+  background: #bbb;
+}
+
+.methodsensibility-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 3200px;
+  position: absolute;
+  background: #bbb;
+}
+
+.methodsregression-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 3700px;
+  position: absolute;
+  background: #bbb;
+}
+
+.methodsclustering-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 1900px;
+  position: absolute;
+  background: #bbb;
+}
+
+.methodsneural-div{
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 3700px;
+  position: absolute;
+  background: #bbb;
+}
+
 .methods3-div{
   float: left;
   width: 280px;
   height: 150px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 0px;
+  margin-top: -10px;
   position: absolute;
   background: none;
 }

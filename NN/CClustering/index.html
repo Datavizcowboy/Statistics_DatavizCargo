@@ -208,6 +208,11 @@
 
 		const cat = ['Query', 'Quantity', 'Findability']
 
+		// list_clusters = ['#ffffd9', '#eff9b5', '#cfecb3', '#97d6b9', '#5dc0c0', '#31a6c2', '#1f80b8', '#2355a4', '#22318d', '#081d58']
+
+
+		list_clusters = ['#97d6b9','#22318d','#cfecb3', '#5dc0c0',  '#081d58','#1f80b8','#ffffd9','#2355a4','#31a6c2', '#eff9b5']
+
 		d3.json("../../DATA/zara_30_Adidas.json", function (error, data) {
 			if (error) throw error;
 
@@ -231,13 +236,17 @@
 				.attr("ry", 4)
 				.style("stroke-width", "1px")
 				.style("stroke", "#444")
+								.attr("opacity", .7)
+
 				.attr("fill", function (d, i) {
+
+
 					element = 4 * Math.random()
 					// if (d.data.click_count < 50) 
 					// return d3.rgb(255 - (50-d.data.click_count) * 20, 255 - (50-d.data.click_count) * 2, 255);
 					// else 
 					// return d3.rgb(255, 255 - (d.data.click_count-50) * 5, 255 - (d.data.click_count-50) * 5);
-					return "tan"
+					return list_clusters[i]
 				})
 			// return d3.rgb(155-element*30,155-element*30,155-element*30)})
 			//----- Original Blue
@@ -254,7 +263,7 @@
 				.attr("font-family", "Arial, Century Gothic, sans-serif")
 				.attr("font-size", 12)
 				.attr("opacity", 1)
-				.style("fill", "#444")
+				.style("fill", "#fff")
 				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
 				.selectAll("tspan")
 				.data(function (d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
@@ -267,7 +276,7 @@
 				.attr("font-family", "Arial, Century Gothic, sans-serif")
 				.attr("font-size", 14)
 				.attr("opacity", 1)
-				.style("fill", "#444")
+				.style("fill", "#fff")
 				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
 				.selectAll("tspan")
 				.data(function (d) { return d.data.size.toString().split(/(?=[A-Z][^A-Z])/g); })

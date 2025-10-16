@@ -225,7 +225,8 @@
 			['#000004', '#280b53', '#65156e', '#9f2a63', '#d44842', '#f57d15', '#fac228', '#fcffa4'], // Inferno
 			['#ffffe5', '#f3fab6', '#cceb9d', '#96d385', '#59b769', '#2c8f4a', '#056c39', '#004529'], // YlGn
 			['#ffffd9', '#e8f6b1', '#b2e1b6', '#64c3bf', '#2ca1c2', '#216daf', '#253a97', '#081d58'], // YlGnBu
-			['#ffffd9', '#e8f6b1', '#b2e1b6', '#64c3bf', '#2ca1c2', '#216daf', '#253a97', '#081d58']  // YlGnBu
+			['#ffffd9', '#e8f6b1', '#b2e1b6', '#64c3bf', '#2ca1c2', '#216daf', '#253a97', '#081d58'],  // YlGnBu
+			['#543005', '#a26619', '#dab972', '#f6ecd1', '#d4edea', '#75c5ba', '#177b73', '#003c30'] // BrBG
 		]
 
 		var list_scale_discrete = [
@@ -241,9 +242,10 @@
 			, // NDVI
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
 			, // LMD SoilMoisture
-			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
+			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113],
+			
 			// LMD SoilMoisture
-
+[-1.0, -0.7142857142857143, -0.4285714285714286, -0.1428571428571429, 0.1428571428571428, 0.4285714285714284, 0.7142857142857142, 1.0] // Difference
 		]
 
 		for (k = 0; k < list_color_discrete[0].length; k++) {
@@ -283,7 +285,7 @@
 				.attr('y', vpitch + 525 - k * 20)
 				.attr('width', 30)
 				.attr('height', 20)
-				.attr('fill', list_color_discrete[5][k])
+				.attr('fill', list_color_discrete[7][k])
 				.attr('stroke', 'none')
 				.attr('opacity', .7)
 				.attr('stroke-width', 1);
@@ -296,7 +298,7 @@
 				.attr('y', 8 + vpitch + 530 - k * 20)
 				.text(function (d) {
 					console.log(list_scale_discrete[k])
-					return d3.format('.2f')(list_scale_discrete[5][k]);
+					return d3.format('.2f')(list_scale_discrete[7][k]);
 				})
 				.attr('font-family', font_family)
 				.attr('font-size', 11)
@@ -620,9 +622,11 @@
 				.style("fill", function (d) { return "#333"; })
 		});
 
-		d3.json("../../DATA/poly_lmd.json", function (data) {
+		d3.json("../../DATA/diff_poly_Lmd.json", function (data) {
 
-			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+			console.log(d3.extent(data, function (d) { return d.wind; }))
+
+			const myColor = d3.scaleSequential(d3.interpolateBrBG)
 				.domain(d3.extent(data, function (d) { return d.wind; }))
 
 			g_polymap.selectAll("circle")

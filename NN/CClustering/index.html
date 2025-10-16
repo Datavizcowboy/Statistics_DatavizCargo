@@ -4,11 +4,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
-			<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
 	<link type="text/css" rel="stylesheet" href="../../css/description.css">
-		<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
+	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
 	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
@@ -28,7 +28,7 @@
 			by using neural network statistical tools.
 		</p>
 
-					<p class="coverbig"><span>06</span></br>Multiple Linear</br>Regression</p>
+		<p class="coverbig"><span>06</span></br>Multiple Linear</br>Regression</p>
 
 	</div>
 
@@ -48,7 +48,7 @@
 
 		<div class="option_var">
 			<p class="credits2">
-							</br></br></br></br></br></br>	</br></br>	
+				</br></br></br></br></br></br> </br></br>
 
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
@@ -82,7 +82,7 @@
 
 	<div class="clustersballs-div" id="vis">
 	</div>
-		<div class="text01c-div">
+	<div class="text01c-div">
 		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
@@ -96,7 +96,8 @@
 
 	<div class="clustersmap-div">
 	</div>
-		<div class="text02c-div">
+
+	<div class="text02c-div">
 		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
@@ -108,7 +109,7 @@
 		</p>
 	</div>
 
-		<div class="methodsclustering-div">
+	<div class="methodsclustering-div">
 		<div class="methods3-div">
 			<!-- <p class="plaintext"><span>
 				For other data visualization and graphic design projects in science, please visit <a
@@ -121,6 +122,9 @@
 				<img height="100" width="100" src="../../images/Logo_Cowboy_Round.png" class="grayscale"></img>
 			</a>
 		</div>
+	</div>
+
+	<div class="skew-div">
 	</div>
 
 	<script type="text/javascript">
@@ -136,7 +140,7 @@
 		var group = svg0.append("g")
 		themap = svg0.append("g")
 
-				var svglegend = d3.select("div.text02c-div")
+		var svglegend = d3.select("div.text02c-div")
 			.append("svg")
 			.attr("width", 350)
 			.attr("height", 200);
@@ -221,12 +225,7 @@
 			.round(true)
 			.paddingInner(1);
 
-		const cat = ['Query', 'Quantity', 'Findability']
-
-		// list_clusters = ['#ffffd9', '#eff9b5', '#cfecb3', '#97d6b9', '#5dc0c0', '#31a6c2', '#1f80b8', '#2355a4', '#22318d', '#081d58']
-
-
-		list_clusters = ['#97d6b9','#22318d','#cfecb3', '#5dc0c0',  '#081d58','#1f80b8','#ffffd9','#2355a4','#31a6c2', '#eff9b5']
+		list_clusters = ['#97d6b9', '#22318d', '#cfecb3', '#5dc0c0', '#081d58', '#1f80b8', '#ffffd9', '#2355a4', '#31a6c2', '#eff9b5']
 
 		d3.json("../../DATA/zara_30_Adidas.json", function (error, data) {
 			if (error) throw error;
@@ -251,7 +250,7 @@
 				.attr("ry", 4)
 				.style("stroke-width", "1px")
 				.style("stroke", "#444")
-								.attr("opacity", .7)
+				.attr("opacity", .7)
 
 				.attr("fill", function (d, i) {
 
@@ -275,8 +274,8 @@
 				.attr("xlink:href", function (d) { return "#" + d.data.id; });
 
 			cell.append("text")
-				.attr("font-family", "Arial, Century Gothic, sans-serif")
-				.attr("font-size", 12)
+				.attr("font-family", "Menlo, Arial, Century Gothic, sans-serif")
+				.attr("font-size", 10)
 				.attr("opacity", 1)
 				.style("fill", "#fff")
 				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
@@ -288,8 +287,8 @@
 				.text(function (d) { return d; });
 
 			cell.append("text")
-				.attr("font-family", "Arial, Century Gothic, sans-serif")
-				.attr("font-size", 14)
+				.attr("font-family", "Menlo, Arial, Century Gothic, sans-serif")
+				.attr("font-size", 12)
 				.attr("opacity", 1)
 				.style("fill", "#fff")
 				.attr("clip-path", function (d) { return "url(#clip-" + d.data.id + ")"; })
@@ -392,7 +391,7 @@
 
 		d3.json("../../DATA/kmeans_map.json", function (data) {
 
-									const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
+			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
 				.domain(d3.extent(data, function (d) { return d.wind; }))
 
 			// console.log(data)
@@ -416,6 +415,169 @@
 			// 	else return d3.rgb(255+d.wind, d.wind, 255)
 			// });
 		})
+
+
+		//-------------------------------- SKEWED
+
+		var widthrad = 1280;
+		var heightrad = 800;
+
+		var svgatlantic = d3.select("div.skew-div")
+			.append("svg")
+			.attr("width", widthrad)
+			.attr("height", heightrad);
+
+		var atlantic = svgatlantic.append("g")
+
+		let graph;
+		const position = 100
+
+		for (let lev = 0; lev < position; lev++) {
+
+			let graph = svgatlantic.append("g")
+				.attr("transform", function () {
+					const reverse = lev * 1.5
+					return "translate(" + (150 + reverse * 8) + "," + (280 + reverse * 2) +
+						")rotate(315)skewX(-45)skewY(10)translate(" + -reverse * 5 + "," +
+						-reverse * 2 + ")scale(.5)";
+				})
+				.attr("id", "spot_" + lev)
+		}
+
+		var svgscales = svgatlantic.append("g")
+
+		var projectionsk = d3.geoEquirectangular()
+			.center([0, 0])
+			.scale(120)
+			.rotate([0, 0, 0])
+			.translate([0, 0])
+
+		var graticulesk = d3.geoGraticule();
+
+		var pathsk = d3.geoPath()
+			.projection(projectionsk);
+
+		// svgscales
+		list_s = [0, 25, 50, 75]
+
+		for (s = 0; s < list_s.length; s++) {
+			d3.select("#spot_" + list_s[s])
+				.append("rect")
+				.attr("x", -350)
+				.attr("y", -150)
+				.attr("width", 750)
+				.attr("height", 300)
+				.attr("stroke", "none")
+				.attr("opacity", .1)
+				.attr("fill", "#bbb")
+		}
+
+		d3.json("../../DATA/back.json", function (data) {
+
+			const myColor = d3.scaleSequential(d3.interpolateGreys)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
+			d3.select("#spot_0")
+				.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) { return projectionsk([d.lon, d.lat])[0]; })
+				.attr("cy", function (d) { return projectionsk([d.lon, d.lat])[1]; })
+				.attr("r", .6)
+				.attr("opacity", 1)
+				.style("fill", function (d) { return myColor(d.wind); })
+		})
+
+		d3.json("../../DATA/nemih.json", function (data) {
+
+			const myColor = d3.scaleSequential(d3.interpolateGreys)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
+			d3.select("#spot_25")
+				.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) { return projectionsk([d.lon, d.lat])[0]; })
+				.attr("cy", function (d) { return projectionsk([d.lon, d.lat])[1]; })
+				.attr("r", .6)
+				.attr("opacity", 1)
+				.style("fill", function (d) { return myColor(d.wind); })
+		})
+
+		d3.json("../../DATA/tsamp.json", function (data) {
+
+			const myColor = d3.scaleSequential(d3.interpolateGreys)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
+			d3.select("#spot_50")
+				.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) { return projectionsk([d.lon, d.lat])[0]; })
+				.attr("cy", function (d) { return projectionsk([d.lon, d.lat])[1]; })
+				.attr("r", .6)
+				.attr("opacity", 1)
+				.style("fill", function (d) { return myColor(d.wind); })
+		})
+
+		d3.json("../../DATA/nemih.json", function (data) {
+
+			const myColor = d3.scaleSequential(d3.interpolateGreys)
+				.domain(d3.extent(data, function (d) { return d.wind; }))
+
+			d3.select("#spot_75")
+				.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function (d) { return projectionsk([d.lon, d.lat])[0]; })
+				.attr("cy", function (d) { return projectionsk([d.lon, d.lat])[1]; })
+				.attr("r", .6)
+				.attr("opacity", 1)
+				.style("fill", function (d) { return myColor(d.wind); })
+		})
+
+
+		for (m = 0; m < 10; m++) {
+
+			rand = 150 * Math.random()
+			randy = 200 * Math.random()
+
+			atlantic
+				.append("line")
+				.attr("x1", 250 - rand)
+				.attr("y1", 400 - randy)
+				.attr("x2", 650 - rand)
+				.attr("y2", 600 - randy)
+				.style("opacity", function (d) { return .6 - Math.random(); })
+				.attr("stroke", function (d) { return "#fff"; })
+				.attr("stroke-width", function (d) { return 1; })
+		}
+
+		list_variables = ["Backscatter","Emissivity","Amplitude","NDVI"]
+
+		for (m = 0; m < 10; m++) {
+
+			atlantic
+				.append("text")
+				.attr("x", 60 + m * 163)
+				.attr("y", 470 + m * 60)
+				.text(list_variables[m])
+				.attr("font-family", "Georgia, Arial, Century Gothic, sans-serif")
+				.attr("font-size", 14)
+				.attr("opacity", 1)
+				.style("font-style","italic")
+				.style("fill", "#000")
+		}
+
+
+
+		//-------------------------------- CITIES
+
+
 
 
 	</script>

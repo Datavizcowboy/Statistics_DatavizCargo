@@ -24,12 +24,8 @@
 			satellite observations of NDVI, surface temperature and backscatter
 			by using neural network statistical tools.
 		</p>
-
 		<p class="coverbig"><span>05</span></br>Multiple Linear</br>Regression</p>
-
 	</div>
-
-
 
 	<div class="container">
 
@@ -497,10 +493,10 @@
 
 		//------------------------------- MAP -------------------
 
-		var projection = d3.geoEquirectangular()
+		var projection = d3.geoRobinson()
 			.center([0, 0])
-			.scale(160)
-			.translate([500, 240])
+			.scale(170)
+			.translate([700, 260])
 
 		var path = d3.geoPath()
 			.projection(projection);

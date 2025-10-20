@@ -21,22 +21,24 @@
 		<p class="title"><span>Sensitivity</span></br>Analysis</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
-			A soil moisture dataproduct on a global scale can be derived from
-			satellite observations of NDVI, surface temperature and backscatter
-			by using neural network statistical tools.
+			Preliminary statistical analysis can be performed to observe patterns and correlations
+			among the variables provided in the satellite dataset making use of the Stats Models package.
 		</p>
-
 		<p class="coverbig"><span>04</span></br>Simple Linear</br>Regression</p>
 	</div>
 
 	<div class="container">
 		<div class="option_var">
-			<p class="credits2"></br></br></br></br></br></br>
-				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
-				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
-				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
-				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
-				is specified in units of decibel [dB].
+			<p class="credits2"></br></br></br></br></br></br></br>
+				Four different basic steps in statistics are performed in this section.
+				First we plot the scatter matrix among of the most correlated variables such
+				as temperature amplitude and LMD soilmoisture.
+				</br>
+				</br>
+				We then frame this correlation
+				in the correlation matrix of all variables. We then perform a single
+				regression analysis and we ultimately plot the Fitted versus Residuals to infer
+				collinearities.
 			</p>
 		</div>
 		<div class="option_var_code">
@@ -66,64 +68,81 @@
 	<div class="scattermatrix-div">
 	</div>
 
-	<div class="text01-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+	<div class="text01s-div">
+		<p class="coverbig2">Scatter</br><span>Matrix</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The scatter matrix between temperature amplitude and the LMD soil moisture
+			dataproduct does not reveal a clear or linear relationship among the two
+			variables.
+			</br></br>
+			However, there is a negative trend between both variables. The higher the
+			temperature amplitude, the lower the soil moisture index from the LMD
+			dataproduct.
+			</br></br>
+			This assumption has to be backed with statistical analysys that
+			can quantify this relationship.
 		</p>
 	</div>
 
 	<div class="correlation-div">
 	</div>
 
-	<div class="text02-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+	<div class="text02s-div">
+		<p class="coverbig2">Correlation</br><span>Matrix</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The pandas package allows a quick estimation of the correlation
+			coefficients between all variables contained in the dataset.
+			</br></br>
+			We observe in this diagram a poor correlation in general between horizontal
+			emissivity and the rest of the variables. And a high yet negative correlation
+			between temperature amplitude and the soil moisture dataproduct.
+			</br></br>
+			Aiming at being able to estimate soil moisture from these signals, we focus on
+			the relationship between temperature amplitude and soil moisture.
 		</p>
 	</div>
 
 	<div class="simplelinear-div">
 	</div>
 
-	<div class="text03-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+	<div class="text03s-div">
+		<p class="coverbig2">Simple</br><span>Linear</br> Regression</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			Making use of the Stats Models package in Python we are able to estimate a 
+			model that follows a linear relationship between an input and an output 
+			variable. 
+				</br></br>
+			In this case, we obtain an intercept at XXXXX and a slope of YYYYYYY, being
+			the r-squared of 0.9. 
+	</br></br>
+	This r-squared value is rather low and therefore this model is not quite 
+	representative of the relationship between input and output. 
+		
 		</p>
 	</div>
 
 	<div class="fitted-div">
 	</div>
 
-	<div class="text04-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+	<div class="text04s-div">
+		<p class="coverbig2">Fitted</br><span>vs. Residuals</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			Plotting fitted versus residual results for each datapoint reveals 
+			the degree at which there is collinearity among the input and 
+			output variables. 
+				</br></br>
+				Ideally, this plot should show a random distribution of points
+				without any particular pattern. 
+
+				</br></br>
+				However, we observe a clear trend in the spatial distribution of
+				the datapoints, with clear boundaries in the spatial distribution 
+				and a downward pattern in the overall plot. 
+
 		</p>
 	</div>
 
-		<div class="methodsensibility-div">
+	<div class="methodsensibility-div">
 		<div class="methods3-div">
 			<!-- <p class="plaintext"><span>
 				For other data visualization and graphic design projects in science, please visit <a
@@ -370,7 +389,7 @@
 		//------------------------------- CORRELATION --------------------------------
 
 		list_colors = ["cadetblue", "coral"]
-		list_text = ["Positive","Negative"]
+		list_text = ["Positive", "Negative"]
 		for (m = 0; m < 2; m++) {
 
 			g_corr_legend
@@ -379,11 +398,11 @@
 				.attr("cy", function (d, i) { return 170 + m * 20; })
 				.attr("r", function (d, i) { return 8 })
 				.attr("stroke", function (d) { return "none"; })
-				.attr("fill", function (d) {return list_colors[m];})
+				.attr("fill", function (d) { return list_colors[m]; })
 
 			g_corr_legend.append("text")
 				.attr("x", 25)
-				.attr("y", 175 + m*20)
+				.attr("y", 175 + m * 20)
 				.style("text-anchor", "start")
 				.text(list_text[m])
 				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")

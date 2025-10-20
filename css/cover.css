@@ -525,7 +525,7 @@ border-top-style: solid; */
   height: 550px;
   margin-right: 40px;
   margin-left: 400px;
-  margin-top: 0px;
+  margin-top: 50px;
   opacity: 1.0;
   border-bottom-color: #fff;
   border-bottom-width: 0px;
@@ -564,7 +564,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 410px;
-  margin-top: 580px;
+  margin-top: 700px;
   border-bottom-color: #999;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -577,9 +577,9 @@ border-top-style: solid; */
   height: 600px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1250px;
+  margin-top: 1400px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -590,9 +590,9 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1700px;
+  margin-top: 1830px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -603,9 +603,9 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 2300px;
+  margin-top: 2350px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -618,7 +618,7 @@ border-top-style: solid; */
   margin-left: 400px;
   margin-top: 1100px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -631,7 +631,7 @@ border-top-style: solid; */
   margin-left: 400px;
   margin-top: 1700px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -644,7 +644,7 @@ border-top-style: solid; */
   margin-left: 250px;
   margin-top: 2300px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -657,7 +657,7 @@ border-top-style: solid; */
   margin-left: 250px;
   margin-top: 2850px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -670,7 +670,7 @@ border-top-style: solid; */
   margin-left: 250px;
   margin-top: 400px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 

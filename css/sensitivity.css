@@ -82,56 +82,56 @@ path {
   border-bottom-style: solid;
 }
 
-.text01-div {
+.text01s-div {
   float: left;
   position: absolute;
   width: 300px;
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 820px;
+  margin-top: 900px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
 
-.text02-div {
+.text02s-div {
   float: left;
   position: absolute;
   width: 300px;
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1420px;
+  margin-top: 1500px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
 
-.text03-div {
+.text03s-div {
   float: left;
   position: absolute;
   width: 300px;
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top:1940px;
+  margin-top:2040px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
 
-.text04-div {
+.text04s-div {
   float: left;
   position: absolute;
   width: 300px;
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2540px;
+  margin-top: 2650px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;

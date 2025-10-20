@@ -1,4 +1,3 @@
-
 .leaflet-tile-pane {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
@@ -28,7 +27,7 @@
 }
 
 .link {
-  stroke:darkorange;
+  stroke: darkorange;
   stroke-opacity: 1;
   opacity: 1;
   stroke-width: 3px;
@@ -92,7 +91,7 @@ p.author {
   position: relative;
 }
 
-p.author span{
+p.author span {
   color: #bbb;
 }
 
@@ -141,8 +140,8 @@ p.coverbig {
 }
 
 p.coverbig span {
-    font-size: 50pt;
-  color:#999;
+  font-size: 50pt;
+  color: #999;
 }
 
 p.coverbig2 {
@@ -160,7 +159,7 @@ p.coverbig2 {
 }
 
 p.coverbig2 span {
-  color:#999;
+  color: #999;
 }
 
 
@@ -179,7 +178,7 @@ p.content {
   position: relative;
 }
 
-p.content span{
+p.content span {
   color: #999;
 }
 
@@ -247,12 +246,12 @@ p {
 }
 
 a:link {
-  color: #000;
+  color: #777;
   text-decoration: none;
 }
 
 a:visited {
-  color: #000;
+  color: #777;
   text-decoration: none;
 }
 
@@ -262,7 +261,7 @@ a:hover {
 }
 
 a:active {
-  color: #000;
+  color: #777;
   text-decoration: none;
 }
 
@@ -334,7 +333,7 @@ border-top-width: 20px;
 border-top-style: solid; */
 }
 
-.methods-div{
+.methods-div {
   float: left;
   width: 100%;
   height: 200px;
@@ -345,18 +344,18 @@ border-top-style: solid; */
   background: #bbb;
 }
 
-.methodsdescription-div{
+.methodsdescription-div {
   float: left;
   width: 100%;
   height: 200px;
   margin-right: 0px;
   margin-left: 0px;
-  margin-top: 3700px;
+  margin-top: 3500px;
   position: absolute;
   background: #bbb;
 }
 
-.methodsensibility-div{
+.methodsensibility-div {
   float: left;
   width: 100%;
   height: 200px;
@@ -367,7 +366,7 @@ border-top-style: solid; */
   background: #bbb;
 }
 
-.methodsregression-div{
+.methodsregression-div {
   float: left;
   width: 100%;
   height: 200px;
@@ -378,7 +377,7 @@ border-top-style: solid; */
   background: #bbb;
 }
 
-.methodsclustering-div{
+.methodsclustering-div {
   float: left;
   width: 100%;
   height: 200px;
@@ -389,7 +388,7 @@ border-top-style: solid; */
   background: #bbb;
 }
 
-.methodsneural-div{
+.methodsneural-div {
   float: left;
   width: 100%;
   height: 200px;
@@ -400,7 +399,7 @@ border-top-style: solid; */
   background: #bbb;
 }
 
-.methods3-div{
+.methods3-div {
   float: left;
   width: 280px;
   height: 150px;
@@ -414,7 +413,7 @@ border-top-style: solid; */
 .images {
   float: left;
   position: absolute;
-  width: 800px ;
+  width: 800px;
   height: 310px;
   margin-left: 400px;
   margin-top: 60px;
@@ -431,6 +430,19 @@ border-top-style: solid; */
   height: 100%;
   margin-left: 100px;
   margin-top: 400px;
+  opacity: 1.0;
+  border-bottom-color: #333;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+}
+
+.container_des {
+  float: left;
+  position: relative;
+  width: 1150px;
+  height: 100%;
+  margin-left: 100px;
+  margin-top: 520px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -476,7 +488,7 @@ border-top-style: solid; */
   border-bottom-color: #000;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-    border-top-color: #000;
+  border-top-color: #000;
   border-top-width: 1px;
   border-top-style: solid;
 }
@@ -495,11 +507,11 @@ border-top-style: solid; */
 }
 
 
-.option_var{
+.option_var {
   float: left;
   position: relative;
   width: 340px;
-  height: 550px;
+  height: 450px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1.0;
@@ -508,13 +520,13 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.option_var_code{
+.option_var_code {
   float: left;
   position: absolute;
   width: 740px;
   height: 550px;
   margin-right: 40px;
-    margin-left: 400px;
+  margin-left: 400px;
   margin-top: 0px;
   opacity: 1.0;
   border-bottom-color: #fff;
@@ -547,7 +559,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.scattermatrix-div{
+.scattermatrix-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -560,7 +572,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.correlation-div{
+.correlation-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -573,7 +585,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.simplelinear-div{
+.simplelinear-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -586,7 +598,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.fitted-div{
+.fitted-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -599,7 +611,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.multiple-div{
+.multiple-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -612,7 +624,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.poly-div{
+.poly-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -625,7 +637,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.interaction-div{
+.interaction-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -638,7 +650,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.polymap-div{
+.polymap-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -651,7 +663,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.neuralmap-div{
+.neuralmap-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -664,7 +676,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.clusters-div{
+.clusters-div {
   float: left;
   position: absolute;
   width: 1180px;
@@ -677,7 +689,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.clustersballs-div{
+.clustersballs-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -690,7 +702,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.clustersmap-div{
+.clustersmap-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -703,7 +715,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.skew-div{
+.skew-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -716,7 +728,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.epoch-div{
+.epoch-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -729,7 +741,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.noutput-div{
+.noutput-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -742,7 +754,7 @@ border-top-style: solid; */
   border-bottom-style: solid;
 }
 
-.lmd-div{
+.lmd-div {
   float: left;
   position: absolute;
   width: 850px;
@@ -839,4 +851,3 @@ div.tooltip {
   margin-top: 300;
   background-color: none;
 }
-

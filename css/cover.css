@@ -735,7 +735,7 @@ border-top-style: solid; */
   margin-left: 400px;
   margin-top: 1800px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -748,7 +748,7 @@ border-top-style: solid; */
   margin-left: 200px;
   margin-top: 2400px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 
@@ -761,7 +761,7 @@ border-top-style: solid; */
   margin-left: 200px;
   margin-top: 2900px;
   border-bottom-color: #333;
-  border-bottom-width: 1px;
+  border-bottom-width: 0px;
   border-bottom-style: solid;
 }
 

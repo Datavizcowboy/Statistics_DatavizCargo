@@ -59,30 +59,30 @@
 				hidden=100</br>
 				</br>
 				class SimpleNN(nn.Module):</br>
-				def __init__(self):</br>
-				super(SimpleNN, self).__init__()</br>
-				self.fc1 = nn.Linear(5,hidden)</br>
-				self.fc2 = nn.Linear(hidden,1)</br>
+				&nbsp;&nbsp;&nbsp;def __init__(self):</br>
+				&nbsp;&nbsp;&nbsp;super(SimpleNN, self).__init__()</br>
+				&nbsp;&nbsp;&nbsp;self.fc1 = nn.Linear(5,hidden)</br>
+				&nbsp;&nbsp;&nbsp;self.fc2 = nn.Linear(hidden,1)</br>
 				</br>
 				def forward(self, x):</br>
-				x = torch.relu(self.fc1(x))</br>
-				x = self.fc2(x)</br>
+				&nbsp;&nbsp;&nbsp;x = torch.relu(self.fc1(x))</br>
+				&nbsp;&nbsp;&nbsp;x = self.fc2(x)</br>
 				return x</br>
-				</br></br>
+				</br>
 				X_train = torch.tensor(alles).to(torch.float32)</br>
 				y_train = torch.tensor(lmd_soilWetness).to(torch.float32)</br>
 				y_train = y_train[...,None]</br>
-				</br></br>
+				</br>
 				class MyDataset(Dataset):</br>
-				def __init__(self):</br>
-				self.data = X_train</br>
-				self.labels = y_train</br>
+				&nbsp;&nbsp;&nbsp;def __init__(self):</br>
+				&nbsp;&nbsp;&nbsp;self.data = X_train</br>
+				&nbsp;&nbsp;&nbsp;self.labels = y_train</br>
 				</br>
 				def __len__(self):</br>
-				return len(self.data)</br>
+				&nbsp;&nbsp;&nbsp;return len(self.data)</br>
 				</br>
 				def __getitem__(self, idx):</br>
-				return self.data[idx], self.labels[idx]</br>
+				&nbsp;&nbsp;&nbsp;return self.data[idx], self.labels[idx]</br>
 				</br>
 				dataset = MyDataset()</br>
 				dataloader = DataLoader(dataset, batch_size=100, shuffle=True)</br>
@@ -92,22 +92,21 @@
 				optimizer = optim.SGD(model.parameters(), lr=0.1)</br>
 				iter=0</br>
 				</br>
-				</br>
 				for epoch in range(100):</br>
-				for inputs, labels in dataloader:</br>
-				model.train()</br>
+				&nbsp;&nbsp;&nbsp;for inputs, labels in dataloader:</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model.train()</br></br>
 
-				# Forward pass</br>
-				outputs = model(inputs)</br>
-				loss = criterion(outputs, labels)</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Forward pass</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputs = model(inputs)</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss = criterion(outputs, labels)</br></br>
 
-				# Backward pass and optimize</br>
-				optimizer.zero_grad()</br>
-				loss.backward()</br>
-				optimizer.step()</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Backward pass and optimize</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optimizer.zero_grad()</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss.backward()</br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optimizer.step()</br>
 
-				if (epoch + 1) % 10 == 0:</br>
-				print(f'Epoch [{epoch + 1}/100], Loss: {loss.item():.4f}')</br>
+				<!-- if (epoch + 1) % 10 == 0:</br>
+				print(f'Epoch [{epoch + 1}/100], Loss: {loss.item():.4f}')</br> -->
 
 
 			</p>
@@ -195,7 +194,7 @@
 		var svgint = d3.select("div.noutput-div")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", 600);
+			.attr("height", 665);
 
 		var g_int = svgint.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
@@ -203,7 +202,7 @@
 		var svgpoly = d3.select("div.lmd-div")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", 600);
+			.attr("height", 665);
 
 		var g_poly = svgpoly.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
@@ -441,10 +440,10 @@
 		//------------------------------- INTERACTION TERMS -------------------
 
 
-		var projection = d3.geoEquirectangular()
+		var projection = d3.geoRobinson()
 			.center([0, 0])
-			.scale(160)
-			.translate([500, 240])
+			.scale(170)
+			.translate([680, 280])
 
 		var path = d3.geoPath()
 			.projection(projection);

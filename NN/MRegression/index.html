@@ -5,14 +5,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script src="//d3js.org/d3.v4.min.js"></script>
 	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
-	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
-	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css'>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js'></script>
-	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
-	<script src="https://unpkg.com/@asymmetrik/leaflet-d3@4/dist/leaflet-d3.js" charset="utf-8"></script>
 	<script src="//d3js.org/d3-geo-projection.v1.min.js"></script>
 	<script src="//d3js.org/topojson.v1.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../../css/cover.css">
+	<link type="text/css" rel="stylesheet" href="../../css/sensitivity.css">
 </head>
 
 <body>
@@ -20,52 +16,55 @@
 		<p class="title"><span>Polynomial</span></br>Regression</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
-			A soil moisture dataproduct on a global scale can be derived from
-			satellite observations of NDVI, surface temperature and backscatter
-			by using neural network statistical tools.
+			Once the poor results of the Simple Linear Regression have been shown,
+			we test more complex regression techniques to try to create a more
+			accurate soil moisture dataproduct.
 		</p>
 		<p class="coverbig"><span>05</span></br>Multiple Linear</br>Regression</p>
 	</div>
 
 	<div class="container">
-
 		<div class="option_var">
 			<p class="credits2">
-				</br></br></br></br></br></br> </br></br>
-				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
-				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
-				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
-				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
-				is specified in units of decibel [dB].
+				</br></br></br></br></br></br> </br>
+				To this end, we use the Stats Models package in Python to create
+				multiple linear regression models, in particular a combination of
+				all input variables, interaction terms and polynomial regression.
 				</br></br>
+				While we consider all variables in the MLR approach, we consider
+				the two most correlated variables with the LMD soil moisture dataproduct
+				in order to build an Interaction Terms approach.
+				</br></br>
+				Regarding the polynomial regression model, we only consider the
+				temperature amplitude, trying to create a function that
+				fits better with the distribution of points in the scatter plot.
 			</p>
 		</div>
 		<div class="option_var_code">
-			<p class="coverbig2">Multiple</br>Linear Regression</br><span></span></p>
+			<p class="coverbig2">Stats</br>Models</br><span></span></p>
 			<p class="code">
-				X = data[["backscatter","ts_amplitude","ndvi"]] </br>
-				y = data['lmd_soilWetness'] </br>
-				X = sm.add_constant(X) </br>
-				est = sm.OLS(y, X).fit() </br>
-				est.summary()
-				</br></br>
-				est = smf.ols(formula='lmd_soilWetness ~ backscatter + emissivity_v + emissivity_h + ts_amplitude +
-				ndvi', data=data).fit()
-				est.summary()
+				# Multiple Linear Regression</br>
+				model = smf.ols(formula='lmd_soilWetness ~ backscatter + emissivity_v + emissivity_h + ts_amplitude +
+				ndvi', data=data)</br>
+				MLR = model.fit()
+				</br>MLR.summary()
 			</p>
 			<p class="coverbig2">Interaction</br> Terms</br><span></span></p>
 			<p class="code">
-				terms = smf.ols(formula='lmd_soilWetness ~ ts_amplitude * ndvi', data=data).fit()</br>
+				# Interaction Terms</br>
+				model = smf.ols(formula='lmd_soilWetness ~ ts_amplitude * ndvi', data=data)</br>
+				terms = model.fit()</br>
 				terms.summary()</br>
-				</br>
-				ax.scatter(results.fittedvalues, results.resid,c='k',s=1,alpha=0.2)</br>
 			</p>
 			<p class="coverbig2">Polynomial</br>Regression</br><span></span></p>
 			<p class="code">
-				poly = smf.ols(formula='lmd_soilWetness ~ 0 + I(ts_amplitude ** -0.5)', data=data).fit()</br>
+				# Polynomial Regression</br>
+
+				model = smf.ols(formula='lmd_soilWetness ~ 0 + I(ts_amplitude ** -0.5)', data=data)</br>
+				poly = model.fit()</br>
 				poly.summary()</br>
 				</br>
-				</br>
+				# Plot the Model Result</br>
 				x = pd.DataFrame({'ts_amplitude': np.linspace(data.ts_amplitude.min(), data.ts_amplitude.max(),
 				100)})</br>
 				ax = data.plot.scatter('ts_amplitude','lmd_soilWetness',s=.5,color='k',alpha=0.2)</br>
@@ -73,20 +72,15 @@
 				alpha=0.9)
 				</br>
 				</br>
-
+				# Plot Fitted vs Residual</br>
 				fig, ax = pl.subplots(figsize=(4, 4)) </br>
 				ax.scatter(poly.fittedvalues, poly.resid,c='k',s=1,alpha=0.5)
 				</br></br>
-
-
-
+				# Model Output into Dataframe</br>
 				data['Poly_SM']= data['ts_amplitude'].apply(lambda x: 2.21*(x**-0.5)) </br>
 				data['Poly_SM'] = [x if x < 1 else 1 for x in data['Poly_SM']]</br>
-					</1>
 					</br></br>
-					fig,ax = pl.subplots(figsize=(10, 5))
-					mesh = ax.scatter(data['longitude'],data['latitude'],c=data['Poly_SM'],s=1, cmap='terrain_r',
-					vmin=0, vmax=1);
+
 			</p>
 		</div>
 	</div>
@@ -95,14 +89,19 @@
 	</div>
 
 	<div class="text01m-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Polynomial</br><span>Regression</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			Both Multiple Linear Regression (MLR) and Interaction Terms have shown a poor
+			correlation between input and output data, having an r-squared around 0.5,
+			a value that is far from ideal.
+			</br></br>
+			However, and exponential function does achieve a higher r-squared, in this case
+			above 0.9, the highest among the linear regression statistical techniques.
+			</br></br>
+			The results is shown in this figure, where we have plotted the curve
+			corresponding to the polynomial regression model. This model seems to better
+			capture the relationship between temperature amplitude and the LMD soil
+			moisture dataproduct.
 		</p>
 	</div>
 
@@ -110,14 +109,15 @@
 	</div>
 
 	<div class="text02m-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Fitted</br><span>vs. Residuals</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			Despite the significant improvement in the r-squared value using the
+			polynomial regression model, the scatter plot between the fitted and the residuals
+			shows the same pattern as the one displayed in the Sensitivity Analysis results.
+			</br></br>
+			The pattern emerges either way, as the collinearity among the two variables
+			is inherent to the observations and therefore the pattern repeats iteself with
+			very little variation.
 		</p>
 	</div>
 
@@ -125,14 +125,13 @@
 	</div>
 
 	<div class="text03m-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Spatial</br><span>Distribution</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The polynomial regression model captures the spatial distribution observed in the
+			LMD dataproduct, although with overall lower values.
+			</br></br>
+			High values still belong to the equatorial regions and northern Europe and Morth America,
+			while the minima are located in tropical latitudes.
 		</p>
 	</div>
 
@@ -140,21 +139,20 @@
 	</div>
 
 	<div class="text04m-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Difference</br><span>in Dataproducts</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The polynomial regression model underestimates the soil moisture index in South America, particularly
+			in the western part of the Amazon river basin. This is also observed in sub saharian regions in Africa as
+			well as North America and Far-East pockets in Asia.
+			</br></br>
+			Higher values are only observed in few regions in the Amazon basin and eastern parts of Africa.
 		</p>
 	</div>
 
 	<div class="rsquared-div">
 	</div>
 
-		<div class="methodsregression-div">
+	<div class="methodsregression-div">
 		<div class="methods3-div">
 			<!-- <p class="plaintext"><span>
 				For other data visualization and graphic design projects in science, please visit <a
@@ -185,7 +183,7 @@
 		var svgint = d3.select("div.interaction-div")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", 600);
+			.attr("height", 665);
 
 		var g_int = svgint.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
@@ -201,7 +199,7 @@
 		var svgpolymap = d3.select("div.polymap-div")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", 600);
+			.attr("height", 665);
 
 		var g_polymap = svgpolymap.append("g")
 			.attr('transform', 'translate(' + (0) + ',200)')
@@ -253,10 +251,10 @@
 			, // NDVI
 			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
 			, // LMD SoilMoisture
-			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113],
-			
-			// LMD SoilMoisture
-[-1.0, -0.7142857142857143, -0.4285714285714286, -0.1428571428571429, 0.1428571428571428, 0.4285714285714284, 0.7142857142857142, 1.0] // Difference
+			[0.0, 0.14447142857142858, 0.28894285714285717, 0.43341428571428575, 0.5778857142857143, 0.7223571428571429, 0.8668285714285715, 1.0113]
+			, // LMD SoilMoisture
+			[-1.0, -0.7142857142857143, -0.4285714285714286, -0.1428571428571429, 0.1428571428571428, 0.4285714285714284, 0.7142857142857142, 1.0]
+			// Difference
 		]
 
 		for (k = 0; k < list_color_discrete[0].length; k++) {
@@ -272,13 +270,12 @@
 				.attr('stroke-width', 1);
 		}
 
-		for (k = 0; k < list_scale_discrete.length + 1; k++) {
+		for (k = 0; k < list_scale_discrete.length; k++) {
 
 			stripe.append('text')
 				.attr('x', function (d) { return 53; })
 				.attr('y', 8 + vpitch + 530 - k * 20)
 				.text(function (d) {
-					console.log(list_scale_discrete[k])
 					return d3.format('.2f')(list_scale_discrete[5][k]);
 				})
 				.attr('font-family', font_family)
@@ -302,13 +299,12 @@
 				.attr('stroke-width', 1);
 		}
 
-		for (k = 0; k < list_scale_discrete.length + 1; k++) {
+		for (k = 0; k < list_scale_discrete.length; k++) {
 
 			stripe2.append('text')
 				.attr('x', function (d) { return 53; })
 				.attr('y', 8 + vpitch + 530 - k * 20)
 				.text(function (d) {
-					console.log(list_scale_discrete[k])
 					return d3.format('.2f')(list_scale_discrete[7][k]);
 				})
 				.attr('font-family', font_family)
@@ -329,8 +325,8 @@
 			.attr('transform', 'translate(' + (0) + ',0)')
 
 		hpitch = 240
-		ypitch = 0
-		kern = 230
+		ypitch = 100
+		kern = 170
 
 		list_variables = ['R Squared', 'R Squared', 'R Squared']
 		list_mean = [0.508, 0.539, 0.908]
@@ -496,7 +492,7 @@
 		var projection = d3.geoRobinson()
 			.center([0, 0])
 			.scale(170)
-			.translate([700, 260])
+			.translate([680, 280])
 
 		var path = d3.geoPath()
 			.projection(projection);

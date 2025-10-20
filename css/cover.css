@@ -311,7 +311,7 @@ body {
   text-align: left;
   opacity: 1;
   border-bottom-color: #000;
-border-bottom-width: 1px;
+border-bottom-width: 0px;
 border-bottom-style: solid;
 }
 
@@ -629,7 +629,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1700px;
+  margin-top: 1680px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -641,7 +641,7 @@ border-top-style: solid; */
   width: 850px;
   height: 700px;
   margin-right: 0px;
-  margin-left: 250px;
+  margin-left: 150px;
   margin-top: 2300px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -654,8 +654,8 @@ border-top-style: solid; */
   width: 850px;
   height: 700px;
   margin-right: 0px;
-  margin-left: 250px;
-  margin-top: 2850px;
+  margin-left: 150px;
+  margin-top: 2900px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;

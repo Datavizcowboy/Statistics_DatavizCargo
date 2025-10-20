@@ -162,8 +162,6 @@ p.coverbig2 span {
   color: #999;
 }
 
-
-
 p.content {
   font-family: Georgia, DM Sans, Arial, sans-serif;
   font-size: 20pt;
@@ -184,8 +182,8 @@ p.content span {
 
 p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 12pt;
-  line-height: 16pt;
+  font-size: 14pt;
+  line-height: 18pt;
   letter-spacing: -.5px;
   font-style: italic;
   opacity: 1;
@@ -304,7 +302,7 @@ body {
 .header {
   float: left;
   width: 320px;
-  height: 180px;
+  height: 220px;
   position: absolute;
   margin-left: 100px;
   margin-top: 20px;
@@ -312,9 +310,9 @@ body {
   left: 0px;
   text-align: left;
   opacity: 1;
-  /* border-top-color: chocolate;
-border-top-width: 20px;
-border-top-style: solid; */
+  border-bottom-color: #000;
+border-bottom-width: 1px;
+border-bottom-style: solid;
 }
 
 .soon {
@@ -442,7 +440,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 520px;
+  margin-top: 540px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;

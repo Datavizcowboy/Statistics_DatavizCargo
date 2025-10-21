@@ -22,18 +22,18 @@
 		<p class="title"><span>Neural</span></br>Networks</br></p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
-			A soil moisture dataproduct on a global scale can be derived from
-			satellite observations of NDVI, surface temperature and backscatter
-			by using neural network statistical tools.
+			Less intuitive than regression models but more acurate on specific cases,
+			neural networks could help building the soil moisture dataproduct by
+			combining all the available variables from satellite observations.
+
 		</p>
-		<p class="coverbig"><span>07</span></br>Multiple Linear</br>Regression</p>
+		<p class="coverbig"><span>07</span></br>Neural Network</br>Architecture</p>
 	</div>
 
 	<div class="container_neural">
 
 		<div class="option_var">
-			<p class="credits2">
-			<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+			<p class="coverbig2"></br></br>Neural Network</br><span>Build</span></p>
 			<p class="credits2">
 				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
 				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
@@ -54,7 +54,7 @@
 			</p>
 		</div>
 		<div class="option_var_code">
-			<p class="coverbig2">Neural</br> Network</br><span></span></p>
+			<p class="coverbig2">Torch</br> Tensor</br><span></span></p>
 			<p class="code">
 				hidden=100</br>
 				</br>
@@ -116,7 +116,7 @@
 	<div class="epoch-div">
 	</div>
 	<div class="text01n-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Loss</br><span>vs Epochs</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
 			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
@@ -131,14 +131,10 @@
 	</div>
 
 	<div class="text02n-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Spatial</br><span>Distribution</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			moistures. </br></br>
 		</p>
 	</div>
 
@@ -146,14 +142,10 @@
 	</div>
 
 	<div class="text03n-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Difference</br><span>in Dataproducts</span></p>
 		<p class="credits2">
 			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			moistures. </br></br>
 		</p>
 	</div>
 
@@ -285,7 +277,7 @@
 				.attr('stroke-width', 1);
 		}
 
-		for (k = 0; k < list_scale_discrete.length + 1; k++) {
+		for (k = 0; k < list_scale_discrete.length; k++) {
 
 			stripe.append('text')
 				.attr('x', function (d) { return 53; })
@@ -315,7 +307,7 @@
 				.attr('stroke-width', 1);
 		}
 
-		for (k = 0; k < list_scale_discrete.length + 1; k++) {
+		for (k = 0; k < list_scale_discrete.length; k++) {
 
 			stripe2.append('text')
 				.attr('x', function (d) { return 53; })
@@ -532,9 +524,9 @@
 		var six3 = [[700, -40], [700, 20], [700, 80], [700, 140], [700, 200], [700, 260], [700, 320]]
 
 
-		thefill = "orange"
+		thefill = "#bbb"
 		thethick = 1
-		thecircle = "#fff"
+		thecircle = "orange"
 		therad = 15
 
 		for (k = 0; k < four.length; k++) {
@@ -556,8 +548,8 @@
 				.attr('cx', four[k][0])
 				.attr('cy', four[k][1])
 				.attr('r', therad)
-				.attr('fill', "#555")
-				.attr('stroke', thecircle)
+				.attr('fill', "#444")
+				.attr('stroke', "#999")
 				.attr('opacity', 1)
 				.attr('stroke-width', thethick);
 
@@ -587,11 +579,22 @@
 			g_polymap.append('circle')
 				.attr('cx', six2[k][0])
 				.attr('cy', six2[k][1])
-				.attr('r', therad)
+				.attr('r', 40)
 				.attr('fill', "#555")
 				.attr('stroke', thecircle)
 				.attr('opacity', 1)
-				.attr('stroke-width', thethick);
+				.attr('stroke-width', 0);
+
+			g_polymap.append("text")
+				.attr('x', six2[k][0])
+				.attr('y', six2[k][1])
+				.text("...")
+				.attr("font-family", "Georgia, Garamond, sans-serif")
+				.attr("font-size", 30)
+				.style("fill", "orange")
+				.style("font-style", "italic")
+				.style("text-anchor", "middle")
+
 
 			for (m = 0; m < six2.length; m++) {
 
@@ -630,25 +633,24 @@
 					.attr("stroke", function (d) { return thefill; })
 					.attr("stroke-width", function (d) { return 1; })
 
-
 			}
-							g_polymap_lines
-					.append("line")
-					.attr("x1", six3[k][0])
-					.attr("y1", six3[k][1])
-					.attr("x2", 850)
-					.attr("y2", 150)
-					.attr("opacity", function (d) { return Math.random(); })
-					.attr("stroke", function (d) { return thefill; })
-					.attr("stroke-width", function (d) { return 1; })
+			g_polymap_lines
+				.append("line")
+				.attr("x1", six3[k][0])
+				.attr("y1", six3[k][1])
+				.attr("x2", 850)
+				.attr("y2", 150)
+				.attr("opacity", function (d) { return Math.random(); })
+				.attr("stroke", function (d) { return thefill; })
+				.attr("stroke-width", function (d) { return 1; })
 		}
 
 		g_polymap.append('circle')
 			.attr('cx', 850)
 			.attr('cy', 150)
 			.attr('r', therad)
-			.attr('fill', "#555")
-			.attr('stroke', thecircle)
+			.attr('fill', "#444")
+			.attr('stroke', "#222")
 			.attr('opacity', 1)
 			.attr('stroke-width', thethick);
 

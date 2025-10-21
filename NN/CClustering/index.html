@@ -17,18 +17,27 @@
 </head>
 
 <body>
-
 	<div class='header' id="header">
 		<p class="title"><span>Clustering</span></br>Classification</p>
 		<p class="author">by <span><a href="https://datavizcowboy.com">DatavizCowboy</a></span></p>
 		<p class="credits"></br>
-			A soil moisture dataproduct on a global scale can be derived from
-			satellite observations of NDVI, surface temperature and backscatter
-			by using neural network statistical tools.
+			The combination of variables beyond multiple linear regression techniques
+			can lead to accurate prediction methods such as clustering classification.
+
 		</p>
-
-		<p class="coverbig"><span>06</span></br>Multiple Linear</br>Regression</p>
-
+		<p class="coverbig"><span>06</span></br>K-Means</br>Clustering</p>
+		<p class="credits2">
+			</br>
+			K-Means is one of the most popular clustering algorithms.
+			The K-means algorithm performs sequential iterations looking
+			to minimise the distance among the datapoints belonging to a
+			pre-defined number of groups or clusters.
+			</br></br>
+			The algorithm converges consistenly for different initializations.
+			In this case, the algorithm takes into account a multi-dimensional
+			approach including the datapoints of backscatter, emissivities,
+			temperature amplitude and NDVI.
+			</br></br></p>
 	</div>
 
 	<!-- <div class='back-div'>
@@ -44,34 +53,35 @@
 	</div> -->
 
 	<div class="container_cluster">
-
-		<div class="option_var">
+		<div class="option_var"></br></br></br>
+			<p class="coverbig2">K-Means</br>Build</br><span></span></p>
 			<p class="credits2">
-				</br></br></br>
-
-				The European Remote Sensing Satellite (ERS) scatterometer is a microwave instrument observing at a
-				frequency of 5.25GHz. A scatterometer is an active instrument, which means it sends out a radiation
-				pulse and measures the amount of radiation that is reflected or scattered back in the direction of the
-				instrument. This fraction of radiation that is received at the instrument is called the backscatter and
-				is specified in units of decibel [dB].
+				The input data for the K-Means algorithm is the combination
+				of all input variables. </br></br>
+				Once the gridpoints are assigned to
+				particular clusters, the average value of the LMD soil moisture
+				dataproduct are associated to each one of the clusters.
 				</br></br>
 			</p>
 		</div>
 		<div class="option_var_code">
-			<p class="coverbig2">Sklearn.cluster</br> KMeans</br><span></span></p>
+			<p class="coverbig2">Sklearn.cluster</br> K-Means</br><span></span></p>
 			<p class="code">
-				Xmeans = data[['ts_amplitude','ndvi','backscatter','emissivity_v','emissivity_h']]</br>
-				IDX = KMeans(n_clusters=10, random_state=0, n_init="auto").fit_predict(Xmeans)</br>
-				data['IDX']=IDX</br>
-
-				cluster_values = []</br>
-				for i in range(0,10):</br>
-				value = data['lmd_soilWetness'].loc[data['IDX'] == i].mean()</br>
-				cluster_values.append(value)</br>
+				# Input data</br>
+				input = data[['ts_amplitude','ndvi','backscatter','emissivity_v','emissivity_h']]
 				</br>
-				data['Kmeans_SM']= data['IDX'].apply(lambda x: cluster_values[x])</br>
-
-
+				</br>
+				# K-Means parameters</br>
+				clusters = KMeans(n_clusters=10, random_state=0, n_init="auto").fit_predict(input)</br>
+				data['clusters']=clusters
+				</br>
+				</br>
+				# Assign values to clusters</br>
+				cluster_values = [ ]</br>
+				for i in range(0,10):</br>
+				&nbsp;&nbsp;&nbsp;value = data['lmd_soilWetness'].loc[data['clusters'] == i].mean()</br>
+				&nbsp;&nbsp;&nbsp;cluster_values.append(value)</br>
+				data['Kmeans_SM']= data['clusters'].apply(lambda x: cluster_values[x])</br>
 			</p>
 		</div>
 	</div>
@@ -82,14 +92,16 @@
 	<div class="clustersballs-div" id="vis">
 	</div>
 	<div class="text01c-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Clusters</br><span>Distribution</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The ten pre-defined clusters are distributed in size as shown here. There are five
+			main clusters above 4000 datapoints each, while the smallest account to around
+			1400 datapoints.
+
+			</br></br>
+
+			Overall there is a uniform distribution of datapoints in all the spectrum
+			of values provided by the LMD soil moisture dataproduct.
 		</p>
 	</div>
 
@@ -97,14 +109,15 @@
 	</div>
 
 	<div class="text02c-div">
-		<p class="coverbig2">ERS</br><span>Backscatter</span></p>
+		<p class="coverbig2">Spatial</br><span>Distribution</span></p>
 		<p class="credits2">
-			In order to train the neural network there is the need to provide a global target dataset of soil
-			moistures. </br></br>In this analysis the data chosen for this role is the soil moisture product of the land
-			surface model developed by the Laboratoire de la Météorologie Dynamique (LMD) in Paris. </br></br>The
-			model's soil
-			moisture product is provided in the form of an index ranging between 0 and 1, where 0 corresponds to the
-			local wilting point and 1 corresponds to the local saturation level.
+			The K-Means clustering method captures the main patterns and regions of 
+			interest that the original LMD soil moisture dataproduct provides. 
+			</br></br>
+			This fact shows that the input variables considered have the information
+			required to construct a similar dataproduct. While their relative weight in 
+			this construction remains unclear using this method, it sets the path to 
+			further analysis based on this dataset. 
 		</p>
 	</div>
 
@@ -347,18 +360,18 @@
 
 		var svgmap = d3.select("div.clustersmap-div")
 			.append("svg")
-			.attr("width", 950)
-			.attr("height", 400)
+			.attr("width", 1150)
+			.attr("height", 450)
 
 		var g4 = svgmap.append("g");
 		var gdots = svgmap.append("g");
 		// var frame = svgmap.append("g");
 		// var legend = svgmap.append("g");
 
-		var projection = d3.geoEquirectangular()
+		var projection = d3.geoRobinson()
 			.center([0, 0])
-			.scale(160)
-			.translate([500, 240])
+			.scale(170)
+			.translate([700, 260])
 
 		var path = d3.geoPath()
 			.projection(projection);
@@ -381,11 +394,7 @@
 				.style("stroke", 'none')
 				.style("stroke-width", 1)
 				.attr("opacity", .1)
-
-				.style("fill", function (d) {
-					if (d.id == 152) return "#333";
-					else return "#333";
-				})
+				.style("fill", function (d) { return "#333"; })
 		});
 
 		d3.json("../../DATA/kmeans_map.json", function (data) {
@@ -393,26 +402,19 @@
 			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
 				.domain(d3.extent(data, function (d) { return d.wind; }))
 
-			// console.log(data)
-
 			gdots.selectAll("circle")
 				.data(data)
 				.enter()
 				.append("circle")
 				.attr("cx", function (d) {
-					// console.log(d.lon) 
 					return projection([d.lon, d.lat])[0];
 				})
 				.attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
-				.attr("r", 1)
+				.attr("r", 1.)
 				.attr("opacity", 1)
 				.style("fill", function (d) {
 					return myColor(d.wind);
 				})
-			// .attr("fill", function (d) {
-			// 	if (d.wind == "null") return "#fff"
-			// 	else return d3.rgb(255+d.wind, d.wind, 255)
-			// });
 		})
 
 
@@ -539,7 +541,6 @@
 				.style("fill", function (d) { return myColor(d.wind); })
 		})
 
-
 		for (m = 0; m < 10; m++) {
 
 			rand = 150 * Math.random()
@@ -551,12 +552,12 @@
 				.attr("y1", 400 - randy)
 				.attr("x2", 650 - rand)
 				.attr("y2", 600 - randy)
-				.style("opacity", function (d) { return .4 - Math.random(); })
-				.attr("stroke", function (d) { return "#fff"; })
+				.style("opacity", function (d) { return .8 - Math.random(); })
+				.attr("stroke", function (d) { return "orange"; })
 				.attr("stroke-width", function (d) { return 1; })
 		}
 
-		list_variables = ["Backscatter","Emissivity","Amplitude","NDVI"]
+		list_variables = ["Backscatter", "Emissivity", "Amplitude", "NDVI"]
 
 		for (m = 0; m < 10; m++) {
 
@@ -568,16 +569,9 @@
 				.attr("font-family", "Georgia, Arial, Century Gothic, sans-serif")
 				.attr("font-size", 14)
 				.attr("opacity", 1)
-				.style("font-style","italic")
+				.style("font-style", "italic")
 				.style("fill", "#000")
 		}
-
-
-
-		//-------------------------------- CITIES
-
-
-
 
 	</script>
 

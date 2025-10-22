@@ -28,37 +28,33 @@
 
 		</p>
 		<p class="coverbig"><span>07</span></br>Neural Network</br>Architecture</p>
-
-			<p class="credits2">
-				Neural Networks are a set of nodes that perform linear regression on combinations of both
-				the input variables and the nodes themselves, framed by feedback loops that improve 
-				the performace of these nodes, optimising coefficients, in order to learn and improve the 
-				output during a so-called learning process. 
-</br></br>
-				These learning layers are in the order of the hundreds between input and output. For the 
-				learning process of these nodes a subset of the input data is aimed at training the data, 
-				while the remaining data is used to test the performace of the neural network. 
-			</p>
-
-
+		<p class="credits2">
+			Neural Networks are a set of nodes that perform non-linear transformations over 
+			linear combinations of the input variables. These transformations are not set 
+			and they are actually learned during the process, optimising coefficients through 
+			an activation function.
+			</br></br>
+			These learning layers are in the order of the hundreds between input and output. For the
+			learning process of these nodes a subset of the input data is aimed at training the data,
+			while the remaining data is used to test the performace of the neural network.
+		</p>
 	</div>
 
 	<div class="container_neural">
-
 		<div class="option_var">
 			<p class="coverbig2"></br></br>Neural Network</br><span>Build</span></p>
 			<p class="credits2">
-				In order to implement a neural network we use the Torch Python package. We first perform a 
-				normalization of the input data, as neural networks work better when the data is normalized. 
+				In order to implement a neural network we use the Torch Python package. We first perform a
+				normalization of the input data, as neural networks work better when the data is normalized.
 				</br></br>
-				We then define the type of neural network we are going to use, the input and output 
-				dimensions and the number of hidden layers. 
-					</br></br>
-					Structuring the data as a proper input for a neural network model implies the slicing of 
-					data into batches. 
-						</br></br>
-						Loss criterion must also be specified for the model as well as the optimizing parameters. 
-						Once all of this is done we train the model. 
+				We then define the type of neural network we are going to use, the input and output
+				dimensions and the number of hidden layers.
+				</br></br>
+				Structuring the data as a proper input for a neural network model implies the slicing of
+				data into batches.
+				</br></br>
+				Loss criterion must also be specified for the model as well as the optimizing parameters.
+				Once all of this is done we train the model.
 
 			</p>
 		</div>
@@ -127,11 +123,11 @@
 	<div class="text01n-div">
 		<p class="coverbig2">Loss</br><span>vs Epochs</span></p>
 		<p class="credits2">
-			The training of the neural network model can be monitored looking at the loss of the 
-			model at each iteration step. The result of this is the Loss vs. Epoch plot shown here. 
-				</br></br>
-				The complexity of the input data is reflected on how the model learns and finds out 
-			patterns and behaviours that can be parameterized. 
+			The training of the neural network model can be monitored looking at the loss of the
+			model at each iteration step. The result of this is the Loss vs. Epoch plot shown here.
+			</br></br>
+			The complexity of the input data is reflected on how the model learns and finds out
+			patterns and behaviours that can be parameterized.
 		</p>
 	</div>
 
@@ -141,11 +137,11 @@
 	<div class="text02n-div">
 		<p class="coverbig2">Spatial</br><span>Distribution</span></p>
 		<p class="credits2">
-			The neural network model captures the overall spatial distribution, 
-			with values closer to one in the Equator along South America, Africa and Asia. 
-				</br></br>
-				On the contrary, it misses the high values in northern Europe and North America, that 
-				were better captured by the polynomial regression.
+			The neural network model captures the overall spatial distribution,
+			with values closer to one in the Equator along South America, Africa and Asia.
+			</br></br>
+			On the contrary, it misses the high values in northern Europe and North America, that
+			were better captured by the polynomial regression.
 		</p>
 	</div>
 
@@ -155,11 +151,11 @@
 	<div class="text03n-div">
 		<p class="coverbig2">Difference</br><span>in Dataproducts</span></p>
 		<p class="credits2">
-			The soil moisture dataproduct derived from using a neural network model has shown the 
-			least differences with the LMD soil mositure dataproduct used as a reference. 
-		</br></br>
-		We can observe how the differences are minimal on a global scale, with small pockets of 
-		discrepancies on South and North America of negative and positive sign. 
+			The soil moisture dataproduct derived from using a neural network model has shown the
+			least differences with the LMD soil mositure dataproduct used as a reference.
+			</br></br>
+			We can observe how the differences are minimal on a global scale, with small pockets of
+			discrepancies on South and North America of negative and positive sign.
 		</p>
 	</div>
 
@@ -392,7 +388,7 @@
 
 		g.append("g")
 			.attr("class", "xaxis")
-			.attr('transform', 'translate(0,' + (500) + ')')
+			.attr('transform', 'translate(0,' + (450) + ')')
 			.call(xAxis)
 			.selectAll(".tick text")
 			.style("text-anchor", "middle")
@@ -410,7 +406,7 @@
 
 		g.append("text")
 			.attr("x", function (d) { return (450); })
-			.attr("y", function (d) { return (545); })
+			.attr("y", function (d) { return (500); })
 			.text(function (d) { return "Epoch"; })
 			.attr("font-family", "Menlo, Georgia, Garamond, sans-serif")
 			.attr("font-size", 12)
@@ -532,15 +528,15 @@
 		//------------------------------- D3.js DOTS MAP -----------------------------
 
 		var list_variables = ["Backscatter", "Emissivity H", "Emissivity V", "Amplitude", "NDVI"]
-		var four = [[100, 20], [100, 80], [100, 140], [100, 200], [100, 260]]
-		var six = [[300, -40], [300, 20], [300, 80], [300, 140], [300, 200], [300, 260], [300, 320]]
+		var four = [[200, 20], [200, 80], [200, 140], [200, 200], [200, 260]]
+		var six = [[350, -40], [350, 20], [350, 80], [350, 140], [350, 200], [350, 260], [350, 320]]
 		var six2 = [[500, -40], [500, 20], [500, 80], [500, 140], [500, 200], [500, 260], [500, 320]]
-		var six3 = [[700, -40], [700, 20], [700, 80], [700, 140], [700, 200], [700, 260], [700, 320]]
+		var six3 = [[650, -40], [650, 20], [650, 80], [650, 140], [650, 200], [650, 260], [650, 320]]
 
 
 		thefill = "#bbb"
-		thethick = 1
-		thecircle = "orange"
+		thethick = 10
+		thecircle = "#777"
 		therad = 15
 
 		for (k = 0; k < four.length; k++) {
@@ -562,20 +558,20 @@
 				.attr('cx', four[k][0])
 				.attr('cy', four[k][1])
 				.attr('r', therad)
-				.attr('fill', "#444")
-				.attr('stroke', "#999")
+				.attr('fill', "#999")
+				.attr('stroke', "#666")
 				.attr('opacity', 1)
 				.attr('stroke-width', thethick);
 
 			g_polymap.append("text")
-				.attr('x', four[k][0])
-				.attr('y', four[k][1] + 35)
+				.attr('x', four[k][0] - 40)
+				.attr('y', four[k][1]+5)
 				.text(list_variables[k])
 				.attr("font-family", "Georgia, Garamond, sans-serif")
 				.attr("font-size", 12)
-				.style("fill", "#000")
+				.style("fill", "#fff")
 				.style("font-style", "italic")
-				.style("text-anchor", "middle")
+				.style("text-anchor", "end")
 		}
 
 
@@ -585,7 +581,7 @@
 				.attr('cx', six[k][0])
 				.attr('cy', six[k][1])
 				.attr('r', therad)
-				.attr('fill', "#555")
+				.attr('fill', "orange")
 				.attr('stroke', thecircle)
 				.attr('opacity', 1)
 				.attr('stroke-width', thethick);
@@ -630,7 +626,7 @@
 				.attr('cx', six3[k][0])
 				.attr('cy', six3[k][1])
 				.attr('r', therad)
-				.attr('fill', "#555")
+				.attr('fill', "orange")
 				.attr('stroke', thecircle)
 				.attr('opacity', 1)
 				.attr('stroke-width', thethick);
@@ -652,7 +648,7 @@
 				.append("line")
 				.attr("x1", six3[k][0])
 				.attr("y1", six3[k][1])
-				.attr("x2", 850)
+				.attr("x2", 750)
 				.attr("y2", 150)
 				.attr("opacity", function (d) { return Math.random(); })
 				.attr("stroke", function (d) { return thefill; })
@@ -660,31 +656,31 @@
 		}
 
 		g_polymap.append('circle')
-			.attr('cx', 850)
+			.attr('cx', 750)
 			.attr('cy', 150)
 			.attr('r', therad)
-			.attr('fill', "#444")
-			.attr('stroke', "#222")
+			.attr('fill', "#999")
+			.attr('stroke', "#666")
 			.attr('opacity', 1)
 			.attr('stroke-width', thethick);
 
 		g_polymap.append("text")
-			.attr('x', 850)
-			.attr('y', 150 + 30)
+			.attr('x', 750 + 35)
+			.attr('y', 150 + 5)
 			.text("Output")
 			.attr("font-family", "Georgia, Garamond, sans-serif")
 			.attr("font-size", 12)
-			.style("fill", "#000")
+			.style("fill", "#fff")
 			.style("font-style", "italic")
-			.style("text-anchor", "middle")
+			.style("text-anchor", "start")
 
 		g_polymap.append("text")
 			.attr('x', 500)
 			.attr('y', 350 + 30)
-			.text("100 x Hidden Layers")
+			.text("100x Hidden Layers")
 			.attr("font-family", "Georgia, Garamond, sans-serif")
-			.attr("font-size", 18)
-			.style("fill", "#000")
+			.attr("font-size", 14)
+			.style("fill", "#fff")
 			.style("font-style", "italic")
 			.style("text-anchor", "middle")
 

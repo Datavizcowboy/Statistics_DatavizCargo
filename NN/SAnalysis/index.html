@@ -94,8 +94,8 @@
 			coefficients between all variables contained in the dataset.
 			</br></br>
 			We observe in this diagram a poor correlation in general between horizontal
-			emissivity and the rest of the variables. And a high yet negative correlation
-			between temperature amplitude and the soil moisture dataproduct.
+			emissivity and the rest of the variables. And a high, yet negative correlation
+			between amplitude and the LMD dataproduct.
 			</br></br>
 			Aiming at being able to estimate soil moisture from these signals, we focus on
 			the relationship between temperature amplitude and soil moisture.
@@ -112,8 +112,8 @@
 			model that follows a linear relationship between an input and an output 
 			variable. 
 				</br></br>
-			In this case, we obtain an intercept at XXXXX and a slope of YYYYYYY, being
-			the r-squared of 0.9. 
+			In this case, we obtain an intercept at 0.84 and a slope of -0.01, being
+			the r-squared of 0.471. 
 	</br></br>
 	This r-squared value is rather low and therefore this model is not quite 
 	representative of the relationship between input and output. 
@@ -128,16 +128,19 @@
 		<p class="coverbig2">Fitted</br><span>vs. Residuals</span></p>
 		<p class="credits2">
 			Plotting fitted versus residual results for each datapoint reveals 
-			the degree at which there is collinearity among the input and 
+			the degree at which there is non-linearity between the input and 
 			output variables. 
 				</br></br>
 				Ideally, this plot should show a random distribution of points
-				without any particular pattern. 
+				without any particular pattern. That would mean that the input 
+				and output are highly linear and that SLR could be useful. 
 
 				</br></br>
 				However, we observe a clear trend in the spatial distribution of
 				the datapoints, with clear boundaries in the spatial distribution 
-				and a downward pattern in the overall plot. 
+				and a downward pattern in the overall plot. This fact suggest the use 
+				of transformations over the input variables in the model, as described 
+				in the next sections. 
 
 		</p>
 	</div>
@@ -175,7 +178,13 @@
 			.attr("width", width)
 			.attr("height", height);
 
-		var g_corr_legend = svgcorr.append("g")
+		var svgcorr_legend = d3.select("div.text02s-div")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", 200);
+
+
+		var g_corr_legend = svgcorr_legend.append("g")
 
 
 		var g_corr_0 = svgcorr.append("g")
@@ -313,6 +322,51 @@
 
 		//------------------------------- SIMPLE LINEAR REGRESSION -------------------
 
+		hpitch = 700
+		ypitch = 50
+		kern = 170
+
+		list_variables = ['R Squared']
+		list_mean = [0.471]
+
+		for (hh = 0; hh < list_variables.length; hh++) {
+
+			g_simple
+				.append("rect")
+				.attr("x", hpitch)
+				.attr("y", ypitch + hh * kern)
+				.attr("width", 100)
+				.attr("height", 70)
+				.attr("rx", 6)
+				.attr("ry", 6)
+				.style('stroke-width', 0)
+				.style("opacity", 1)
+				.style("stroke", "none")
+				.style("fill", "#999");
+
+			g_simple
+				.append('text')
+				.attr("x", 15 + hpitch)
+				.attr("y", 50 + ypitch + hh * kern)
+				.text(list_variables[hh])
+				.attr("font-family", "Menlo, Georgia, Rockwell, Gill Sans")
+				.attr("font-size", 12)
+				// .attr("font-style", "italic")
+				.attr("text-anchor", 'start')
+				.style("fill", "#fff")
+
+			g_simple
+				.append('text')
+				.attr("x", 15 + hpitch)
+				.attr("y", 35 + ypitch + hh * kern)
+				.text(list_mean[hh])
+				.attr("font-family", "Rockwell, Gill Sans")
+				.attr("font-size", 26)
+				.attr("letter-spacing", -2)
+				.attr("font-weight", "bold")
+				.attr("text-anchor", 'start')
+				.style("fill", "#111")
+		}
 
 
 		g_simple.append("g")
@@ -395,14 +449,14 @@
 			g_corr_legend
 				.append("circle")
 				.attr("cx", function (d, i) { return 10 })
-				.attr("cy", function (d, i) { return 170 + m * 20; })
+				.attr("cy", function (d, i) { return 25 + m * 20; })
 				.attr("r", function (d, i) { return 8 })
 				.attr("stroke", function (d) { return "none"; })
 				.attr("fill", function (d) { return list_colors[m]; })
 
 			g_corr_legend.append("text")
 				.attr("x", 25)
-				.attr("y", 175 + m * 20)
+				.attr("y", 30 + m * 20)
 				.style("text-anchor", "start")
 				.text(list_text[m])
 				.attr("font-family", "Georgia, Garamond, Gill Sans, Arial, Century Gothic, sans-serif")

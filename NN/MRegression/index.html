@@ -504,7 +504,7 @@
 			.attr("class", "graticule")
 			.attr("d", path);
 
-		d3.json("../../DATA/world-110m2.json", function (error, topology) {
+		d3.json("../../data/world-110m2.json", function (error, topology) {
 
 			g_int.selectAll("path")
 				.data(topojson.feature(topology, topology.objects.countries)
@@ -518,7 +518,7 @@
 				.style("fill", function (d) { return "#333"; })
 		});
 
-		d3.json("../../DATA/poly_map.json", function (data) {
+		d3.json("../../data/poly_map.json", function (data) {
 
 			const myColor = d3.scaleSequential(d3.interpolateYlGnBu)
 				.domain(d3.extent(data, function (d) { return d.wind; }))
@@ -615,7 +615,7 @@
 			.attr("class", "graticule")
 			.attr("d", path);
 
-		d3.json("../../DATA/world-110m2.json", function (error, topology) {
+		d3.json("../../data/world-110m2.json", function (error, topology) {
 
 			g_polymap.selectAll("path")
 				.data(topojson.feature(topology, topology.objects.countries)
@@ -629,7 +629,7 @@
 				.style("fill", function (d) { return "#333"; })
 		});
 
-		d3.json("../../DATA/diff_poly_Lmd.json", function (data) {
+		d3.json("../../data/diff_poly_Lmd.json", function (data) {
 
 			console.log(d3.extent(data, function (d) { return d.wind; }))
 

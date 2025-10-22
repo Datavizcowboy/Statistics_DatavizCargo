@@ -228,9 +228,9 @@
 			gdots.selectAll("circle").remove()
 
 			selectValue = d3.select('#thephase').property('value')
-			console.log(selectValue)
+			// console.log(selectValue)
 			selectnumber = databut.indexOf(selectValue) - 1
-			console.log(selectnumber)
+			// console.log(selectnumber)
 			json_model_ref = list_models[selectnumber];
 
 			d3.json(json_model_ref, function (error, data) {
@@ -691,7 +691,7 @@
 			.attr("class", "graticule")
 			.attr("d", path);
 
-		d3.json("../../DATA/world-110m2.json", function (error, topology) {
+		d3.json("../../data/world-110m2.json", function (error, topology) {
 
 			g4.selectAll("path")
 				.data(topojson.feature(topology, topology.objects.countries)
@@ -708,7 +708,7 @@
 				})
 		});
 
-		d3.json("../../DATA/back.json", function (data) {
+		d3.json("../../data/back.json", function (data) {
 
 			const myColor = d3.scaleSequential(d3.interpolateMagma)
 				.domain(d3.extent(data, function (d) { return d.wind; }))

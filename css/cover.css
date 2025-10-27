@@ -413,7 +413,7 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 950px;
-  height: 950px;
+  height: 1050px;
   margin-left: 200px;
   margin-top: 0px;
   opacity: 1.0;
@@ -425,12 +425,12 @@ border-top-style: solid; */
 .imagestop0 {
   float: left;
   position: absolute;
-  width: 200px;
-  height: 300px;
+  width: 210px;
+  height: 420px;
   margin-left: 400px;
-  margin-top: 50px;
+  margin-top: 120px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(85, 85, 85, .5);
 
 }
@@ -438,48 +438,48 @@ border-top-style: solid; */
 .imagestop1 {
   float: left;
   position: absolute;
-  width: 200px;
-  height: 300px;
+  width: 210px;
+  height: 420px;
   margin-left: 650px;
-  margin-top: 140px;
+  margin-top: 120px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(85, 85, 85, .5);
 }
 
 .imagestop2 {
   float: left;
   position: absolute;
-  width: 200px;
-  height: 300px;
+  width: 210px;
+  height: 390px;
   margin-left: 900px;
-  margin-top: 250px;
+  margin-top: 200px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(85, 85, 85, .5);
 }
 
 .imagestop3 {
   float: left;
   position: absolute;
-  width: 200px;
-  height: 300px;
-  margin-left: 400px;
-  margin-top: 650px;
+  width: 210px;
+  height: 390px;
+  margin-left: 420px;
+  margin-top: 580px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(85, 85, 85, .5);
 }
 
 .imagestop4 {
   float: left;
   position: absolute;
-  width: 200px;
-  height: 300px;
-  margin-left: 650px;
+  width: 210px;
+  height: 410px;
+  margin-left: 670px;
   margin-top: 580px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(85, 85, 85, .5);
 }
 

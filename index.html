@@ -208,18 +208,18 @@
 
 			let mypoints = []
 
-			for (let turns = 0; turns < 4; turns++) {
+			for (let turns = 0; turns < 3; turns++) {
 
 				let check = turns % 2
 
 				if (check == 0) {
-					mypoints.push([250, -280 + turns * 450 + pp * path_pitchx])
-					mypoints.push([250, -280 + turns * 450 + 450 + pp * path_pitchy])
+					mypoints.push([250, -300 + turns * 450 + pp * path_pitchx])
+					mypoints.push([250, -300 + turns * 450 + 450 + pp * path_pitchy])
 				}
 
 				else {
-					mypoints.push([800, -280 + turns * 450 + pp * path_pitchx])
-					mypoints.push([800, -280 + turns * 450 + 450 + pp * path_pitchy])
+					mypoints.push([800, -300 + turns * 450 + pp * path_pitchx])
+					mypoints.push([800, -300 + turns * 450 + 450 + pp * path_pitchy])
 				}
 			}
 
@@ -228,7 +228,7 @@
 			group
 				.append('path')
 				.attr('d', pathData)
-				.style('stroke-width', 400)
+				.style('stroke-width', 100)
 				.style("opacity", 1)
 				.style("fill", "none")
 				.style("stroke", "darkorange");

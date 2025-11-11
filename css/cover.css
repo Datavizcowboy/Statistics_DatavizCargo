@@ -159,7 +159,7 @@ p.coverbig2 {
 }
 
 p.coverbig2 span {
-  color: #aaa;
+  color: #ddd;
 }
 
 p.content {
@@ -431,7 +431,7 @@ border-top-style: solid; */
   margin-top: 30px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(205, 100, 0, 1);
+  background: rgba(100, 100, 100, 1);
 
 }
 

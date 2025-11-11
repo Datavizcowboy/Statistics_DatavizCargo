@@ -45,35 +45,35 @@
 
 			</div>
 			<div class="imagestop0">
-				<p class="coverbig2">&nbsp;&nbsp;<span>Data</br>&nbsp;&nbsp;Description</br></span></p>
+				<p class="coverbig2">&nbsp;&nbsp;<span>Data</br>&nbsp;&nbsp;Description</br></br></span></p>
 				<a href="./NN/DDescription/" target="_blank">
 					<img src="./images/soil_0.png" width="200"></img>
 				</a>
 			</div>
 
 			<div class="imagestop1">
-				<p class="coverbig2">&nbsp;&nbsp;<span>Sensitivity</br>&nbsp;&nbsp;Analysis</br></span></p>
+				<p class="coverbig2">&nbsp;&nbsp;<span>Sensitivity</br>&nbsp;&nbsp;Analysis</br></br></span></p>
 				<a href="./NN/SAnalysis/" target="_blank">
 					<img src="./images/soil_1.png" width="200"></img>
 				</a>
 			</div>
 
 			<div class="imagestop2">
-				<p class="coverbig2">&nbsp;&nbsp;<span>Polynomial</br>&nbsp;&nbsp;Regression</br></span></p>
+				<p class="coverbig2">&nbsp;&nbsp;<span>Polynomial</br>&nbsp;&nbsp;Regression</br></br></span></p>
 				<a href="./NN/MRegression/" target="_blank">
 					<img src="./images/soil_2.png" width="200"></img>
 				</a>
 			</div>
 
 			<div class="imagestop3">
-				<p class="coverbig2">&nbsp;&nbsp;<span>Neural</br>&nbsp;&nbsp;Networks</br></span></p>
+				<p class="coverbig2">&nbsp;&nbsp;<span>Neural</br>&nbsp;&nbsp;Networks</br></br></span></p>
 				<a href="./NN/NNetwork/" target="_blank">
 					<img src="./images/soil_4.png" width="200"></img>
 				</a>
 			</div>
 
 			<div class="imagestop4">
-				<p class="coverbig2">&nbsp;&nbsp;<span>Clustering</br>&nbsp;&nbsp;Classification</br></span></p>
+				<p class="coverbig2">&nbsp;&nbsp;<span>Clustering</br>&nbsp;&nbsp;Classification</br></br></span></p>
 				<a href="./NN/CClustering/" target="_blank">
 					<img src="./images/soil_3.png" width="200"></img>
 				</a>
@@ -213,8 +213,8 @@
 				let check = turns % 2
 
 				if (check == 0) {
-					mypoints.push([250, -300 + turns * 450 + pp * path_pitchx])
-					mypoints.push([250, -300 + turns * 450 + 450 + pp * path_pitchy])
+					mypoints.push([300, -300 + turns * 450 + pp * path_pitchx])
+					mypoints.push([300, -300 + turns * 450 + 450 + pp * path_pitchy])
 				}
 
 				else {
@@ -229,7 +229,7 @@
 				.append('path')
 				.attr('d', pathData)
 				.style('stroke-width', 100)
-				.style("opacity", 1)
+				.style("opacity", 0)
 				.style("fill", "none")
 				.style("stroke", "darkorange");
 		}

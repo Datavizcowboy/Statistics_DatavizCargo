@@ -159,7 +159,7 @@ p.coverbig2 {
 }
 
 p.coverbig2 span {
-  color: #999;
+  color: #aaa;
 }
 
 p.content {
@@ -428,10 +428,10 @@ border-top-style: solid; */
   width: 210px;
   height: 440px;
   margin-left: 400px;
-  margin-top: 120px;
+  margin-top: 30px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(185, 100, 0, 1);
+  background: rgba(205, 100, 0, 1);
 
 }
 
@@ -440,11 +440,11 @@ border-top-style: solid; */
   position: absolute;
   width: 210px;
   height: 440px;
-  margin-left: 650px;
-  margin-top: 120px;
+  margin-left: 620px;
+  margin-top: 30px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(185, 100, 0, 1);
+  background: rgba(205, 100, 0, 1);
 }
 
 .imagestop2 {
@@ -452,11 +452,11 @@ border-top-style: solid; */
   position: absolute;
   width: 210px;
   height: 410px;
-  margin-left: 900px;
-  margin-top: 120px;
+  margin-left: 840px;
+  margin-top: 30px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(185, 100, 0, 1);
+  background: rgba(205, 100, 0, 1);
 }
 
 .imagestop3 {
@@ -465,10 +465,10 @@ border-top-style: solid; */
   width: 210px;
   height: 405px;
   margin-left: 400px;
-  margin-top: 580px;
+  margin-top: 480px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(185, 100, 0, 1);
+  background: rgba(205, 100, 0, 1);
 }
 
 .imagestop4 {
@@ -476,11 +476,11 @@ border-top-style: solid; */
   position: absolute;
   width: 210px;
   height: 430px;
-  margin-left: 650px;
-  margin-top: 580px;
+  margin-left: 620px;
+  margin-top: 480px;
   opacity: 1;
   border-radius: 10px;
-  background: rgba(185, 100, 0, 1);
+  background: rgba(205, 100, 0, 1);
 }
 
 .container {

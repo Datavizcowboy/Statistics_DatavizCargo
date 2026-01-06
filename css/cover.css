@@ -61,10 +61,10 @@ img {
 
 p.title {
   font-family: Rockwell, Gill Sans, Century Gothic, Verdana, sans-serif;
-  font-size: 66px;
+  font-size: 50px;
   font-weight: bold;
-  letter-spacing: -4px;
-  line-height: 52px;
+  letter-spacing: -3px;
+  line-height: 40px;
   position: relative;
   font-weight: bold;
   opacity: 1;
@@ -76,7 +76,7 @@ p.title {
 }
 
 p.title span {
-  color: #999;
+  color: #fff;
 
   margin-left: 0px;
   /*    color: white;*/
@@ -159,13 +159,13 @@ p.coverbig2 {
 }
 
 p.coverbig2 span {
-  color: #aaa;
+  color: #fff;
 }
 
 p.content {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 20pt;
-  line-height: 24pt;
+  font-size: 18pt;
+  line-height: 22pt;
   letter-spacing: 0px;
   letter-spacing: -.5px;
   text-align: left;
@@ -177,13 +177,13 @@ p.content {
 }
 
 p.content span {
-  color: #999;
+  color: #fff;
 }
 
 p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 14pt;
-  line-height: 18pt;
+  font-size: 12pt;
+  line-height: 16pt;
   letter-spacing: -.5px;
   font-style: italic;
   opacity: 1;
@@ -311,6 +311,7 @@ body {
   left: 0px;
   text-align: left;
   opacity: 1;
+  background: none;
   border-bottom-color: #000;
 border-bottom-width: 0px;
 border-bottom-style: solid;
@@ -489,7 +490,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 400px;
+  margin-top: 300px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -599,8 +600,8 @@ border-top-style: solid; */
   position: absolute;
   width: 500px;
   height: 300px;
-  margin-left: 520px;
-  margin-top: 200px;
+  margin-left: 500px;
+  margin-top: 90px;
   background-color: none;
   text-align: right;
   opacity: 1;

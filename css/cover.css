@@ -127,8 +127,8 @@ p.cover {
 
 p.coverbig {
   font-family: Rockwell, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 24pt;
-  line-height: 22pt;
+  font-size: 20pt;
+  line-height: 18pt;
   letter-spacing: -0.8px;
   color: #111;
   opacity: 1;
@@ -140,14 +140,14 @@ p.coverbig {
 }
 
 p.coverbig span {
-  font-size: 50pt;
-  color: #999;
+  font-size: 40pt;
+  color: #fff;
 }
 
 p.coverbig2 {
   font-family: Rockwell, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20pt;
-  line-height: 18pt;
+  font-size: 16pt;
+  line-height: 16pt;
   letter-spacing: -0.8px;
   color: #111;
   opacity: 1;
@@ -182,8 +182,8 @@ p.content span {
 
 p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 12pt;
-  line-height: 16pt;
+  font-size: 14pt;
+  line-height: 18pt;
   letter-spacing: -.5px;
   font-style: italic;
   opacity: 1;
@@ -195,7 +195,7 @@ p.credits {
 
 p.credits2 {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 13pt;
+  font-size: 12pt;
   line-height: 18pt;
   letter-spacing: -0.2px;
   /* font-style: italic; */
@@ -323,7 +323,7 @@ border-bottom-style: solid;
   height: 180px;
   position: absolute;
   margin-left: 100px;
-  margin-top: 1420px;
+  margin-top: 1220px;
   top: 0px;
   left: 0px;
   text-align: left;
@@ -339,7 +339,7 @@ border-top-style: solid; */
   height: 200px;
   margin-right: 0px;
   margin-left: 0px;
-  margin-top: 2150px;
+  margin-top: 1950px;
   position: absolute;
   background: #bbb;
 }
@@ -350,7 +350,7 @@ border-top-style: solid; */
   height: 200px;
   margin-right: 0px;
   margin-left: 0px;
-  margin-top: 3500px;
+  margin-top: 3300px;
   position: absolute;
   background: #bbb;
 }
@@ -490,7 +490,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 300px;
+  margin-top: 350px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -503,7 +503,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 540px;
+  margin-top: 480px;
   opacity: 1.0;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -542,7 +542,7 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 1120px;
-  height: 1060px;
+  height: 960px;
   margin-left: 0px;
   margin-top: 0px;
   opacity: 1.0;
@@ -572,7 +572,7 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 340px;
-  height: 450px;
+  height: 400px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1.0;

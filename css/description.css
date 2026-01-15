@@ -17,7 +17,7 @@
   width: 540px;
   height: 550px;
   margin-left: 390px;
-  margin-top: 2730px;
+  margin-top: 2530px;
   opacity: 1.0;
   border-bottom-color: #fff;
   border-bottom-width: 0px;
@@ -31,7 +31,7 @@
   height: 650px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1350px;
+  margin-top: 1150px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid
@@ -44,7 +44,7 @@
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1400px;
+  margin-top: 1220px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -57,7 +57,7 @@
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1570px;
+  margin-top: 1370px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -70,7 +70,7 @@
   height: 650px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2000px;
+  margin-top: 1800px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -83,7 +83,7 @@
   height: 200px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2170px;
+  margin-top: 1950px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -96,7 +96,7 @@
   height: 500px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2650px;
+  margin-top: 2450px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -109,7 +109,7 @@
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 2825px;
+  margin-top: 2600px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -117,8 +117,8 @@
 
 p.credits2 {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 12pt;
-  line-height: 16pt;
+  font-size: 11pt;
+  line-height: 15pt;
   letter-spacing: -0.2px;
   /* font-style: italic; */
   opacity: 1;

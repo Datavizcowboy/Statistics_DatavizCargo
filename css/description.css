@@ -40,14 +40,14 @@
 .data1-div {
   float: left;
   position: absolute;
-  width: 1150px;
+  width: 320px;
   height: 600px;
   margin-right: 0px;
   margin-left: 100px;
-  margin-top: 1220px;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  margin-top: 1250px;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .text01-div {
@@ -66,14 +66,14 @@
 .map-div {
   float: left;
   position: absolute;
-  width: 1180px;
+  width: 320px;
   height: 650px;
   margin-right: 0px;
   margin-left: 100px;
   margin-top: 1800px;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .text02-div {
@@ -92,14 +92,14 @@
 .data0-div {
   float: left;
   position: absolute;
-  width: 1150px;
+  width: 260px;
   height: 500px;
   margin-right: 0px;
   margin-left: 100px;
   margin-top: 2450px;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .text03-div {

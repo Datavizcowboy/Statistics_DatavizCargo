@@ -198,7 +198,7 @@ p.credits2 {
   font-size: 12pt;
   line-height: 18pt;
   letter-spacing: -0.2px;
-  /* font-style: italic; */
+  font-style: italic;
   opacity: 1;
   margin-left: 0px;
   margin-top: 10px;
@@ -575,7 +575,8 @@ border-top-style: solid; */
   height: 400px;
   margin-right: 40px;
   margin-top: 0px;
-  opacity: 1.0;
+  opacity: 1;
+  /* background: #000; */
   border-bottom-color: #fff;
   border-bottom-width: 0px;
   border-bottom-style: solid;

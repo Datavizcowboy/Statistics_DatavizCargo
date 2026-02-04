@@ -24,12 +24,13 @@
 			Preliminary statistical analysis can be performed to observe patterns and correlations
 			among the variables provided in the satellite dataset making use of the Stats Models package.
 		</p>
-		<p class="coverbig"><span>04</span></br>Simple Linear</br>Regression</p>
 	</div>
 
 	<div class="container">
+				<p class="coverbig"><span>04</span></br>Simple Linear</br>Regression</p>
+
 		<div class="option_var">
-			<p class="credits2"></br></br></br></br></br></br></br>
+			<p class="credits2">
 				Four different basic steps in statistics are performed in this section.
 				First we plot the scatter matrix among of the most correlated variables such
 				as temperature amplitude and LMD soilmoisture.
@@ -302,7 +303,7 @@
 			.attr("id", "theyaxis")
 			.style("fill", "#ddd");
 
-		g.selectAll("path").remove();
+		// g.selectAll("path").remove();
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
@@ -408,7 +409,7 @@
 			.attr("id", "theyaxis")
 			.style("fill", "#ddd");
 
-		g_simple.selectAll("path").remove();
+		// g_simple.selectAll("path").remove();
 
 		d3.json("../../data/scatter.json", function (error, data) {
 
@@ -654,7 +655,7 @@
 			.attr("id", "theyaxis")
 			.style("fill", "#ddd");
 
-		g_fitted.selectAll("path").remove();
+		// g_fitted.selectAll("path").remove();
 
 		d3.json("../../data/fitted.json", function (error, data) {
 

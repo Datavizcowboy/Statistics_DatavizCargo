@@ -154,7 +154,7 @@ p.coverbig2 {
   position: relative;
   text-align: left;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-left: 0px;
 }
 
@@ -313,8 +313,8 @@ body {
   opacity: 1;
   background: none;
   border-bottom-color: #fff;
-border-bottom-width: 10px;
-border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
 }
 
 .soon {
@@ -452,7 +452,7 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 210px;
-  height: 410px;
+  height: 440px;
   margin-left: 840px;
   margin-top: 30px;
   opacity: 1;
@@ -464,7 +464,7 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 210px;
-  height: 405px;
+  height: 440px;
   margin-left: 400px;
   margin-top: 480px;
   opacity: 1;
@@ -476,7 +476,7 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 210px;
-  height: 430px;
+  height: 440px;
   margin-left: 620px;
   margin-top: 480px;
   opacity: 1;
@@ -487,14 +487,14 @@ border-top-style: solid; */
 .container {
   float: left;
   position: relative;
-  width: 1150px;
+  width: 350px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 350px;
+  margin-top: 400px;
   opacity: 1.0;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .container_des {
@@ -503,11 +503,11 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 480px;
+  margin-top: 380px;
   opacity: 1.0;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 
@@ -527,14 +527,14 @@ border-top-style: solid; */
 .container_neural {
   float: left;
   position: relative;
-  width: 1150px;
+  width: 350px;
   height: 100%;
   margin-left: 100px;
   margin-top: 900px;
   opacity: 1.0;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 

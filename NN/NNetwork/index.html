@@ -42,7 +42,7 @@
 
 	<div class="container_neural">
 		<div class="option_var">
-			<p class="coverbig2"></br></br>Neural Network</br><span>Build</span></p>
+			<p class="coverbig2">Neural Network</br><span>Build</span></p>
 			<p class="credits2">
 				In order to implement a neural network we use the Torch Python package. We first perform a
 				normalization of the input data, as neural networks work better when the data is normalized.
@@ -425,7 +425,7 @@
 			.attr("id", "theyaxis")
 			.style("fill", "#fff");
 
-		g.selectAll("path").remove();
+		// g.selectAll("path").remove();
 
 		d3.json("../../data/epochloss.json", function (error, data) {
 

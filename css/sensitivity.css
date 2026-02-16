@@ -1,16 +1,3 @@
-p.credits2 {
-  font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 12pt;
-  line-height: 16pt;
-  letter-spacing: -0.2px;
-  /* font-style: italic; */
-  opacity: 1;
-  margin-left: 0px;
-  margin-top: 10px;
-  color: #000;
-  position: relative;
-}
-
 .graticule {
   fill: none;
   stroke: none;

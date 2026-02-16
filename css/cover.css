@@ -185,7 +185,7 @@ p.credits {
   font-size: 14pt;
   line-height: 18pt;
   letter-spacing: -.5px;
-  font-style: italic;
+  /* font-style: italic; */
   opacity: 1;
   margin-left: 0px;
   margin-top: 10px;
@@ -196,7 +196,7 @@ p.credits {
 p.credits2 {
   font-family: Georgia, DM Sans, Arial, sans-serif;
   font-size: 12pt;
-  line-height: 18pt;
+  line-height: 16pt;
   letter-spacing: -0.2px;
   font-style: italic;
   opacity: 1;

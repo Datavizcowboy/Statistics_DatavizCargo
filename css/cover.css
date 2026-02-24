@@ -182,10 +182,10 @@ p.content span {
 
 p.credits {
   font-family: Georgia, DM Sans, Arial, sans-serif;
-  font-size: 14pt;
-  line-height: 18pt;
+  font-size: 13pt;
+  line-height: 17pt;
   letter-spacing: -.5px;
-  /* font-style: italic; */
+  font-style: italic;
   opacity: 1;
   margin-left: 0px;
   margin-top: 10px;
@@ -198,7 +198,7 @@ p.credits2 {
   font-size: 12pt;
   line-height: 16pt;
   letter-spacing: -0.2px;
-  font-style: italic;
+  /* font-style: italic; */
   opacity: 1;
   margin-left: 0px;
   margin-top: 10px;
@@ -323,7 +323,7 @@ body {
   height: 180px;
   position: absolute;
   margin-left: 100px;
-  margin-top: 1250px;
+  margin-top: 1300px;
   top: 0px;
   left: 0px;
   text-align: left;
@@ -487,10 +487,36 @@ border-top-style: solid; */
 .container {
   float: left;
   position: relative;
-  width: 350px;
+  width: 1050px;
   height: 100%;
   margin-left: 100px;
   margin-top: 400px;
+  opacity: 1.0;
+  border-top-color: #fff;
+  border-top-width: 0px;
+  border-top-style: solid;
+}
+
+.container_cont {
+  float: left;
+  position: relative;
+  width: 1050px;
+  height: 100%;
+  margin-left: 100px;
+  margin-top: 400px;
+  opacity: 1.0;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
+}
+
+.container_down {
+  float: left;
+  position: relative;
+  width: 350px;
+  height: 100%;
+  margin-left: 100px;
+  margin-top: 0px;
   opacity: 1.0;
   border-top-color: #fff;
   border-top-width: 10px;
@@ -503,7 +529,7 @@ border-top-style: solid; */
   width: 1150px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 380px;
+  margin-top: 340px;
   opacity: 1.0;
   border-top-color: #fff;
   border-top-width: 10px;
@@ -514,14 +540,14 @@ border-top-style: solid; */
 .container_cluster {
   float: left;
   position: relative;
-  width: 1150px;
+  width: 350px;
   height: 100%;
   margin-left: 100px;
-  margin-top: 1000px;
+  margin-top: 0px;
   opacity: 1.0;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .container_neural {
@@ -557,7 +583,7 @@ border-top-style: solid; */
 .option1 {
   float: left;
   position: relative;
-  width: 340px;
+  width: 350px;
   height: 500px;
   margin-left: 0px;
   margin-top: 100px;
@@ -572,7 +598,7 @@ border-top-style: solid; */
   float: left;
   position: relative;
   width: 340px;
-  height: 400px;
+  height: 460px;
   margin-right: 40px;
   margin-top: 0px;
   opacity: 1;
@@ -589,7 +615,7 @@ border-top-style: solid; */
   height: 550px;
   margin-right: 40px;
   margin-left: 400px;
-  margin-top: 50px;
+  margin-top: 0px;
   opacity: 1.0;
   border-bottom-color: #fff;
   border-bottom-width: 0px;
@@ -680,7 +706,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1100px;
+  margin-top: 1000px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -693,7 +719,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1680px;
+  margin-top: 1580px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -783,7 +809,7 @@ border-top-style: solid; */
   width: 850px;
   height: 700px;
   margin-right: 0px;
-  margin-left: 420px;
+  margin-left: 520px;
   margin-top: 350px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
@@ -797,7 +823,7 @@ border-top-style: solid; */
   height: 800px;
   margin-right: 0px;
   margin-left: 400px;
-  margin-top: 1700px;
+  margin-top: 1750px;
   border-bottom-color: #333;
   border-bottom-width: 0px;
   border-bottom-style: solid;
@@ -833,13 +859,15 @@ border-top-style: solid; */
   float: left;
   position: absolute;
   width: 300px;
-  height: 540px;
+  height: 500px;
   margin-right: 0px;
   margin-left: 0px;
   margin-top: 10px;
-  border-bottom-color: #333;
-  border-bottom-width: 0px;
-  border-bottom-style: solid;
+  background: rgba(20, 20, 20, .0);
+padding: 5px;
+  border-top-color: #fff;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 .left2-div {

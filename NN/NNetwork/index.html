@@ -27,20 +27,27 @@
 			combining all the available variables from satellite observations.
 
 		</p>
-		<p class="coverbig"><span>07</span></br>Neural Network</br>Architecture</p>
-		<p class="credits2">
-			Neural Networks are a set of nodes that perform non-linear transformations over 
-			linear combinations of the input variables. These transformations are not set 
-			and they are actually learned during the process, optimising coefficients through 
-			an activation function.
-			</br></br>
-			These learning layers are in the order of the hundreds between input and output. For the
-			learning process of these nodes a subset of the input data is aimed at training the data,
-			while the remaining data is used to test the performace of the neural network.
-		</p>
 	</div>
 
-	<div class="container_neural">
+	<div class="container_cont">
+		<p class="coverbig"><span>07</span></br>Neural Network</br>Architecture</p>
+		<div class="option_var">
+			<p class="credits2">
+				Neural Networks are a set of nodes that perform non-linear transformations over
+				linear combinations of the input variables. These transformations are not set
+				and they are actually learned during the process, optimising coefficients through
+				an activation function.
+				</br></br>
+				These learning layers are in the order of the hundreds between input and output. For the
+				learning process of these nodes a subset of the input data is aimed at training the data,
+				while the remaining data is used to test the performace of the neural network.
+			</p>
+		</div>
+	</div>
+
+		<div class="container_down">
+
+
 		<div class="option_var">
 			<p class="coverbig2">Neural Network</br><span>Build</span></p>
 			<p class="credits2">
@@ -565,7 +572,7 @@
 
 			g_polymap.append("text")
 				.attr('x', four[k][0] - 40)
-				.attr('y', four[k][1]+5)
+				.attr('y', four[k][1] + 5)
 				.text(list_variables[k])
 				.attr("font-family", "Georgia, Garamond, sans-serif")
 				.attr("font-size", 12)

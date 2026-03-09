@@ -69,7 +69,7 @@ p.title {
   font-weight: bold;
   opacity: 1;
   /*        color: #002D48;*/
-  color: #111;
+  color: darkorange;
   margin-top: 95px;
   margin-left: 0px;
   /*    color: white;*/
@@ -130,7 +130,7 @@ p.coverbig {
   font-size: 20pt;
   line-height: 18pt;
   letter-spacing: -0.8px;
-  color: #111;
+  color: darkorange;
   opacity: 1;
   position: relative;
   text-align: left;
@@ -149,7 +149,7 @@ p.coverbig2 {
   font-size: 16pt;
   line-height: 16pt;
   letter-spacing: -0.8px;
-  color: #111;
+  color: darkorange;
   opacity: 1;
   position: relative;
   text-align: left;
